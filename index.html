@@ -1264,7 +1264,7 @@
                     <div class="ntw-award-list">
 
                         <!-- ABF Nacional -->
-                        <a href="#" class="ntw-magic-btn">
+                        <a href="#" class="ntw-magic-btn" onclick="openAwardModal('abf-nacional'); return false;">
                             <img
                                 class="ntw-award-icone-3d"
                                 src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c2.png"
@@ -1284,7 +1284,7 @@
                         </a>
 
                         <!-- ABF Internacional -->
-                        <a href="#" class="ntw-magic-btn">
+                        <a href="#" class="ntw-magic-btn" onclick="openAwardModal('abf-internacional'); return false;">
                             <img
                                 class="ntw-award-icone-3d"
                                 src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c1.png"
@@ -1304,7 +1304,7 @@
                         </a>
 
                         <!-- PGN 5 Estrelas -->
-                        <a href="#" class="ntw-magic-btn">
+                        <a href="#" class="ntw-magic-btn" onclick="openAwardModal('pgn'); return false;">
                             <img
                                 class="ntw-award-icone-3d"
                                 src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c3.png"
@@ -1347,359 +1347,6 @@
                     <p>A NTW Digital é uma solução especializada da NTW, voltada para atender clientes de baixo faturamento e menor complexidade.</p>
                     <p>Ao indicar um cliente para a NTW Digital, você recebe 30% de comissão recorrente enquanto ele permanecer ativo na plataforma. Caso o cliente seja desenquadrado da NTW Digital, ele retornará automaticamente para a sua carteira de atendimento, permitindo que o relacionamento com o cliente continue sob sua gestão.</p>
                     <p>Essa parceria oferece uma oportunidade de ganho recorrente, mantendo a flexibilidade e o controle sobre seus clientes.</p>
-                `
-            },
-            {
-                label: "Premiações",
-                icon: null,
-                customSvg: `<img src="svg/04_principal_premiacoes.svg" class="custom-icon-img" alt="Premiações">`,
-                modalTitle: "Premiações e Reconhecimento",
-                modalDescription: `
-                    <div class="prem-slider-wrap" id="premSliderWrap">
-                        <div class="prem-slides" id="premSlides">
-
-                            <!-- ══════════════════════════════════════
-                                 SLIDE 1 — ABF Excelência em Franchising
-                            ══════════════════════════════════════ -->
-                            <div class="prem-slide">
-
-                                <!-- Banner topo -->
-                                <div class="prem-banner">
-                                    <!-- 📌 Substitua o src pela imagem da premiação ABF -->
-                                    <img class="prem-banner-img"
-                                        src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/sdl1.png"
-                                        alt="ABF Excelência em Franchising"
-                                        onerror="this.style.display='none'">
-                                    <div class="prem-banner-overlay"></div>
-                                    <div class="prem-banner-ph" id="abfBannerPh">
-                                      
-                                       
-                                    </div>
-                                    <div class="prem-banner-badge">
-                                        <div class="prem-badge-logo-ph">
-                                            <!-- 📌 Substitua o src pelo logo da ABF -->
-                                            <img src="https://franquia.vrdseguros.com.br/lovable-uploads/87196c69-0ab8-490f-b2fe-64581b0f856f.png" alt="Logo ABF"
-                                                onerror="this.style.display='none'; this.parentElement.querySelector('i') && (this.parentElement.querySelector('i').style.display='flex')">
-                                        </div>
-                                        <div class="prem-badge-text">
-                                            <span class="prem-badge-entity">ABF — Associação Brasileira de Franchising</span>
-                                            <span class="prem-badge-title">Excelência em Franchising</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Headline -->
-                                <p class="prem-headline">11 Reconhecimentos Consecutivos em Excelência no Franchising</p>
-                                <p class="prem-sub">Premiada pela ABF – Associação Brasileira de Franchising, a NTW acumula 11 reconhecimentos consecutivos no Selo de Excelência em Franchising, consolidando-se como referência absoluta no setor.</p>
-
-                                <!-- Stats -->
-                                <div class="prem-stat-grid">
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-medal"></i>
-                                        <span class="prem-stat-val">11</span>
-                                        <span class="prem-stat-label">Chancelas Consecutivas</span>
-                                    </div>
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-ranking-star"></i>
-                                        <span class="prem-stat-val">Top 4</span>
-                                        <span class="prem-stat-label">Franquias do Brasil com 11 selos</span>
-                                    </div>
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-building-columns"></i>
-                                        <span class="prem-stat-val">ABF</span>
-                                        <span class="prem-stat-label">Principal entidade de franchising do Brasil</span>
-                                    </div>
-                                </div>
-
-                                <!-- Anos -->
-                                <div class="prem-years">
-                                    <span class="prem-year">2016</span>
-                                    <span class="prem-year">2017</span>
-                                    <span class="prem-year">2018</span>
-                                    <span class="prem-year">2019</span>
-                                    <span class="prem-year">2020</span>
-                                    <span class="prem-year">2021</span>
-                                    <span class="prem-year">2022</span>
-                                    <span class="prem-year">2023</span>
-                                    <span class="prem-year">2024</span>
-                                    <span class="prem-year">2025</span>
-                                    <span class="prem-year prem-year-last">2026</span>
-                                </div>
-
-                                <!-- Placeholder imagem trofeus -->
-                                <div class="prem-trophy-row">
-                                    <div class="prem-trophy-ph">
-                                        <!-- 📌 Substitua por: <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
-                                        <i class="fa-regular fa-image"></i>
-                                        <span>Imagem dos selos ABF</span>
-                                    </div>
-                                </div>
-
-                                <!-- Bullet list -->
-                                <ul class="prem-bullet-list">
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        A ABF é a principal entidade de referência do franchising no Brasil, associada às boas práticas, ao desenvolvimento e à excelência no setor.
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        A NTW está entre as <strong style="color:white;">4 franquias do Brasil</strong> que atingiram, por 11 anos consecutivos, o Selo de Excelência em Franchising.
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Um reconhecimento que reforça a força, a gestão e a credibilidade da rede perante o mercado.
-                                    </li>
-                                </ul>
-
-                                <!-- Rodapé dourado -->
-                                <div class="prem-footer-gold">
-                                    <p>⭐ Um reconhecimento que reforça a força, a gestão e a credibilidade da rede.</p>
-                                </div>
-
-                            </div><!-- /slide 1 -->
-
-
-                            <!-- ══════════════════════════════════════
-                                 SLIDE 2 — Melhores Franquias do Brasil
-                            ══════════════════════════════════════ -->
-                            <div class="prem-slide">
-
-                                <!-- Banner topo -->
-                                <div class="prem-banner">
-                                    <!-- 📌 Substitua o src pela imagem da premiação PGN -->
-                                    <img class="prem-banner-img"
-                                        src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/ABF-Internaciona.png"
-                                        alt="Melhores Franquias do Brasil"
-                                        onerror="this.style.display='none'">
-                                    <div class="prem-banner-overlay"></div>
-                                    <div class="prem-banner-ph">
-                                    
-                                    </div>
-                                    <div class="prem-banner-badge">
-                                        <div class="prem-badge-logo-ph">
-                                            <!-- 📌 Substitua o src pelo logo PGN / Pequenas Empresas & Grandes Negócios -->
-                                            <img src="https://www.mundodeled.com.br/image/cache/catalog/blog/imagens_para_materia/pequenas_empresas_grandes_negocios_rfqojv_1-1744x760h.png" alt="Logo PGN"
-                                                onerror="this.style.display='none'">
-                                            
-                                        </div>
-                                        <div class="prem-badge-text">
-                                            <span class="prem-badge-entity">Pequenas Empresas & Grandes Negócios</span>
-                                            <span class="prem-badge-title">Melhores Franquias do Brasil</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Headline -->
-                                <p class="prem-headline">Cotação 5 Estrelas — Melhores Franquias do Brasil</p>
-                                <p class="prem-sub">Eleita pela revista PGN – Pequenas Empresas & Grandes Negócios, a NTW recebe a cotação máxima de 5 estrelas entre as melhores franquias do Brasil, ano após ano.</p>
-
-                                <!-- Stats -->
-                                <div class="prem-stat-grid">
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-star"></i>
-                                        <span class="prem-stat-val">5 ★</span>
-                                        <span class="prem-stat-label">Cotação máxima PGN</span>
-                                    </div>
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-calendar-check"></i>
-                                        <span class="prem-stat-val">10+</span>
-                                        <span class="prem-stat-label">Anos de reconhecimento</span>
-                                    </div>
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-shield-halved"></i>
-                                        <span class="prem-stat-val">100%</span>
-                                        <span class="prem-stat-label">Consistência de mercado</span>
-                                    </div>
-                                </div>
-
-                                <!-- Anos -->
-                                <div class="prem-years">
-                                    <span class="prem-year">2015</span>
-                                    <span class="prem-year">2016</span>
-                                    <span class="prem-year">2017</span>
-                                    <span class="prem-year">2018</span>
-                                    <span class="prem-year">2019</span>
-                                    <span class="prem-year">2021</span>
-                                    <span class="prem-year">2022</span>
-                                    <span class="prem-year">2023</span>
-                                    <span class="prem-year">2024</span>
-                                    <span class="prem-year prem-year-last">2025</span>
-                                </div>
-
-                                <!-- Placeholder imagem troféus -->
-                                <div class="prem-trophy-row">
-                                    <div class="prem-trophy-ph">
-                                        <!-- 📌 Substitua por: <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
-                                        <i class="fa-regular fa-image"></i>
-                                        <span>Imagem dos selos PGN</span>
-                                    </div>
-                                </div>
-
-                                <!-- Bullet list -->
-                                <ul class="prem-bullet-list">
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Reconhecimento que reforça a credibilidade da marca no franchising brasileiro.
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Prova de consistência, confiança e percepção de valor no mercado ao longo de mais de uma década.
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Uma premiação que fortalece a autoridade comercial da rede perante franqueados e clientes.
-                                    </li>
-                                </ul>
-
-                                <!-- Rodapé dourado -->
-                                <div class="prem-footer-gold">
-                                    <p>⭐ Uma premiação que amplia a confiança do mercado na força da rede.</p>
-                                </div>
-
-                            </div><!-- /slide 2 -->
-
-
-                            <!-- ══════════════════════════════════════
-                                 SLIDE 3 — Chancelas Internacionais ABF
-                            ══════════════════════════════════════ -->
-                            <div class="prem-slide">
-
-                                <!-- Banner topo -->
-                                <div class="prem-banner">
-                                    <img class="prem-banner-img"
-                                        src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/sld2.png"
-                                        alt="Chancelas Internacionais ABF"
-                                        onerror="this.style.display='none'; document.getElementById('intlBannerPh').style.display='flex'">
-                                    <div class="prem-banner-overlay"></div>
-                                    <div class="prem-banner-ph" id="intlBannerPh" style="display:none;">
-                                        <i class="fa-regular fa-image"></i>
-                                        <span>Imagem Chancelas Internacionais</span>
-                                    </div>
-                                    <div class="prem-banner-badge">
-                                        <div class="prem-badge-logo-ph">
-                                            <!-- 📌 Substitua o src pelo logo ABF Internacional -->
-                                            <img src="PLACEHOLDER_ABF_INTL_LOGO.png" alt="Logo ABF Internacional"
-                                                onerror="this.style.display='none'">
-                                            <i class="fa-solid fa-globe"></i>
-                                        </div>
-                                        <div class="prem-badge-text">
-                                            <span class="prem-badge-entity">ABF Internacional</span>
-                                            <span class="prem-badge-title">Chancelas Internacionais</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Headline -->
-                                <p class="prem-headline">Única Franquia Contábil do Brasil com Chancela Internacional</p>
-                                <p class="prem-sub">A chancela internacional da ABF valoriza redes brasileiras que crescem para além do território nacional com consistência, padrão operacional e visão de expansão.</p>
-
-                                <!-- Stats -->
-                                <div class="prem-stat-grid">
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-globe"></i>
-                                        <span class="prem-stat-val">Única</span>
-                                        <span class="prem-stat-label">Franquia Contábil com chancela internacional</span>
-                                    </div>
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-medal"></i>
-                                        <span class="prem-stat-val">6</span>
-                                        <span class="prem-stat-label">Chancelas internacionais acumuladas</span>
-                                    </div>
-                                    <div class="prem-stat-card">
-                                        <i class="fa-solid fa-flag"></i>
-                                        <span class="prem-stat-val">2</span>
-                                        <span class="prem-stat-label">Países com presença ativa</span>
-                                    </div>
-                                </div>
-
-                                <!-- Anos -->
-                                <div class="prem-years">
-                                    <span class="prem-year">2019</span>
-                                    <span class="prem-year">2020</span>
-                                    <span class="prem-year">2021</span>
-                                    <span class="prem-year">2023</span>
-                                    <span class="prem-year">2024</span>
-                                    <span class="prem-year prem-year-last">2025</span>
-                                </div>
-
-                                <!-- Placeholder imagem troféus internacionais -->
-                                <div class="prem-trophy-row">
-                                    <div class="prem-trophy-ph">
-                                        <!-- 📌 Substitua por: <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
-                                        <i class="fa-regular fa-image"></i>
-                                        <span>Imagem dos troféus internacionais</span>
-                                    </div>
-                                </div>
-
-                                <!-- Presença internacional -->
-                                <div class="prem-presence-row">
-                                    <div class="prem-presence-card">
-                                        <div class="prem-presence-flag">
-                                            <!-- 📌 Substitua pelo src da bandeira de Moçambique -->
-                                            <img src="https://png.pngtree.com/png-vector/20221116/ourmid/pngtree-mozambique-flag-png-image_6459392.png" alt="Moçambique" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                                            <i class="fa-solid fa-flag" style="display:none;"></i>
-                                        </div>
-                                        <div class="prem-presence-info">
-                                            <span class="prem-presence-country">🌍 Moçambique</span>
-                                            <span class="prem-presence-city">África</span>
-                                        </div>
-                                    </div>
-                                    <div class="prem-presence-card">
-                                        <div class="prem-presence-flag">
-                                            <!-- 📌 Substitua pelo src da bandeira de Portugal -->
-                                            <img src="https://cdn.pixabay.com/photo/2017/05/22/01/33/portugal-2332868_1280.png" alt="Portugal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                                           
-                                        </div>
-                                        <div class="prem-presence-info">
-                                            <span class="prem-presence-country">Portugal</span>
-                                            <span class="prem-presence-city">Cidade do Porto</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Bullet list -->
-                                <ul class="prem-bullet-list">
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Reconhecimento exclusivo para redes que demonstram excelência operacional além das fronteiras brasileiras.
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Presença em Moçambique (África) e em Portugal – Cidade do Porto, comprovando a solidez do modelo de negócio.
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-circle-check"></i>
-                                        Única franquia contábil brasileira a receber esse nível de validação internacional pela ABF.
-                                    </li>
-                                </ul>
-
-                                <!-- Rodapé dourado -->
-                                <div class="prem-footer-gold">
-                                    <p>🌐 Uma chancela que amplia a confiança no modelo de negócio da rede.</p>
-                                </div>
-
-                            </div><!-- /slide 3 -->
-
-                        </div><!-- /prem-slides -->
-                    </div><!-- /prem-slider-wrap -->
-
-                    <!-- Navegação -->
-                    <div class="prem-nav">
-                        <button class="prem-nav-btn" onclick="premSlide(-1)" title="Anterior">
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </button>
-                        <div class="prem-dots">
-                            <div class="prem-dot active" onclick="premGoTo(0)"></div>
-                            <div class="prem-dot" onclick="premGoTo(1)"></div>
-                            <div class="prem-dot" onclick="premGoTo(2)"></div>
-                        </div>
-                        <span class="prem-counter" id="premCounter">1 / 3</span>
-                        <button class="prem-nav-btn" onclick="premSlide(1)" title="Próximo">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </button>
-                    </div>
-
-
                 `
             },
             {
@@ -2267,7 +1914,7 @@
             document.addEventListener('touchend', end);
         }
 
-        function openModal(item) {
+        window.openModal = function openModal(item) {
             mTitle.textContent = item.modalTitle || item.label;
 
             if (item.customSvg) {
@@ -2359,6 +2006,298 @@
             document.querySelectorAll('.tab-content-item').forEach(c => c.classList.remove('active'));
             document.getElementById(`tab-${index}`).classList.add('active');
         }
+
+        /* ══════════════════════════════════════════════════════
+           MODAIS DE PREMIAÇÃO — abertos pelos botões do "Quem é a NTW"
+        ══════════════════════════════════════════════════════ */
+        const awardModals = {
+            'abf-nacional': {
+                title: 'ABF — Excelência em Franchising',
+                icon: `<img src="https://franquia.vrdseguros.com.br/lovable-uploads/87196c69-0ab8-490f-b2fe-64581b0f856f.png" alt="ABF">`,
+                content: `
+                    <div class="prem-slider-wrap">
+                        <div class="prem-slides" style="transform:none; display:block;">
+                            <div class="prem-slide" style="min-width:100%;">
+
+                                <div class="prem-banner">
+                                    <img class="prem-banner-img"
+                                        src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/sdl1.png"
+                                        alt="ABF Excelência em Franchising"
+                                        onerror="this.style.display='none'">
+                                    <div class="prem-banner-overlay"></div>
+                                    <div class="prem-banner-badge">
+                                        <div class="prem-badge-logo-ph">
+                                            <img src="https://franquia.vrdseguros.com.br/lovable-uploads/87196c69-0ab8-490f-b2fe-64581b0f856f.png" alt="Logo ABF"
+                                                onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="prem-badge-text">
+                                            <span class="prem-badge-entity">ABF — Associação Brasileira de Franchising</span>
+                                            <span class="prem-badge-title">Excelência em Franchising</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="prem-headline">11 Reconhecimentos Consecutivos em Excelência no Franchising</p>
+                                <p class="prem-sub">Premiada pela ABF – Associação Brasileira de Franchising, a NTW acumula 11 reconhecimentos consecutivos no Selo de Excelência em Franchising, consolidando-se como referência absoluta no setor.</p>
+
+                                <div class="prem-stat-grid">
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-medal"></i>
+                                        <span class="prem-stat-val">11</span>
+                                        <span class="prem-stat-label">Chancelas Consecutivas</span>
+                                    </div>
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-ranking-star"></i>
+                                        <span class="prem-stat-val">Top 4</span>
+                                        <span class="prem-stat-label">Franquias do Brasil com 11 selos</span>
+                                    </div>
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                        <span class="prem-stat-val">ABF</span>
+                                        <span class="prem-stat-label">Principal entidade de franchising do Brasil</span>
+                                    </div>
+                                </div>
+
+                                <div class="prem-years">
+                                    <span class="prem-year">2016</span><span class="prem-year">2017</span>
+                                    <span class="prem-year">2018</span><span class="prem-year">2019</span>
+                                    <span class="prem-year">2020</span><span class="prem-year">2021</span>
+                                    <span class="prem-year">2022</span><span class="prem-year">2023</span>
+                                    <span class="prem-year">2024</span><span class="prem-year">2025</span>
+                                    <span class="prem-year prem-year-last">2026</span>
+                                </div>
+
+                                <div class="prem-trophy-row">
+                                    <div class="prem-trophy-ph">
+                                        <!-- 📌 Substitua por <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
+                                        <i class="fa-regular fa-image"></i>
+                                        <span>Imagem dos selos ABF</span>
+                                    </div>
+                                </div>
+
+                                <ul class="prem-bullet-list">
+                                    <li><i class="fa-solid fa-circle-check"></i>A ABF é a principal entidade de referência do franchising no Brasil, associada às boas práticas, ao desenvolvimento e à excelência no setor.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i>A NTW está entre as <strong style="color:white;">4 franquias do Brasil</strong> que atingiram, por 11 anos consecutivos, o Selo de Excelência em Franchising.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i>Um reconhecimento que reforça a força, a gestão e a credibilidade da rede perante o mercado.</li>
+                                </ul>
+
+                                <div class="prem-footer-gold">
+                                    <p>⭐ Um reconhecimento que reforça a força, a gestão e a credibilidade da rede.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+
+            'abf-internacional': {
+                title: 'ABF Internacional — Chancelas Internacionais',
+                icon: `<i class="fa-solid fa-globe" style="color:var(--neon-blue);font-size:1.6rem;"></i>`,
+                content: `
+                    <div class="prem-slider-wrap">
+                        <div class="prem-slides" style="transform:none; display:block;">
+                            <div class="prem-slide" style="min-width:100%;">
+
+                                <div class="prem-banner">
+                                    <img class="prem-banner-img"
+                                        src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/sld2.png"
+                                        alt="Chancelas Internacionais ABF"
+                                        onerror="this.style.display='none'">
+                                    <div class="prem-banner-overlay"></div>
+                                    <div class="prem-banner-badge">
+                                        <div class="prem-badge-logo-ph">
+                                            <img src="PLACEHOLDER_ABF_INTL_LOGO.png" alt="Logo ABF Internacional"
+                                                onerror="this.style.display='none'">
+                                            <i class="fa-solid fa-globe"></i>
+                                        </div>
+                                        <div class="prem-badge-text">
+                                            <span class="prem-badge-entity">ABF Internacional</span>
+                                            <span class="prem-badge-title">Chancelas Internacionais</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="prem-headline">Única Franquia Contábil do Brasil com Chancela Internacional</p>
+                                <p class="prem-sub">A chancela internacional da ABF valoriza redes brasileiras que crescem para além do território nacional com consistência, padrão operacional e visão de expansão.</p>
+
+                                <div class="prem-stat-grid">
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-globe"></i>
+                                        <span class="prem-stat-val">Única</span>
+                                        <span class="prem-stat-label">Franquia Contábil com chancela internacional</span>
+                                    </div>
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-medal"></i>
+                                        <span class="prem-stat-val">6</span>
+                                        <span class="prem-stat-label">Chancelas internacionais acumuladas</span>
+                                    </div>
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span class="prem-stat-val">2</span>
+                                        <span class="prem-stat-label">Países com presença ativa</span>
+                                    </div>
+                                </div>
+
+                                <div class="prem-years">
+                                    <span class="prem-year">2019</span><span class="prem-year">2020</span>
+                                    <span class="prem-year">2021</span><span class="prem-year">2023</span>
+                                    <span class="prem-year">2024</span><span class="prem-year prem-year-last">2025</span>
+                                </div>
+
+                                <div class="prem-trophy-row">
+                                    <div class="prem-trophy-ph">
+                                        <!-- 📌 Substitua por <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
+                                        <i class="fa-regular fa-image"></i>
+                                        <span>Imagem dos troféus internacionais</span>
+                                    </div>
+                                </div>
+
+                                <div class="prem-presence-row">
+                                    <div class="prem-presence-card">
+                                        <div class="prem-presence-flag">
+                                            <img src="https://png.pngtree.com/png-vector/20221116/ourmid/pngtree-mozambique-flag-png-image_6459392.png" alt="Moçambique" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                                            <i class="fa-solid fa-flag" style="display:none;"></i>
+                                        </div>
+                                        <div class="prem-presence-info">
+                                            <span class="prem-presence-country">🌍 Moçambique</span>
+                                            <span class="prem-presence-city">África</span>
+                                        </div>
+                                    </div>
+                                    <div class="prem-presence-card">
+                                        <div class="prem-presence-flag">
+                                            <img src="https://cdn.pixabay.com/photo/2017/05/22/01/33/portugal-2332868_1280.png" alt="Portugal" onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="prem-presence-info">
+                                            <span class="prem-presence-country">Portugal</span>
+                                            <span class="prem-presence-city">Cidade do Porto</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="prem-bullet-list">
+                                    <li><i class="fa-solid fa-circle-check"></i>Reconhecimento exclusivo para redes que demonstram excelência operacional além das fronteiras brasileiras.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i>Presença em Moçambique (África) e em Portugal – Cidade do Porto, comprovando a solidez do modelo de negócio.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i>Única franquia contábil brasileira a receber esse nível de validação internacional pela ABF.</li>
+                                </ul>
+
+                                <div class="prem-footer-gold">
+                                    <p>🌐 Uma chancela que amplia a confiança no modelo de negócio da rede.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+
+            'pgn': {
+                title: 'Melhores Franquias do Brasil — PGN',
+                icon: `<i class="fa-solid fa-star" style="color:#e8c040;font-size:1.6rem;"></i>`,
+                content: `
+                    <div class="prem-slider-wrap">
+                        <div class="prem-slides" style="transform:none; display:block;">
+                            <div class="prem-slide" style="min-width:100%;">
+
+                                <div class="prem-banner">
+                                    <img class="prem-banner-img"
+                                        src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/ABF-Internaciona.png"
+                                        alt="Melhores Franquias do Brasil"
+                                        onerror="this.style.display='none'">
+                                    <div class="prem-banner-overlay"></div>
+                                    <div class="prem-banner-badge">
+                                        <div class="prem-badge-logo-ph">
+                                            <img src="https://www.mundodeled.com.br/image/cache/catalog/blog/imagens_para_materia/pequenas_empresas_grandes_negocios_rfqojv_1-1744x760h.png" alt="Logo PGN"
+                                                onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="prem-badge-text">
+                                            <span class="prem-badge-entity">Pequenas Empresas & Grandes Negócios</span>
+                                            <span class="prem-badge-title">Melhores Franquias do Brasil</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="prem-headline">Cotação 5 Estrelas — Melhores Franquias do Brasil</p>
+                                <p class="prem-sub">Eleita pela revista PGN – Pequenas Empresas & Grandes Negócios, a NTW recebe a cotação máxima de 5 estrelas entre as melhores franquias do Brasil, ano após ano.</p>
+
+                                <div class="prem-stat-grid">
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="prem-stat-val">5 ★</span>
+                                        <span class="prem-stat-label">Cotação máxima PGN</span>
+                                    </div>
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-calendar-check"></i>
+                                        <span class="prem-stat-val">10+</span>
+                                        <span class="prem-stat-label">Anos de reconhecimento</span>
+                                    </div>
+                                    <div class="prem-stat-card">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        <span class="prem-stat-val">100%</span>
+                                        <span class="prem-stat-label">Consistência de mercado</span>
+                                    </div>
+                                </div>
+
+                                <div class="prem-years">
+                                    <span class="prem-year">2015</span><span class="prem-year">2016</span>
+                                    <span class="prem-year">2017</span><span class="prem-year">2018</span>
+                                    <span class="prem-year">2019</span><span class="prem-year">2021</span>
+                                    <span class="prem-year">2022</span><span class="prem-year">2023</span>
+                                    <span class="prem-year">2024</span><span class="prem-year prem-year-last">2025</span>
+                                </div>
+
+                                <div class="prem-trophy-row">
+                                    <div class="prem-trophy-ph">
+                                        <!-- 📌 Substitua por <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
+                                        <i class="fa-regular fa-image"></i>
+                                        <span>Imagem dos selos PGN</span>
+                                    </div>
+                                </div>
+
+                                <ul class="prem-bullet-list">
+                                    <li><i class="fa-solid fa-circle-check"></i>Reconhecimento que reforça a credibilidade da marca no franchising brasileiro.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i>Prova de consistência, confiança e percepção de valor no mercado ao longo de mais de uma década.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i>Uma premiação que fortalece a autoridade comercial da rede perante franqueados e clientes.</li>
+                                </ul>
+
+                                <div class="prem-footer-gold">
+                                    <p>⭐ Uma premiação que amplia a confiança do mercado na força da rede.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        window.openAwardModal = function(key) {
+            const award = awardModals[key];
+            if (!award) return;
+
+            mTitle.textContent = award.title;
+            mIcon.innerHTML = award.icon;
+
+            const actionButtons = `
+                <div class="modal-actions" style="flex-wrap:wrap; gap:10px;">
+                    <button class="btn-outline" onclick="openModal(items[0])" style="display:flex;align-items:center;gap:7px;">
+                        <i class="fa-solid fa-arrow-left" style="font-size:0.8rem;"></i> Voltar
+                    </button>
+                    <button class="btn-neon">Solicite demonstração</button>
+                    <button class="btn-outline">Saiba mais</button>
+                </div>
+            `;
+
+            modalTextContainer.innerHTML = award.content + actionButtons;
+
+            blurContainer.classList.add('blurred');
+            modalOverlay.classList.add('active');
+            isDragging = false; velocity = 0;
+            isModalOpen = true;
+
+            const mc = document.querySelector('.modal-container');
+            if (mc) mc.scrollTop = 0;
+        };
 
         function closeModal() {
             blurContainer.classList.remove('blurred');
