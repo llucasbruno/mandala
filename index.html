@@ -1,1721 +1,2269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Ecossistema NTW - Cinematic Mode</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
-        :root {
-            --bg-dark: #020b1c;
-            --neon-blue: #00aaff;
-            --deep-blue: #003366;
-            --modal-bg: #010417;
-            --text-gray: #b0b8c4;
-        }
+      :root {
+        --bg-dark: #020b1c;
+        --neon-blue: #00aaff;
+        --deep-blue: #003366;
+        --modal-bg: #010417;
+        --text-gray: #b0b8c4;
+      }
 
-        body {
-            margin: 0;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-            background: #020b1c;
-            font-family: 'Montserrat', sans-serif;
-            color: white;
-        }
+      body {
+        margin: 0;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        background: #020b1c;
+        font-family: "Montserrat", sans-serif;
+        color: white;
+      }
 
-        #bg-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background-image: url('http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/magnific__talk__26940.jpeg');
-            background-size: cover;
-            background-position: center right;
-            background-repeat: no-repeat;
-        }
+      #bg-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: url("http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/magnific__talk__26940.jpeg");
+        background-size: cover;
+        background-position: center right;
+        background-repeat: no-repeat;
+      }
 
-        #bg-layer::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 65% 50%, rgba(3, 18, 50, 0.55) 0%, rgba(2, 8, 25, 0.88) 100%);
-        }
+      #bg-layer::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 65% 50%,
+          rgba(3, 18, 50, 0.55) 0%,
+          rgba(2, 8, 25, 0.88) 100%
+        );
+      }
 
-        #blur-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: filter 0.8s ease;
-            z-index: 1;
-        }
+      #blur-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: filter 0.8s ease;
+        z-index: 1;
+      }
 
-        #blur-container.blurred {
-            filter: url(#turbulence-blur) brightness(0.4);
-            pointer-events: none;
-        }
+      #blur-container.blurred {
+        filter: url(#turbulence-blur) brightness(0.4);
+        pointer-events: none;
+      }
 
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
 
-        .svg-filters {
-            position: absolute;
-            width: 0;
-            height: 0;
-        }
+      .svg-filters {
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
 
-        .hero-left {
-            position: absolute;
-            top: 50%;
-            left: 5%;
-            transform: translateY(-50%);
-            z-index: 50;
-            width: 420px;
-            max-width: 38%;
-            transition: opacity 0.5s;
-        }
+      .hero-left {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        z-index: 50;
+        width: 420px;
+        max-width: 38%;
+        transition: opacity 0.5s;
+      }
 
-        #blur-container.blurred .hero-left {
-            opacity: 0.15;
-            pointer-events: none;
-        }
+      #blur-container.blurred .hero-left {
+        opacity: 0.15;
+        pointer-events: none;
+      }
 
-        .hero-left h1 {
-            font-size: 3.0rem;
-            line-height: 1.05;
-            font-weight: 800;
-            margin: 0;
-            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
-        }
+      .hero-left h1 {
+        font-size: 3rem;
+        line-height: 1.05;
+        font-weight: 800;
+        margin: 0;
+        text-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+      }
 
-        .hero-left h1 span {
-            color: var(--neon-blue);
-            display: block;
-        }
+      .hero-left h1 span {
+        color: var(--neon-blue);
+        display: block;
+      }
 
-        .hero-subtitle {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 18px 0 10px 0;
-            line-height: 1.35;
-        }
+      .hero-subtitle {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 18px 0 10px 0;
+        line-height: 1.35;
+      }
 
-        .hero-desc {
-            color: #8892b0;
-            font-size: 0.88rem;
-            line-height: 1.65;
-            margin: 0 0 28px 0;
-        }
+      .hero-desc {
+        color: #8892b0;
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin: 0 0 28px 0;
+      }
 
-        .hero-desc strong {
-            color: #c8d4e8;
-        }
+      .hero-desc strong {
+        color: #c8d4e8;
+      }
 
-        .cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-        }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+      }
 
-        .btn-cta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 11px 15px;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-            letter-spacing: 0.02em;
-        }
+      .btn-cta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+      }
 
-        .btn-cta i { font-size: 0.9rem; }
+      .btn-cta i {
+        font-size: 0.9rem;
+      }
 
-        .btn-whatsapp { background: #1a5c2b; border: 1px solid #1a5c2b; color: #ffffff; }
-        .btn-whatsapp:hover { background: #23803d; border-color: #23803d; }
+      .btn-whatsapp {
+        background: #1a5c2b;
+        border: 1px solid #1a5c2b;
+        color: #ffffff;
+      }
+      .btn-whatsapp:hover {
+        background: #23803d;
+        border-color: #23803d;
+      }
 
-        .btn-crc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; }
-        .btn-crc:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.08); }
+      .btn-crc {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+      }
+      .btn-crc:hover {
+        border-color: rgba(255, 255, 255, 0.55);
+        background: rgba(255, 255, 255, 0.08);
+      }
 
-        .btn-especial { background: transparent; border: 1px solid #c8960a; color: #e8b30e; }
-        .btn-especial:hover { background: rgba(200,150,10,0.12); }
+      .btn-especial {
+        background: transparent;
+        border: 1px solid #c8960a;
+        color: #e8b30e;
+      }
+      .btn-especial:hover {
+        background: rgba(200, 150, 10, 0.12);
+      }
 
-        .btn-agenda { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; }
-        .btn-agenda:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.08); }
+      .btn-agenda {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+      }
+      .btn-agenda:hover {
+        border-color: rgba(255, 255, 255, 0.55);
+        background: rgba(255, 255, 255, 0.08);
+      }
 
-        .orbit-element {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            z-index: 20;
-            cursor: pointer;
-        }
+      .orbit-element {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        z-index: 20;
+        cursor: pointer;
+      }
 
-        .icon-bubble {
-            position: absolute;
-            top: -28px;
-            left: -28px;
-            width: 56px;
-            height: 56px;
-            background: radial-gradient(circle at 40% 35%, #0d2248 0%, #061228 100%);
-            border: 2px solid rgba(0, 170, 255, 0.65);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: white;
-            box-shadow:
-                0 0 10px rgba(0, 170, 255, 0.5),
-                0 0 22px rgba(0, 170, 255, 0.2),
-                inset 0 0 8px rgba(0, 100, 200, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-        }
+      .icon-bubble {
+        position: absolute;
+        top: -28px;
+        left: -28px;
+        width: 56px;
+        height: 56px;
+        background: radial-gradient(
+          circle at 40% 35%,
+          #0d2248 0%,
+          #061228 100%
+        );
+        border: 2px solid rgba(0, 170, 255, 0.65);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+        box-shadow:
+          0 0 10px rgba(0, 170, 255, 0.5),
+          0 0 22px rgba(0, 170, 255, 0.2),
+          inset 0 0 8px rgba(0, 100, 200, 0.3);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+      }
 
-        .custom-icon-img {
-            width: 34px;
-            height: 34px;
-            object-fit: contain;
-            filter: brightness(1.1);
-        }
+      .custom-icon-img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+        filter: brightness(1.1);
+      }
 
-        .icon-bubble svg:not(.custom-icon-img) { width: 28px; height: 28px; fill: currentColor; }
+      .icon-bubble svg:not(.custom-icon-img) {
+        width: 28px;
+        height: 28px;
+        fill: currentColor;
+      }
 
-        .icon-label {
-            position: absolute;
-            top: 44px;
-            left: -55px;
-            width: 110px;
-            font-size: 0.68rem;
-            color: #c8d8f0;
-            font-weight: 600;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
-            text-align: center;
-            opacity: 0.85;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            line-height: 1.3;
-        }
+      .icon-label {
+        position: absolute;
+        top: 44px;
+        left: -55px;
+        width: 110px;
+        font-size: 0.68rem;
+        color: #c8d8f0;
+        font-weight: 600;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+        text-align: center;
+        opacity: 0.85;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        line-height: 1.3;
+      }
 
-        .orbit-element:hover .icon-bubble {
-            transform: scale(1.25);
-            background: radial-gradient(circle at 40% 35%, #1040a0 0%, #0a2060 100%);
-            border-color: rgba(0,200,255,1);
-            box-shadow: 0 0 18px rgba(0,170,255,0.9), 0 0 45px rgba(0,170,255,0.4), inset 0 0 12px rgba(0,150,255,0.4);
-            color: white;
-            z-index: 100;
-        }
+      .orbit-element:hover .icon-bubble {
+        transform: scale(1.25);
+        background: radial-gradient(
+          circle at 40% 35%,
+          #1040a0 0%,
+          #0a2060 100%
+        );
+        border-color: rgba(0, 200, 255, 1);
+        box-shadow:
+          0 0 18px rgba(0, 170, 255, 0.9),
+          0 0 45px rgba(0, 170, 255, 0.4),
+          inset 0 0 12px rgba(0, 150, 255, 0.4);
+        color: white;
+        z-index: 100;
+      }
 
-        .orbit-element:hover .icon-label { opacity: 1; color: white; text-shadow: 0 0 10px rgba(0,170,255,0.8); }
+      .orbit-element:hover .icon-label {
+        opacity: 1;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+      }
 
+      #center-point {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        transition: left 0.3s ease;
+      }
+
+      @media (min-width: 1025px) {
         #center-point {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 10;
-            transition: left 0.3s ease;
+          left: 67%;
         }
+      }
 
-        @media (min-width: 1025px) {
-            #center-point { left: 67%; }
-        }
+      .venn-circle,
+      .vc-center {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
 
-        .venn-circle, .vc-center {
-            text-decoration: none;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .venn-circle {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.5),
+          inset 0 5px 15px rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        margin-top: -80px;
+        margin-left: -80px;
+        overflow: hidden;
+      }
 
-        .venn-circle {
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 5px 15px rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
-            margin-top: -80px;
-            margin-left: -80px;
-            overflow: hidden;
-        }
+      .vc-top {
+        background: linear-gradient(135deg, #7cccb7, #ffffff);
+        box-shadow:
+          0 10px 30px rgba(124, 204, 183, 0.4),
+          inset 0 5px 15px rgba(255, 255, 255, 0.2);
+        transform: translateY(-70px);
+        z-index: 2;
+      }
+      .vc-right-agro {
+        background: linear-gradient(135deg, #195e31, #ffffff);
+        box-shadow:
+          0 10px 30px rgba(25, 94, 49, 0.4),
+          inset 0 5px 15px rgba(255, 255, 255, 0.2);
+        transform: translate(60px, 40px);
+        z-index: 1;
+      }
+      .vc-left {
+        background: linear-gradient(135deg, #ff9f43, #d35400);
+        transform: translate(-60px, 40px);
+        z-index: 1;
+      }
 
-        .vc-top { background: linear-gradient(135deg, #7CCCB7, #ffffff); box-shadow: 0 10px 30px rgba(124,204,183,0.4), inset 0 5px 15px rgba(255,255,255,0.2); transform: translateY(-70px); z-index: 2; }
-        .vc-right-agro { background: linear-gradient(135deg, #195E31, #ffffff); box-shadow: 0 10px 30px rgba(25,94,49,0.4), inset 0 5px 15px rgba(255,255,255,0.2); transform: translate(60px, 40px); z-index: 1; }
-        .vc-left { background: linear-gradient(135deg, #ff9f43, #d35400); transform: translate(-60px, 40px); z-index: 1; }
+      .vc-center {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        background: white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+        overflow: hidden;
+      }
 
-        .vc-center {
-            position: absolute;
-            width: 110px;
-            height: 110px;
-            background: white;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255,255,255,0.8);
-            box-shadow: 0 0 35px rgba(255,255,255,0.8);
-            overflow: hidden;
-        }
+      .center-logo {
+        width: 80%;
+        height: auto;
+        object-fit: contain;
+      }
 
-        .center-logo { width: 80%; height: auto; object-fit: contain; }
+      .vc-top:hover {
+        transform: translateY(-70px) scale(1.05);
+        z-index: 20;
+      }
+      .vc-right-agro:hover {
+        transform: translate(60px, 40px) scale(1.05);
+        z-index: 15;
+      }
+      .vc-left:hover {
+        transform: translate(-60px, 40px) scale(1.05);
+        z-index: 15;
+      }
+      .vc-center:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+        z-index: 30;
+        box-shadow: 0 0 50px rgba(255, 255, 255, 1);
+      }
 
-        .vc-top:hover { transform: translateY(-70px) scale(1.05); z-index: 20; }
-        .vc-right-agro:hover { transform: translate(60px, 40px) scale(1.05); z-index: 15; }
-        .vc-left:hover { transform: translate(-60px, 40px) scale(1.05); z-index: 15; }
-        .vc-center:hover { transform: translate(-50%, -50%) scale(1.05); z-index: 30; box-shadow: 0 0 50px rgba(255,255,255,1); }
+      .curved-text-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 380px;
+        height: 380px;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 5;
+        animation: spin-slow 80s linear infinite;
+      }
 
+      @media (min-width: 1025px) {
         .curved-text-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 380px;
-            height: 380px;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 5;
-            animation: spin-slow 80s linear infinite;
+          left: 67%;
         }
+      }
 
-        @media (min-width: 1025px) {
-            .curved-text-container { left: 67%; }
+      @keyframes spin-slow {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
         }
-
-        @keyframes spin-slow {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
         }
+      }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-container {
+        background-color: var(--modal-bg);
+        width: 92%;
+        max-width: 920px;
+        border-radius: 20px;
+        padding: 40px;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        max-height: 90vh;
+        overflow-y: auto;
+        /* ── Scrollbar azul escuro ── */
+        scrollbar-width: thin;
+        scrollbar-color: #003399 #010417;
+      }
+
+      /* Scrollbar webkit (Chrome, Edge, Safari) */
+      .modal-container::-webkit-scrollbar {
+        width: 6px;
+      }
+      .modal-container::-webkit-scrollbar-track {
+        background: #010417;
+        border-radius: 10px;
+      }
+      .modal-container::-webkit-scrollbar-thumb {
+        background: #003399;
+        border-radius: 10px;
+      }
+      .modal-container::-webkit-scrollbar-thumb:hover {
+        background: #005dff;
+      }
+
+      .modal-overlay.active .modal-container {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: var(--neon-blue);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+        z-index: 10;
+      }
+
+      .close-btn:hover {
+        transform: rotate(90deg);
+        background: white;
+        color: var(--neon-blue);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .modal-icon-lg {
+        width: 60px;
+        height: 60px;
+        background: var(--neon-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-right: 20px;
+        box-shadow: 0 0 25px rgba(0, 170, 255, 0.5);
+        flex-shrink: 0;
+      }
+
+      .modal-icon-lg img {
+        width: 35px;
+        height: 35px;
+        object-fit: contain;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0;
+        color: white;
+        line-height: 1.2;
+      }
+
+      .modal-body {
+        display: block;
+      }
+      .modal-text {
+        width: 100%;
+      }
+
+      .modal-text p {
+        color: var(--text-gray);
+        line-height: 1.6;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+      }
+
+      .modal-text ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 15px;
+      }
+
+      .modal-text li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+        color: var(--text-gray);
+        font-size: 0.95rem;
+      }
+
+      .modal-text li i {
+        color: var(--neon-blue);
+        position: absolute;
+        left: 0;
+        top: 4px;
+        font-size: 0.8rem;
+      }
+
+      .tabs-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 15px;
+      }
+
+      .tab-btn {
+        background: transparent;
+        border: 1px solid var(--neon-blue);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .tab-btn:hover,
+      .tab-btn.active {
+        background: var(--neon-blue);
+        box-shadow: 0 0 10px var(--neon-blue);
+      }
+
+      .tab-content-item {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .tab-content-item.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
         }
-
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-
-        .modal-container {
-            background-color: var(--modal-bg);
-            width: 92%;
-            max-width: 920px;
-            border-radius: 20px;
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            border: 1px solid rgba(255,255,255,0.1);
-            transform: scale(0.9) translateY(20px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-height: 90vh;
-            overflow-y: auto;
-            /* ── Scrollbar azul escuro ── */
-            scrollbar-width: thin;
-            scrollbar-color: #003399 #010417;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        /* Scrollbar webkit (Chrome, Edge, Safari) */
-        .modal-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .modal-container::-webkit-scrollbar-track {
-            background: #010417;
-            border-radius: 10px;
-        }
-        .modal-container::-webkit-scrollbar-thumb {
-            background: #003399;
-            border-radius: 10px;
-        }
-        .modal-container::-webkit-scrollbar-thumb:hover {
-            background: #005dff;
-        }
+      .modal-actions {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+      }
 
-        .modal-overlay.active .modal-container { transform: scale(1) translateY(0); opacity: 1; }
+      .btn-neon {
+        background: var(--neon-blue);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+      }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--neon-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-            z-index: 10;
-        }
+      .btn-neon:hover {
+        background: white;
+        color: var(--neon-blue);
+        box-shadow: 0 0 30px rgba(0, 170, 255, 0.8);
+      }
 
-        .close-btn:hover { transform: rotate(90deg); background: white; color: var(--neon-blue); }
+      .btn-outline {
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
 
-        .modal-header { display: flex; align-items: center; margin-bottom: 25px; }
+      .btn-outline:hover {
+        border-color: white;
+        background: rgba(255, 255, 255, 0.1);
+      }
 
-        .modal-icon-lg {
-            width: 60px;
-            height: 60px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-right: 20px;
-            box-shadow: 0 0 25px rgba(0,170,255,0.5);
-            flex-shrink: 0;
-        }
+      .trilha-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 5px;
+      }
 
-        .modal-icon-lg img { width: 35px; height: 35px; object-fit: contain; }
+      .trilha-tag {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #dbe4f0;
+      }
 
-        .modal-title { font-size: 1.5rem; font-weight: 800; margin: 0; color: white; line-height: 1.2; }
-
-        .modal-body { display: block; }
-        .modal-text { width: 100%; }
-
-        .modal-text p { color: var(--text-gray); line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem; }
-
-        .modal-text ul { list-style: none; padding: 0; margin-bottom: 15px; }
-
-        .modal-text li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        .modal-text li i { color: var(--neon-blue); position: absolute; left: 0; top: 4px; font-size: 0.8rem; }
-
-        .tabs-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: 1px solid var(--neon-blue);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .tab-btn:hover, .tab-btn.active { background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
-
-        .tab-content-item { display: none; animation: fadeIn 0.4s ease; }
-        .tab-content-item.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-actions { margin-top: 30px; display: flex; gap: 15px; }
-
-        .btn-neon {
-            background: var(--neon-blue);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(0,170,255,0.4);
-        }
-
-        .btn-neon:hover { background: white; color: var(--neon-blue); box-shadow: 0 0 30px rgba(0,170,255,0.8); }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
-
-        .trilha-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 5px; }
-
-        .trilha-tag {
-            background: rgba(255,255,255,0.1);
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #dbe4f0;
-        }
-
-        /* =============================================
+      /* =============================================
            ESTILOS EXCLUSIVOS DO MODAL "QUEM É A NTW"
            ============================================= */
 
-        /* Faixa de destaque azul no topo */
-        .ntw-highlight-bar {
-            background: linear-gradient(90deg, rgba(0,170,255,0.15), transparent);
-            border-left: 3px solid var(--neon-blue);
-            padding: 11px 15px;
-            margin-bottom: 20px;
-            border-radius: 0 8px 8px 0;
+      /* Faixa de destaque azul no topo */
+      .ntw-highlight-bar {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 170, 255, 0.15),
+          transparent
+        );
+        border-left: 3px solid var(--neon-blue);
+        padding: 11px 15px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .ntw-highlight-bar p {
+        margin: 0 !important;
+        font-size: 0.98rem !important;
+        font-weight: 700 !important;
+        color: var(--neon-blue) !important;
+        line-height: 1.35 !important;
+      }
+
+      /* Lista de stats */
+      .ntw-stat-list {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 0 18px 0 !important;
+      }
+
+      .ntw-stat-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 0 !important;
+        margin: 0 !important;
+        color: #c8d8f0 !important;
+        font-size: 0.88rem !important;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .ntw-stat-list li:last-child {
+        border-bottom: none;
+      }
+
+      .ntw-stat-list li i {
+        position: static !important;
+        color: var(--neon-blue) !important;
+        font-size: 0.85rem !important;
+        flex-shrink: 0;
+        width: 18px;
+        text-align: center;
+      }
+
+      /* Separador */
+      .ntw-divider {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin: 18px 0;
+      }
+
+      /* Subtítulo dos pilares */
+      .ntw-pillars-label {
+        color: #b0b8c4 !important;
+        font-size: 0.85rem !important;
+        margin: 0 0 16px 0 !important;
+        line-height: 1.5 !important;
+      }
+
+      /* Grid dos 5 pilares */
+      .ntw-pillars-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+        margin-bottom: 22px;
+      }
+
+      .ntw-pillar {
+        flex: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ntw-pillar-icon {
+        width: 44px;
+        height: 44px;
+        background: rgba(0, 170, 255, 0.1);
+        border: 1.5px solid rgba(0, 170, 255, 0.35);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .ntw-pillar:hover .ntw-pillar-icon {
+        background: rgba(0, 170, 255, 0.22);
+        border-color: var(--neon-blue);
+        box-shadow: 0 0 12px rgba(0, 170, 255, 0.35);
+      }
+
+      .ntw-pillar-icon i {
+        color: var(--neon-blue);
+        font-size: 1rem;
+      }
+
+      .ntw-pillar-label {
+        font-size: 0.62rem;
+        color: #c8d8f0;
+        font-weight: 700;
+        line-height: 1.25;
+        display: block;
+      }
+
+      /* ── Botões de premiação — estilo Magic Neon ── */
+      .ntw-award-list {
+        display: flex;
+        flex-direction: row;
+        gap: 14px;
+        margin-top: 18px;
+        margin-bottom: 20px;
+        overflow: visible;
+      }
+
+      .ntw-magic-btn {
+        position: relative;
+        flex: 1;
+        height: 72px;
+        background: linear-gradient(90deg, #020921 0%, #001238 100%);
+        border: 1px solid #005dff;
+        border-radius: 12px;
+        box-shadow:
+          0 0 15px rgba(0, 93, 255, 0.5),
+          inset 0 0 15px rgba(0, 93, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 14px;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        overflow: visible;
+      }
+
+      .ntw-magic-btn:hover {
+        box-shadow:
+          0 0 25px rgba(0, 93, 255, 0.8),
+          inset 0 0 20px rgba(0, 93, 255, 0.6);
+        border-color: #337aff;
+      }
+
+      .ntw-award-icone-3d {
+        position: absolute;
+        left: 12px;
+        bottom: -14px;
+        height: 88px;
+        width: auto;
+        z-index: 10;
+        filter: drop-shadow(0px 10px 8px rgba(0, 0, 0, 0.7));
+        object-fit: contain;
+      }
+
+      /* Placeholder quando a imagem não carrega */
+      .ntw-award-icone-ph {
+        position: absolute;
+        left: 10px;
+        bottom: -10px;
+        height: 80px;
+        width: 56px;
+        z-index: 10;
+        background: rgba(0, 93, 255, 0.1);
+        border: 1px dashed rgba(0, 93, 255, 0.35);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ntw-award-icone-ph i {
+        color: rgba(0, 93, 255, 0.4);
+        font-size: 1.3rem;
+      }
+
+      .ntw-magic-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 10px;
+        flex: 1;
+        padding-left: 76px; /* espaço para o ícone */
+      }
+
+      .ntw-magic-name {
+        color: #e6f0fa;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        line-height: 1.2;
+        text-align: right;
+      }
+
+      .ntw-magic-desc {
+        color: #7a9abf;
+        font-size: 0.6rem;
+        font-weight: 500;
+        line-height: 1.3;
+        text-align: right;
+        margin-top: 3px;
+      }
+
+      .ntw-magic-chevron {
+        width: 18px;
+        height: 18px;
+        color: #8ba4d4;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 1024px) {
+        .hero-left {
+          display: none;
         }
+      }
 
-        .ntw-highlight-bar p {
-            margin: 0 !important;
-            font-size: 0.98rem !important;
-            font-weight: 700 !important;
-            color: var(--neon-blue) !important;
-            line-height: 1.35 !important;
-        }
-
-        /* Lista de stats */
-        .ntw-stat-list { list-style: none !important; padding: 0 !important; margin: 0 0 18px 0 !important; }
-
-        .ntw-stat-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 7px 0 !important;
-            margin: 0 !important;
-            color: #c8d8f0 !important;
-            font-size: 0.88rem !important;
-            font-weight: 600;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .ntw-stat-list li:last-child { border-bottom: none; }
-
-        .ntw-stat-list li i {
-            position: static !important;
-            color: var(--neon-blue) !important;
-            font-size: 0.85rem !important;
-            flex-shrink: 0;
-            width: 18px;
-            text-align: center;
-        }
-
-        /* Separador */
-        .ntw-divider {
-            border: none;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            margin: 18px 0;
-        }
-
-        /* Subtítulo dos pilares */
-        .ntw-pillars-label {
-            color: #b0b8c4 !important;
-            font-size: 0.85rem !important;
-            margin: 0 0 16px 0 !important;
-            line-height: 1.5 !important;
-        }
-
-        /* Grid dos 5 pilares */
-        .ntw-pillars-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 6px;
-            margin-bottom: 22px;
-        }
-
-        .ntw-pillar {
-            flex: 1;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ntw-pillar-icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(0,170,255,0.1);
-            border: 1.5px solid rgba(0,170,255,0.35);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .ntw-pillar:hover .ntw-pillar-icon {
-            background: rgba(0,170,255,0.22);
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 12px rgba(0,170,255,0.35);
-        }
-
-        .ntw-pillar-icon i { color: var(--neon-blue); font-size: 1rem; }
-
-        .ntw-pillar-label {
-            font-size: 0.62rem;
-            color: #c8d8f0;
-            font-weight: 700;
-            line-height: 1.25;
-            display: block;
-        }
-
-        /* ── Botões de premiação — estilo Magic Neon ── */
-        .ntw-award-list {
-            display: flex;
-            flex-direction: row;
-            gap: 14px;
-            margin-top: 18px;
-            margin-bottom: 20px;
-            overflow: visible;
-        }
-
-        .ntw-magic-btn {
-            position: relative;
-            flex: 1;
-            height: 72px;
-            background: linear-gradient(90deg, #020921 0%, #001238 100%);
-            border: 1px solid #005dff;
-            border-radius: 12px;
-            box-shadow:
-                0 0 15px rgba(0, 93, 255, 0.5),
-                inset 0 0 15px rgba(0, 93, 255, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 14px;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            overflow: visible;
-        }
-
-        .ntw-magic-btn:hover {
-            box-shadow:
-                0 0 25px rgba(0, 93, 255, 0.8),
-                inset 0 0 20px rgba(0, 93, 255, 0.6);
-            border-color: #337aff;
-        }
-
-        .ntw-award-icone-3d {
-            position: absolute;
-            left: 12px;
-            bottom: -14px;
-            height: 88px;
-            width: auto;
-            z-index: 10;
-            filter: drop-shadow(0px 10px 8px rgba(0, 0, 0, 0.7));
-            object-fit: contain;
-        }
-
-        /* Placeholder quando a imagem não carrega */
-        .ntw-award-icone-ph {
-            position: absolute;
-            left: 10px;
-            bottom: -10px;
-            height: 80px;
-            width: 56px;
-            z-index: 10;
-            background: rgba(0,93,255,0.10);
-            border: 1px dashed rgba(0,93,255,0.35);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .ntw-award-icone-ph i { color: rgba(0,93,255,0.40); font-size: 1.3rem; }
-
-        .ntw-magic-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin-right: 10px;
-            flex: 1;
-            padding-left: 76px; /* espaço para o ícone */
-        }
-
-        .ntw-magic-name {
-            color: #e6f0fa;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            line-height: 1.2;
-            text-align: right;
-        }
-
-        .ntw-magic-desc {
-            color: #7a9abf;
-            font-size: 0.6rem;
-            font-weight: 500;
-            line-height: 1.3;
-            text-align: right;
-            margin-top: 3px;
-        }
-
-        .ntw-magic-chevron {
-            width: 18px;
-            height: 18px;
-            color: #8ba4d4;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 1024px) {
-            .hero-left { display: none; }
-        }
-
-        /* ─── Banner de imagem no topo do modal "Quem é NTW" ─── */
-        .ntw-hero-banner {
-            position: relative;
-            /* Compensa o padding do modal-container (40px) para ir borda a borda */
-            width: calc(100% + 80px);
-            margin: 30px -40px 24px -40px;
-            height: 190px;
-            border-radius: 20px 20px 0 0;
-            overflow: hidden;
-            /* ╔══════════════════════════════════════════╗
+      /* ─── Banner de imagem no topo do modal "Quem é NTW" ─── */
+      .ntw-hero-banner {
+        position: relative;
+        /* Compensa o padding do modal-container (40px) para ir borda a borda */
+        width: calc(100% + 80px);
+        margin: 30px -40px 24px -40px;
+        height: 190px;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+        /* ╔══════════════════════════════════════════╗
                ║  Substitua a URL abaixo pela sua imagem  ║
                ╚══════════════════════════════════════════╝ */
-            background-image: url('https://www.pymnts.com/wp-content/uploads/2023/12/latin-american-digital-payments-ecommerce.jpg');
-            background-size: cover;
-            background-position: center;
-            /* Cor de fundo enquanto a imagem não é definida */
-            background-color: #050e20;
-        }
+        background-image: url("https://www.pymnts.com/wp-content/uploads/2023/12/latin-american-digital-payments-ecommerce.jpg");
+        background-size: cover;
+        background-position: center;
+        /* Cor de fundo enquanto a imagem não é definida */
+        background-color: #050e20;
+      }
 
-    
+      /* Ícone + texto central de placeholder */
+      .ntw-hero-banner-ph {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        pointer-events: none;
+      }
+      .ntw-hero-banner-ph i {
+        color: rgba(0, 170, 255, 0.35);
+        font-size: 2rem;
+      }
+      .ntw-hero-banner-ph span {
+        font-size: 0.65rem;
+        color: rgba(0, 170, 255, 0.4);
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
 
-        /* Ícone + texto central de placeholder */
-        .ntw-hero-banner-ph {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            pointer-events: none;
-        }
-        .ntw-hero-banner-ph i  { color: rgba(0,170,255,0.35); font-size: 2rem; }
-        .ntw-hero-banner-ph span {
-            font-size: 0.65rem;
-            color: rgba(0,170,255,0.4);
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
+      /* Gradiente: escuro no topo → claro (transparente) embaixo */
+      .ntw-hero-banner-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(2, 11, 28, 0.82) 0%,
+          rgba(2, 11, 28, 0.35) 55%,
+          rgba(26, 31, 46, 0) 100%
+        );
+        pointer-events: none;
+      }
 
-        /* Gradiente: escuro no topo → claro (transparente) embaixo */
-        .ntw-hero-banner-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(2, 11, 28, 0.82) 0%,
-                rgba(2, 11, 28, 0.35) 55%,
-                rgba(26, 31, 46, 0.0) 100%
-            );
-            pointer-events: none;
-        }
+      /* ─── Placeholder de imagem nos pilares ─── */
+      .ntw-pillar-img-slot {
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
 
-        /* ─── Placeholder de imagem nos pilares ─── */
-        .ntw-pillar-img-slot {
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
+      .ntw-pillar-img-slot img {
+        height: 100%;
+        object-fit: cover;
+      }
 
-      
+      /* Ícone fa-image de placeholder (some quando img carrega) */
+      .ntw-pillar-img-slot .ph-icon {
+        color: rgba(0, 170, 255, 0.3);
+        font-size: 1rem;
+      }
 
-        .ntw-pillar-img-slot img {
-            height: 100%;
-            object-fit: cover;
-           
-        }
-
-        /* Ícone fa-image de placeholder (some quando img carrega) */
-        .ntw-pillar-img-slot .ph-icon {
-            color: rgba(0,170,255,0.30);
-            font-size: 1rem;
-        }
-
-        /* ═══════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════
            SLIDER DE PREMIAÇÕES
         ═══════════════════════════════════════════════════ */
-        .prem-slider-wrap {
-            position: relative;
-            overflow: hidden;
-        }
+      .prem-slider-wrap {
+        position: relative;
+        overflow: hidden;
+      }
 
-        .prem-slides {
-            display: flex;
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+      .prem-slides {
+        display: flex;
+        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-        .prem-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-        }
+      .prem-slide {
+        min-width: 100%;
+        box-sizing: border-box;
+      }
 
-        /* Banner placeholder topo */
-        .prem-banner {
-            position: relative;
-            /*height: 250px;*/
-            overflow: hidden;
-            background: linear-gradient(135deg, #020921 0%, #001a3d 100%);
-        }
+      /* Banner placeholder topo */
+      .prem-banner {
+        position: relative;
+        /*height: 250px;*/
+        overflow: hidden;
+        background: linear-gradient(135deg, #020921 0%, #001a3d 100%);
+      }
 
-        .prem-banner-img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0.85;
-        }
+      .prem-banner-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.85;
+      }
 
-        .prem-banner-ph {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-        }
+      .prem-banner-ph {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+      }
 
-        .prem-banner-ph i { color: rgba(0,170,255,0.30); font-size: 2rem; }
-        .prem-banner-ph span {
-            font-size: 0.6rem;
-            color: rgba(0,170,255,0.35);
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
+      .prem-banner-ph i {
+        color: rgba(0, 170, 255, 0.3);
+        font-size: 2rem;
+      }
+      .prem-banner-ph span {
+        font-size: 0.6rem;
+        color: rgba(0, 170, 255, 0.35);
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
 
-        .prem-banner-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(1,4,23,0.78) 0%, rgba(1,4,23,0.22) 60%, rgba(1,4,23,0) 100%);
-            pointer-events: none;
-        }
+      .prem-banner-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(1, 4, 23, 0.78) 0%,
+          rgba(1, 4, 23, 0.22) 60%,
+          rgba(1, 4, 23, 0) 100%
+        );
+        pointer-events: none;
+      }
 
-        /* Badge no topo do banner */
-        .prem-banner-badge {
-            position: absolute;
-            top: 16px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+      /* Badge no topo do banner */
+      .prem-banner-badge {
+        position: absolute;
+        top: 16px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-        .prem-badge-logo-ph {
-            width: 46px; height: 46px;
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .prem-badge-logo-ph i { color: rgba(255,255,255,0.3); font-size: 1rem; }
+      .prem-badge-logo-ph {
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .prem-badge-logo-ph i {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 1rem;
+      }
 
-        .prem-badge-logo-ph img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+      .prem-badge-logo-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+      }
 
-        .prem-badge-text {
-            display: flex; flex-direction: column;
-        }
-        .prem-badge-text .prem-badge-entity {
-            font-size: 0.62rem; font-weight: 700;
-            color: rgba(255,255,255,0.55);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        .prem-badge-text .prem-badge-title {
-            font-size: 0.85rem; font-weight: 800;
-            color: white;
-            line-height: 1.15;
-        }
+      .prem-badge-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .prem-badge-text .prem-badge-entity {
+        font-size: 0.62rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+      .prem-badge-text .prem-badge-title {
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1.15;
+      }
 
-        /* Headline do slide */
-        .prem-headline {
-            font-size: 1.05rem; font-weight: 800;
-            color: white;
-            margin: 0 0 6px 0;
-            line-height: 1.25;
-        }
+      /* Headline do slide */
+      .prem-headline {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: white;
+        margin: 0 0 6px 0;
+        line-height: 1.25;
+      }
 
-        .prem-sub {
-            font-size: 0.82rem; color: var(--text-gray);
-            margin: 0 0 18px 0;
-            line-height: 1.55;
-        }
+      .prem-sub {
+        font-size: 0.82rem;
+        color: var(--text-gray);
+        margin: 0 0 18px 0;
+        line-height: 1.55;
+      }
 
-        /* Stat grid */
-        .prem-stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+      /* Stat grid */
+      .prem-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
 
-        .prem-stat-card {
-            background: rgba(0,170,255,0.06);
-            border: 1px solid rgba(0,170,255,0.18);
-            border-radius: 10px;
-            padding: 12px 10px;
-            display: flex; flex-direction: column;
-            align-items: center; gap: 6px;
-            text-align: center;
-        }
+      .prem-stat-card {
+        background: rgba(0, 170, 255, 0.06);
+        border: 1px solid rgba(0, 170, 255, 0.18);
+        border-radius: 10px;
+        padding: 12px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+      }
 
-        .prem-stat-card i { color: var(--neon-blue); font-size: 1.1rem; }
-        .prem-stat-card .prem-stat-val {
-            font-size: 1.2rem; font-weight: 800; color: white;
-            line-height: 1;
-        }
-        .prem-stat-card .prem-stat-label {
-            font-size: 0.58rem; color: var(--text-gray);
-            font-weight: 600; line-height: 1.25;
-            text-transform: uppercase; letter-spacing: 0.5px;
-        }
+      .prem-stat-card i {
+        color: var(--neon-blue);
+        font-size: 1.1rem;
+      }
+      .prem-stat-card .prem-stat-val {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1;
+      }
+      .prem-stat-card .prem-stat-label {
+        font-size: 0.58rem;
+        color: var(--text-gray);
+        font-weight: 600;
+        line-height: 1.25;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
 
-        /* Timeline de anos */
-        .prem-years {
-            display: flex; flex-wrap: wrap;
-            gap: 6px; margin-bottom: 20px;
-        }
+      /* Timeline de anos */
+      .prem-years {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
 
-        .prem-year {
-            background: rgba(0,170,255,0.1);
-            border: 1px solid rgba(0,170,255,0.3);
-            border-radius: 6px;
-            padding: 4px 10px;
-            font-size: 0.7rem; font-weight: 700;
-            color: var(--neon-blue);
-        }
+      .prem-year {
+        background: rgba(0, 170, 255, 0.1);
+        border: 1px solid rgba(0, 170, 255, 0.3);
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--neon-blue);
+      }
 
-        .prem-year.prem-year-last {
-            background: var(--neon-blue);
-            color: white;
-            box-shadow: 0 0 10px rgba(0,170,255,0.5);
-        }
+      .prem-year.prem-year-last {
+        background: var(--neon-blue);
+        color: white;
+        box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+      }
 
-        /* Lista de bullets */
-        .prem-bullet-list {
-            list-style: none; padding: 0; margin: 0 0 18px 0;
-        }
+      /* Lista de bullets */
+      .prem-bullet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 18px 0;
+      }
 
-        .prem-bullet-list li {
-            display: flex; align-items: flex-start;
-            gap: 10px; margin: 45px 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-gray); font-size: 0.86rem; line-height: 1.5;
-        }
+      .prem-bullet-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 45px 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-gray);
+        font-size: 0.86rem;
+        line-height: 1.5;
+      }
 
-        .prem-bullet-list li:last-child { border-bottom: none; }
-        .prem-bullet-list li i { color: var(--neon-blue); font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+      .prem-bullet-list li:last-child {
+        border-bottom: none;
+      }
+      .prem-bullet-list li i {
+        color: var(--neon-blue);
+        font-size: 0.9rem;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
 
-        /* Placeholder de imagem das premiações */
-        .prem-trophy-row {
-            display: flex; gap: 10px; margin-bottom: 20px;
-        }
+      /* Placeholder de imagem das premiações */
+      .prem-trophy-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
 
-        .prem-trophy-ph {
-            flex: 1;
-            display: none;
-            height: 100px;
-            background: rgba(0,93,255,0.07);
-            border: 1px dashed rgba(0,170,255,0.25);
-            border-radius: 10px;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 5px;
-            display: none;
-        }
+      .prem-trophy-ph {
+        flex: 1;
+        display: none;
+        height: 100px;
+        background: rgba(0, 93, 255, 0.07);
+        border: 1px dashed rgba(0, 170, 255, 0.25);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        display: none;
+      }
 
-        .prem-trophy-ph i { color: rgba(0,170,255,0.3); font-size: 1.6rem; }
-        .prem-trophy-ph span {
-            font-size: 0.55rem; color: rgba(0,170,255,0.35);
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-        }
+      .prem-trophy-ph i {
+        color: rgba(0, 170, 255, 0.3);
+        font-size: 1.6rem;
+      }
+      .prem-trophy-ph span {
+        font-size: 0.55rem;
+        color: rgba(0, 170, 255, 0.35);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
 
-        /* Rodapé dourado */
-        .prem-footer-gold {
-            background: linear-gradient(90deg, rgba(200,150,10,0.12), transparent);
-            border-left: 3px solid #c8960a;
-            border-radius: 0 8px 8px 0;
-            padding: 10px 14px;
-            margin-bottom: 20px;
-        }
+      /* Rodapé dourado */
+      .prem-footer-gold {
+        background: linear-gradient(
+          90deg,
+          rgba(200, 150, 10, 0.12),
+          transparent
+        );
+        border-left: 3px solid #c8960a;
+        border-radius: 0 8px 8px 0;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+      }
 
-        .prem-footer-gold p {
-            margin: 0; font-size: 0.82rem !important;
-            font-weight: 700 !important; color: #e8b30e !important;
-            line-height: 1.4 !important;
-        }
+      .prem-footer-gold p {
+        margin: 0;
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        color: #e8b30e !important;
+        line-height: 1.4 !important;
+      }
 
-        /* Presença internacional */
-        .prem-presence-row {
-            display: flex; gap: 12px; margin-bottom: 18px;
-        }
+      /* Presença internacional */
+      .prem-presence-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
 
-        .prem-presence-card {
-            flex: 1;
-            background: rgba(0,170,255,0.06);
-            border: 1px solid rgba(0,170,255,0.18);
-            border-radius: 10px;
-            padding: 14px 12px;
-            display: flex; align-items: center; gap: 10px;
-        }
+      .prem-presence-card {
+        flex: 1;
+        background: rgba(0, 170, 255, 0.06);
+        border: 1px solid rgba(0, 170, 255, 0.18);
+        border-radius: 10px;
+        padding: 14px 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-        .prem-presence-flag {
-            width: 48px; height: 48px;
-            border-radius: 4px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
+      .prem-presence-flag {
+        width: 48px;
+        height: 48px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
 
-        .prem-presence-flag img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
-        .prem-presence-flag i { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
+      .prem-presence-flag img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 3px;
+      }
+      .prem-presence-flag i {
+        color: rgba(255, 255, 255, 0.25);
+        font-size: 0.8rem;
+      }
 
-        .prem-presence-info { display: flex; flex-direction: column; }
-        .prem-presence-country {
-            font-size: 0.8rem; font-weight: 800; color: white;
-        }
-        .prem-presence-city {
-            font-size: 0.68rem; color: var(--text-gray);
-        }
+      .prem-presence-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .prem-presence-country {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: white;
+      }
+      .prem-presence-city {
+        font-size: 0.68rem;
+        color: var(--text-gray);
+      }
 
-        /* Navegação do slider */
-        .prem-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            margin-top: 8px;
-            margin-bottom: 4px;
-        }
+      /* Navegação do slider */
+      .prem-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+      }
 
-        .prem-nav-btn {
-            width: 34px; height: 34px;
-            background: rgba(0,170,255,0.1);
-            border: 1px solid rgba(0,170,255,0.35);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s;
-            color: var(--neon-blue);
-            font-size: 0.85rem;
-        }
+      .prem-nav-btn {
+        width: 34px;
+        height: 34px;
+        background: rgba(0, 170, 255, 0.1);
+        border: 1px solid rgba(0, 170, 255, 0.35);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.25s;
+        color: var(--neon-blue);
+        font-size: 0.85rem;
+      }
 
-        .prem-nav-btn:hover {
-            background: var(--neon-blue);
-            color: white;
-            box-shadow: 0 0 12px rgba(0,170,255,0.5);
-        }
+      .prem-nav-btn:hover {
+        background: var(--neon-blue);
+        color: white;
+        box-shadow: 0 0 12px rgba(0, 170, 255, 0.5);
+      }
 
-        .prem-dots {
-            display: flex; gap: 8px; align-items: center;
-        }
+      .prem-dots {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
 
-        .prem-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: rgba(0,170,255,0.25);
-            border: 1px solid rgba(0,170,255,0.35);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+      .prem-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 170, 255, 0.25);
+        border: 1px solid rgba(0, 170, 255, 0.35);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
 
-        .prem-dot.active {
-            background: var(--neon-blue);
-            box-shadow: 0 0 8px rgba(0,170,255,0.6);
-            width: 22px; border-radius: 4px;
-        }
+      .prem-dot.active {
+        background: var(--neon-blue);
+        box-shadow: 0 0 8px rgba(0, 170, 255, 0.6);
+        width: 22px;
+        border-radius: 4px;
+      }
 
-        /* Contador slide */
-        .prem-counter {
-            font-size: 0.68rem; color: rgba(255,255,255,0.35);
-            font-weight: 600; min-width: 36px; text-align: center;
-        }
+      /* Contador slide */
+      .prem-counter {
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-weight: 600;
+        min-width: 36px;
+        text-align: center;
+      }
 
-        /* ═══════════════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════════════
            ACADEMY NTW — NETFLIX STYLE
         ═══════════════════════════════════════════════════════════ */
 
-        /* Zeramos o padding do modal quando estiver no modo Academy */
-        .academy-modal-root {
-            margin: -10px -40px;
-        }
+      /* Zeramos o padding do modal quando estiver no modo Academy */
+      .academy-modal-root {
+        margin: -10px -40px;
+      }
 
-        /* ── HERO ── */
-        .ac-hero {
-            position: relative;
-            width: 100%;
-            height: 260px;
-            background: linear-gradient(135deg, #020921 0%, #001a40 60%, #020921 100%);
-            overflow: hidden;
-            border-radius: 20px 20px 0 0;
-        }
+      /* ── HERO ── */
+      .ac-hero {
+        position: relative;
+        width: 100%;
+        height: 260px;
+        background: linear-gradient(
+          135deg,
+          #020921 0%,
+          #001a40 60%,
+          #020921 100%
+        );
+        overflow: hidden;
+        border-radius: 20px 20px 0 0;
+      }
 
-        .ac-hero-bg {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0.45;
-        }
+      .ac-hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.45;
+      }
 
-        /* placeholder quando não há imagem */
-        .ac-hero-bg-ph {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 8px;
-            pointer-events: none;
-        }
-        .ac-hero-bg-ph i { color: rgba(0,170,255,0.18); font-size: 3rem; }
-        .ac-hero-bg-ph span {
-            font-size: 0.6rem; color: rgba(0,170,255,0.22);
-            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-        }
+      /* placeholder quando não há imagem */
+      .ac-hero-bg-ph {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        pointer-events: none;
+      }
+      .ac-hero-bg-ph i {
+        color: rgba(0, 170, 255, 0.18);
+        font-size: 3rem;
+      }
+      .ac-hero-bg-ph span {
+        font-size: 0.6rem;
+        color: rgba(0, 170, 255, 0.22);
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
 
-        /* Gradiente sobre o hero */
-        .ac-hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(
-                to right,
-                rgba(1,4,23,0.96) 0%,
-                rgba(1,4,23,0.72) 50%,
-                rgba(1,4,23,0.20) 100%
-            );
-            pointer-events: none;
-        }
+      /* Gradiente sobre o hero */
+      .ac-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(1, 4, 23, 0.96) 0%,
+          rgba(1, 4, 23, 0.72) 50%,
+          rgba(1, 4, 23, 0.2) 100%
+        );
+        pointer-events: none;
+      }
 
-        /* Gradiente embaixo do hero para suavizar transição */
-        .ac-hero-bottom-fade {
-            position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-            background: linear-gradient(to bottom, transparent 0%, var(--modal-bg) 100%);
-            pointer-events: none;
-        }
+      /* Gradiente embaixo do hero para suavizar transição */
+      .ac-hero-bottom-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          var(--modal-bg) 100%
+        );
+        pointer-events: none;
+      }
 
-        /* Conteúdo do hero */
-        .ac-hero-content {
-            position: absolute;
-            inset: 0;
-            display: flex; flex-direction: column;
-            justify-content: center;
-            padding: 28px 32px;
-            max-width: 60%;
-        }
+      /* Conteúdo do hero */
+      .ac-hero-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 28px 32px;
+        max-width: 60%;
+      }
 
-        .ac-hero-eyebrow {
-            display: flex; align-items: center; gap: 8px;
-            margin-bottom: 10px;
-        }
+      .ac-hero-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
 
-        .ac-hero-logo-ph {
-            height: 22px;
-            background: rgba(0,170,255,0.12);
-            border: 1px dashed rgba(0,170,255,0.3);
-            border-radius: 5px;
-            padding: 0 10px;
-            display: flex; align-items: center; gap: 6px;
-            font-size: 0.6rem; font-weight: 800; color: rgba(0,170,255,0.55);
-            letter-spacing: 1px; text-transform: uppercase;
-        }
-        /* 📌 Quando tiver logo real: */
-        .ac-hero-logo-ph img { height: 16px; object-fit: contain; }
+      .ac-hero-logo-ph {
+        height: 22px;
+        background: rgba(0, 170, 255, 0.12);
+        border: 1px dashed rgba(0, 170, 255, 0.3);
+        border-radius: 5px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: rgba(0, 170, 255, 0.55);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      /* 📌 Quando tiver logo real: */
+      .ac-hero-logo-ph img {
+        height: 16px;
+        object-fit: contain;
+      }
 
-        .ac-hero-badge {
-            background: var(--neon-blue);
-            color: white; font-size: 0.55rem; font-weight: 800;
-            padding: 3px 8px; border-radius: 4px; letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+      .ac-hero-badge {
+        background: var(--neon-blue);
+        color: white;
+        font-size: 0.55rem;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-        .ac-hero-title {
-            font-size: 1.55rem; font-weight: 800; color: white;
-            line-height: 1.15; margin: 0 0 10px 0;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
-        }
+      .ac-hero-title {
+        font-size: 1.55rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1.15;
+        margin: 0 0 10px 0;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+      }
 
-        .ac-hero-title span { color: var(--neon-blue); }
+      .ac-hero-title span {
+        color: var(--neon-blue);
+      }
 
-        .ac-hero-desc {
-            font-size: 0.8rem; color: #a0b4cc; line-height: 1.6;
-            margin: 0 0 18px 0;
-        }
+      .ac-hero-desc {
+        font-size: 0.8rem;
+        color: #a0b4cc;
+        line-height: 1.6;
+        margin: 0 0 18px 0;
+      }
 
-        .ac-hero-btns {
-            display: flex; gap: 10px; flex-wrap: wrap;
-        }
+      .ac-hero-btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
-        .ac-btn-primary {
-            display: flex; align-items: center; gap: 7px;
-            background: var(--neon-blue);
-            color: white; border: none;
-            padding: 10px 20px; border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.76rem; font-weight: 700;
-            cursor: pointer; transition: all 0.3s;
-            box-shadow: 0 0 18px rgba(0,170,255,0.45);
-            white-space: nowrap;
-        }
-        .ac-btn-primary:hover { background: #33c0ff; box-shadow: 0 0 30px rgba(0,170,255,0.7); }
+      .ac-btn-primary {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--neon-blue);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.76rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 0 18px rgba(0, 170, 255, 0.45);
+        white-space: nowrap;
+      }
+      .ac-btn-primary:hover {
+        background: #33c0ff;
+        box-shadow: 0 0 30px rgba(0, 170, 255, 0.7);
+      }
 
-        .ac-btn-secondary {
-            display: flex; align-items: center; gap: 7px;
-            background: rgba(255,255,255,0.08);
-            color: white; border: 1px solid rgba(255,255,255,0.25);
-            padding: 10px 20px; border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.76rem; font-weight: 700;
-            cursor: pointer; transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .ac-btn-secondary:hover { background: rgba(255,255,255,0.15); border-color: white; }
+      .ac-btn-secondary {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.76rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        white-space: nowrap;
+      }
+      .ac-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: white;
+      }
 
-        /* Stats flutuantes no hero (direita) */
-        .ac-hero-stats {
-            position: absolute; right: 28px; top: 50%;
-            transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 10px;
-        }
+      /* Stats flutuantes no hero (direita) */
+      .ac-hero-stats {
+        position: absolute;
+        right: 28px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
 
-        .ac-hero-stat {
-            background: rgba(0,0,0,0.55);
-            border: 1px solid rgba(0,170,255,0.2);
-            border-radius: 10px;
-            padding: 9px 14px; text-align: center;
-            backdrop-filter: blur(8px);
-        }
+      .ac-hero-stat {
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(0, 170, 255, 0.2);
+        border-radius: 10px;
+        padding: 9px 14px;
+        text-align: center;
+        backdrop-filter: blur(8px);
+      }
 
-        .ac-hero-stat-val {
-            display: block; font-size: 1.1rem; font-weight: 800;
-            color: var(--neon-blue); line-height: 1;
-        }
+      .ac-hero-stat-val {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--neon-blue);
+        line-height: 1;
+      }
 
-        .ac-hero-stat-label {
-            display: block; font-size: 0.55rem; color: rgba(255,255,255,0.5);
-            font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;
-            margin-top: 3px;
-        }
+      .ac-hero-stat-label {
+        display: block;
+        font-size: 0.55rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 3px;
+      }
 
-        /* ── CORPO: área abaixo do hero ── */
-        .ac-body {
-            padding: 8px 24px 24px 24px;
-            background: var(--modal-bg);
-        }
+      /* ── CORPO: área abaixo do hero ── */
+      .ac-body {
+        padding: 8px 24px 24px 24px;
+        background: var(--modal-bg);
+      }
 
-        /* ── ROW (categoria tipo Netflix) ── */
-        .ac-row {
-            margin-bottom: 26px;
-        }
+      /* ── ROW (categoria tipo Netflix) ── */
+      .ac-row {
+        margin-bottom: 26px;
+      }
 
-        .ac-row-header {
-            display: flex; align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
+      .ac-row-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
 
-        .ac-row-title {
-            font-size: 0.82rem; font-weight: 800;
-            color: white; display: flex; align-items: center; gap: 7px;
-        }
+      .ac-row-title {
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
 
-        .ac-row-title-dot {
-            width: 8px; height: 8px; border-radius: 50%;
-        }
+      .ac-row-title-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
 
-        .ac-row-see-all {
-            font-size: 0.65rem; font-weight: 600;
-            color: var(--neon-blue); cursor: pointer;
-            text-decoration: none; opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-        .ac-row-see-all:hover { opacity: 1; }
+      .ac-row-see-all {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--neon-blue);
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+      .ac-row-see-all:hover {
+        opacity: 1;
+      }
 
-        /* Wrapper do carrossel */
-        .ac-carousel-wrap {
-            position: relative;
-            overflow: hidden;
-        }
+      /* Wrapper do carrossel */
+      .ac-carousel-wrap {
+        position: relative;
+        overflow: hidden;
+      }
 
-        /* Track que desliza */
-        .ac-carousel-track {
-            display: flex;
-            padding: 12px;
-            gap: 10px;
-            cursor: grab;
-            user-select: none;
-        }
-        .ac-carousel-track.dragging { cursor: grabbing; }
+      /* Track que desliza */
+      .ac-carousel-track {
+        display: flex;
+        padding: 12px;
+        gap: 10px;
+        cursor: grab;
+        user-select: none;
+      }
+      .ac-carousel-track.dragging {
+        cursor: grabbing;
+      }
 
-        /* ── CARD ── */
-        .ac-card {
-            flex: 0 0 180px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: #0a1428;
-            border: 1px solid rgba(255,255,255,0.07);
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s;
-            cursor: pointer;
-            position: relative;
-        }
+      /* ── CARD ── */
+      .ac-card {
+        flex: 0 0 180px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #0a1428;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease,
+          border-color 0.28s;
+        cursor: pointer;
+        position: relative;
+      }
 
-        .ac-card:hover {
-            transform: scale(1.05) translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,170,255,0.4);
-            border-color: rgba(0,170,255,0.4);
-            z-index: 10;
-        }
+      .ac-card:hover {
+        transform: scale(1.05) translateY(-4px);
+        box-shadow:
+          0 12px 35px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(0, 170, 255, 0.4);
+        border-color: rgba(0, 170, 255, 0.4);
+        z-index: 10;
+      }
 
-        /* Thumbnail */
-        .ac-card-thumb {
-            width: 100%; aspect-ratio: 16/9;
-            background: linear-gradient(135deg, #0d1f3c 0%, #071426 100%);
-            position: relative; overflow: hidden;
-        }
+      /* Thumbnail */
+      .ac-card-thumb {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: linear-gradient(135deg, #0d1f3c 0%, #071426 100%);
+        position: relative;
+        overflow: hidden;
+      }
 
-        .ac-card-thumb img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .ac-card:hover .ac-card-thumb img { transform: scale(1.08); }
+      .ac-card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .ac-card:hover .ac-card-thumb img {
+        transform: scale(1.08);
+      }
 
-        /* Placeholder thumb */
-        .ac-card-thumb-ph {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 5px;
-        }
-        .ac-card-thumb-ph i { color: rgba(0,170,255,0.22); font-size: 1.4rem; }
-        .ac-card-thumb-ph span {
-            font-size: 0.48rem; color: rgba(0,170,255,0.25);
-            font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-        }
+      /* Placeholder thumb */
+      .ac-card-thumb-ph {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+      .ac-card-thumb-ph i {
+        color: rgba(0, 170, 255, 0.22);
+        font-size: 1.4rem;
+      }
+      .ac-card-thumb-ph span {
+        font-size: 0.48rem;
+        color: rgba(0, 170, 255, 0.25);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-        /* Gradiente sobre thumb */
-        .ac-card-thumb-grad {
-            position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
-            background: linear-gradient(to bottom, transparent 0%, rgba(10,20,40,0.88) 100%);
-            pointer-events: none;
-        }
+      /* Gradiente sobre thumb */
+      .ac-card-thumb-grad {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(10, 20, 40, 0.88) 100%
+        );
+        pointer-events: none;
+      }
 
-        /* Badge do tipo */
-        .ac-card-badge {
-            position: absolute; top: 7px; left: 7px;
-            font-size: 0.48rem; font-weight: 800;
-            padding: 3px 7px; border-radius: 3px;
-            text-transform: uppercase; letter-spacing: 0.8px;
-        }
-        .ac-badge-live    { background: #e50914; color: white; }
-        .ac-badge-evento  { background: var(--neon-blue); color: white; }
-        .ac-badge-curso   { background: #1db954; color: white; }
-        .ac-badge-mentoria{ background: #c8960a; color: white; }
-        .ac-badge-novo    { background: #8a2be2; color: white; }
-        .ac-badge-exclusivo { background: #ff6b35; color: white; }
+      /* Badge do tipo */
+      .ac-card-badge {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        font-size: 0.48rem;
+        font-weight: 800;
+        padding: 3px 7px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+      .ac-badge-live {
+        background: #e50914;
+        color: white;
+      }
+      .ac-badge-evento {
+        background: var(--neon-blue);
+        color: white;
+      }
+      .ac-badge-curso {
+        background: #1db954;
+        color: white;
+      }
+      .ac-badge-mentoria {
+        background: #c8960a;
+        color: white;
+      }
+      .ac-badge-novo {
+        background: #8a2be2;
+        color: white;
+      }
+      .ac-badge-exclusivo {
+        background: #ff6b35;
+        color: white;
+      }
 
-        /* Ícone play no hover */
-        .ac-card-play {
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.25s;
-        }
-        .ac-card:hover .ac-card-play { opacity: 1; }
+      /* Ícone play no hover */
+      .ac-card-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .ac-card:hover .ac-card-play {
+        opacity: 1;
+      }
 
-        .ac-card-play-btn {
-            width: 36px; height: 36px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .ac-card-play-btn i { color: #010417; font-size: 0.9rem; margin-left: 2px; }
+      .ac-card-play-btn {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+      .ac-card-play-btn i {
+        color: #010417;
+        font-size: 0.9rem;
+        margin-left: 2px;
+      }
 
-        /* Avatares dos apresentadores no thumb */
-        .ac-card-speakers {
-            position: absolute; bottom: 7px; left: 7px;
-            display: flex; gap: -4px;
-        }
+      /* Avatares dos apresentadores no thumb */
+      .ac-card-speakers {
+        position: absolute;
+        bottom: 7px;
+        left: 7px;
+        display: flex;
+        gap: -4px;
+      }
 
-        .ac-card-avatar-ph {
-            width: 24px; height: 24px; border-radius: 50%;
-            background: rgba(0,170,255,0.2);
-            border: 1.5px solid rgba(255,255,255,0.3);
-            display: flex; align-items: center; justify-content: center;
-            margin-left: -6px; overflow: hidden;
-        }
-        .ac-card-avatar-ph:first-child { margin-left: 0; }
-        .ac-card-avatar-ph i { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
-        .ac-card-avatar-ph img { width: 100%; height: 100%; object-fit: cover; }
+      .ac-card-avatar-ph {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(0, 170, 255, 0.2);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -6px;
+        overflow: hidden;
+      }
+      .ac-card-avatar-ph:first-child {
+        margin-left: 0;
+      }
+      .ac-card-avatar-ph i {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.7rem;
+      }
+      .ac-card-avatar-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-        /* Meta info (data/hora) no thumb */
-        .ac-card-meta-thumb {
-            position: absolute; bottom: 7px; right: 7px;
-            display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
-        }
-        .ac-card-date {
-            font-size: 0.55rem; font-weight: 700; color: rgba(255,255,255,0.75);
-            background: rgba(0,0,0,0.55); padding: 2px 5px; border-radius: 3px;
-        }
+      /* Meta info (data/hora) no thumb */
+      .ac-card-meta-thumb {
+        position: absolute;
+        bottom: 7px;
+        right: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+      }
+      .ac-card-date {
+        font-size: 0.55rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.75);
+        background: rgba(0, 0, 0, 0.55);
+        padding: 2px 5px;
+        border-radius: 3px;
+      }
 
-        /* Corpo do card (abaixo do thumb) */
-        .ac-card-body {
-            padding: 9px 10px 10px;
-        }
+      /* Corpo do card (abaixo do thumb) */
+      .ac-card-body {
+        padding: 9px 10px 10px;
+      }
 
-        .ac-card-title {
-            font-size: 0.68rem; font-weight: 700; color: white;
-            line-height: 1.3; margin: 0 0 5px 0;
-            display: -webkit-box; -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical; overflow: hidden;
-        }
+      .ac-card-title {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1.3;
+        margin: 0 0 5px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
 
-        .ac-card-host {
-            font-size: 0.58rem; color: rgba(255,255,255,0.45);
-            font-weight: 500; margin: 0 0 6px 0;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
+      .ac-card-host {
+        font-size: 0.58rem;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 500;
+        margin: 0 0 6px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-        /* Estrelas */
-        .ac-card-stars {
-            display: flex; gap: 2px; align-items: center;
-        }
-        .ac-card-stars i { font-size: 0.55rem; color: #c8960a; }
-        .ac-card-stars span {
-            font-size: 0.55rem; color: rgba(255,255,255,0.35);
-            margin-left: 4px; font-weight: 500;
-        }
+      /* Estrelas */
+      .ac-card-stars {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+      }
+      .ac-card-stars i {
+        font-size: 0.55rem;
+        color: #c8960a;
+      }
+      .ac-card-stars span {
+        font-size: 0.55rem;
+        color: rgba(255, 255, 255, 0.35);
+        margin-left: 4px;
+        font-weight: 500;
+      }
 
-        /* Barra de progresso */
-        .ac-card-progress {
-            height: 2px; background: rgba(255,255,255,0.1);
-            border-radius: 2px; margin-top: 7px; overflow: hidden;
-        }
-        .ac-card-progress-fill {
-            height: 100%; background: var(--neon-blue); border-radius: 2px;
-        }
+      /* Barra de progresso */
+      .ac-card-progress {
+        height: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        margin-top: 7px;
+        overflow: hidden;
+      }
+      .ac-card-progress-fill {
+        height: 100%;
+        background: var(--neon-blue);
+        border-radius: 2px;
+      }
 
-        /* ── Botões de nav do carrossel ── */
+      /* ── Botões de nav do carrossel ── */
 
+      /* ── Divisor de categorias ── */
+      .ac-divider {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        margin: 6px 0 20px;
+      }
 
-        /* ── Divisor de categorias ── */
-        .ac-divider {
-            border: none;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            margin: 6px 0 20px;
-        }
-
-        /* ═══════════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════════
            AO VIVO & EVENTOS — PREMIUM STYLES
         ═══════════════════════════════════════════════════════ */
 
-        /* ── Cabeçalho da seção ── */
-        .av-section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(229,9,20,0.18);
-        }
+      /* ── Cabeçalho da seção ── */
+      .av-section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(229, 9, 20, 0.18);
+      }
 
-        .av-section-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+      .av-section-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-        .av-live-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(229,9,20,0.15);
-            border: 1px solid rgba(229,9,20,0.5);
-            color: #ff4455;
-            font-size: 0.6rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
+      .av-live-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(229, 9, 20, 0.15);
+        border: 1px solid rgba(229, 9, 20, 0.5);
+        color: #ff4455;
+        font-size: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+      }
 
-        .av-live-dot {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            background: #e50914;
-            border-radius: 50%;
-            flex-shrink: 0;
-            box-shadow: 0 0 0 0 rgba(229,9,20,0.7);
-            animation: av-pulse 1.6s ease-out infinite;
-        }
+      .av-live-dot {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #e50914;
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.7);
+        animation: av-pulse 1.6s ease-out infinite;
+      }
 
-        @keyframes av-pulse {
-            0%   { box-shadow: 0 0 0 0 rgba(229,9,20,0.7); }
-            70%  { box-shadow: 0 0 0 8px rgba(229,9,20,0); }
-            100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); }
+      @keyframes av-pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.7);
         }
+        70% {
+          box-shadow: 0 0 0 8px rgba(229, 9, 20, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(229, 9, 20, 0);
+        }
+      }
 
-        .av-section-title {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: white;
-            margin: 0;
-            letter-spacing: -0.2px;
-        }
+      .av-section-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: white;
+        margin: 0;
+        letter-spacing: -0.2px;
+      }
 
-        .av-see-all {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--neon-blue);
-            cursor: pointer;
-            text-decoration: none;
-            opacity: 0.85;
-            transition: opacity 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-        }
-        .av-see-all:hover { opacity: 1; }
-        .av-see-all i { font-size: 0.6rem; }
+      .av-see-all {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--neon-blue);
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.85;
+        transition: opacity 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+      }
+      .av-see-all:hover {
+        opacity: 1;
+      }
+      .av-see-all i {
+        font-size: 0.6rem;
+      }
 
-        /* ── Cards premium ── */
-        .av-card-premium {
-            flex: 0 0 220px !important;
-            border-radius: 12px !important;
-            border: 1px solid rgba(255,255,255,0.09) !important;
-            background: linear-gradient(160deg, #0d1e38 0%, #060e1f 100%) !important;
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s !important;
-        }
+      /* ── Cards premium ── */
+      .av-card-premium {
+        flex: 0 0 220px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.09) !important;
+        background: linear-gradient(
+          160deg,
+          #0d1e38 0%,
+          #060e1f 100%
+        ) !important;
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease,
+          border-color 0.28s !important;
+      }
 
-        .av-card-premium:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(229,9,20,0.35) !important;
-            border-color: rgba(229,9,20,0.4) !important;
-        }
+      .av-card-premium:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow:
+          0 12px 40px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(229, 9, 20, 0.35) !important;
+        border-color: rgba(229, 9, 20, 0.4) !important;
+      }
 
-        .av-card-premium .ac-card-thumb {
-            height: 130px;
-        }
+      .av-card-premium .ac-card-thumb {
+        height: 130px;
+      }
 
-        .av-card-premium .ac-card-thumb-ph {
-            background: linear-gradient(135deg, #0a1428 0%, #0d1e38 100%);
-        }
+      .av-card-premium .ac-card-thumb-ph {
+        background: linear-gradient(135deg, #0a1428 0%, #0d1e38 100%);
+      }
 
-        .av-card-premium .ac-card-badge {
-            font-size: 0.58rem;
-            padding: 3px 8px;
-            letter-spacing: 0.5px;
-        }
+      .av-card-premium .ac-card-badge {
+        font-size: 0.58rem;
+        padding: 3px 8px;
+        letter-spacing: 0.5px;
+      }
 
-        .av-card-premium .ac-card-title {
-            font-size: 0.72rem !important;
-        }
+      .av-card-premium .ac-card-title {
+        font-size: 0.72rem !important;
+      }
 
-        /* ── Badge de evento ao vivo (piscante) ── */
-        .ac-badge-live {
-            background: rgba(229,9,20,0.9) !important;
-            color: white !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 4px !important;
-        }
+      /* ── Badge de evento ao vivo (piscante) ── */
+      .ac-badge-live {
+        background: rgba(229, 9, 20, 0.9) !important;
+        color: white !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+      }
 
-        .ac-badge-live::before {
-            content: '';
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            background: white;
-            border-radius: 50%;
-            animation: av-pulse 1.4s ease-out infinite;
-        }
+      .ac-badge-live::before {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background: white;
+        border-radius: 50%;
+        animation: av-pulse 1.4s ease-out infinite;
+      }
 
-        /* ── Controles do carrossel (contador + setas) ── */
-        .ac-carousel-controls {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
+      /* ── Controles do carrossel (contador + setas) ── */
+      .ac-carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
 
-        .ac-counter {
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: rgba(255,255,255,0.55);
-            letter-spacing: 0.5px;
-            min-width: 32px;
-            text-align: center;
-            font-variant-numeric: tabular-nums;
-        }
+      .ac-counter {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        letter-spacing: 0.5px;
+        min-width: 32px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
 
-        .ac-nav-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.18);
-            background: rgba(255,255,255,0.06);
-            color: white;
-            font-size: 0.65rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s, border-color 0.2s, opacity 0.2s;
-        }
-        .ac-nav-btn:hover:not(:disabled) {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.4);
-        }
-        .ac-nav-btn:disabled {
-            opacity: 0.25;
-            cursor: default;
-        }
-
+      .ac-nav-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        font-size: 0.65rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          opacity 0.2s;
+      }
+      .ac-nav-btn:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      .ac-nav-btn:disabled {
+        opacity: 0.25;
+        cursor: default;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="bg-layer"></div>
 
     <svg class="svg-filters">
-        <defs>
-            <filter id="turbulence-blur">
-                <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" />
-                <feGaussianBlur stdDeviation="5" />
-            </filter>
-        </defs>
+      <defs>
+        <filter id="turbulence-blur">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.03"
+            numOctaves="3"
+            result="noise"
+          />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" />
+          <feGaussianBlur stdDeviation="5" />
+        </filter>
+      </defs>
     </svg>
 
     <div id="blur-container">
-        <div class="hero-left">
-            <h1>O maior <span>ecossistema</span> contábil do Brasil!</h1>
-            <p class="hero-subtitle">E se o seu escritório contábil não dependesse só de você?</p>
-            <p class="hero-desc">
-                Explore a jornada da NTW Franquia Contábil e descubra como transformar sua operação, crescer com consistência e escalar com o suporte da <strong>maior e mais premiada</strong> rede de escritórios contábeis da América Latina.
-            </p>
-            <div class="cta-row">
-                <button class="btn-cta btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> Falar no WhatsApp
-                </button>
-                <button class="btn-cta btn-crc">
-                    <i class="fa-solid fa-id-card-clip"></i> Consultar CRC
-                </button>
-                <button class="btn-cta btn-especial">
-                    <i class="fa-regular fa-star"></i> Condição especial do mês
-                </button>
-                <button class="btn-cta btn-agenda">
-                    <i class="fa-regular fa-calendar-check"></i> Agendar diagnóstico
-                </button>
-            </div>
+      <div class="hero-left">
+        <h1>O maior <span>ecossistema</span> contábil do Brasil!</h1>
+        <p class="hero-subtitle">
+          E se o seu escritório contábil não dependesse só de você?
+        </p>
+        <p class="hero-desc">
+          Explore a jornada da NTW Franquia Contábil e descubra como transformar
+          sua operação, crescer com consistência e escalar com o suporte da
+          <strong>maior e mais premiada</strong> rede de escritórios contábeis
+          da América Latina.
+        </p>
+        <div class="cta-row">
+          <button class="btn-cta btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+          </button>
+          <button class="btn-cta btn-crc">
+            <i class="fa-solid fa-id-card-clip"></i> Consultar CRC
+          </button>
+          <button class="btn-cta btn-especial">
+            <i class="fa-regular fa-star"></i> Condição especial do mês
+          </button>
+          <button class="btn-cta btn-agenda">
+            <i class="fa-regular fa-calendar-check"></i> Agendar diagnóstico
+          </button>
         </div>
+      </div>
 
-        <canvas id="physicsCanvas"></canvas>
+      <canvas id="physicsCanvas"></canvas>
 
-        <div id="center-point">
-            <a href="#" class="venn-circle vc-top">
-                <img src="img/ntw-doctor.webp" alt="NTW Doctor" class="center-logo">
-            </a>
-            <a href="#" class="venn-circle vc-right-agro">
-                <img src="img/Logo-NTW-Agro.webp" alt="NTW Agro" class="center-logo">
-            </a>
-            <a href="#" class="venn-circle vc-left">
-                <img src="img/tutoreanos.png" alt="Tutoreanos" class="center-logo">
-            </a>
-            <a href="#" class="vc-center">
-                <img src="img/ntwlogo.png" alt="NTW Logo" class="center-logo">
-            </a>
-        </div>
+      <div id="center-point">
+        <a href="#" class="venn-circle vc-top">
+          <img src="img/ntw-doctor.webp" alt="NTW Doctor" class="center-logo" />
+        </a>
+        <a href="#" class="venn-circle vc-right-agro">
+          <img
+            src="img/Logo-NTW-Agro.webp"
+            alt="NTW Agro"
+            class="center-logo"
+          />
+        </a>
+        <a href="#" class="venn-circle vc-left">
+          <img src="img/tutoreanos.png" alt="Tutoreanos" class="center-logo" />
+        </a>
+        <a href="#" class="vc-center">
+          <img src="img/ntwlogo.png" alt="NTW Logo" class="center-logo" />
+        </a>
+      </div>
 
-        <div class="curved-text-container">
-            <svg viewBox="0 0 500 500" width="100%" height="100%">
-                <path id="curve" d="M 250, 250 m -210, 0 a 210,210 0 1,1 420,0 a 210,210 0 1,1 -420,0"
-                    fill="transparent" />
-                <text fill="white" font-size="14" font-weight="bold" letter-spacing="4"
-                    style="text-transform: uppercase; opacity: 0.8;">
-                    <textPath xlink:href="#curve" startOffset="0%">
-                        &nbsp;&nbsp;&nbsp;Nuvem &nbsp;&bull;&nbsp; Inteligência Artificial &nbsp;&bull;&nbsp; Nuvem
-                        &nbsp;&bull;&nbsp; Inteligência Artificial &nbsp;&bull;&nbsp;
-                    </textPath>
-                </text>
-            </svg>
-        </div>
+      <div class="curved-text-container">
+        <svg viewBox="0 0 500 500" width="100%" height="100%">
+          <path
+            id="curve"
+            d="M 250, 250 m -210, 0 a 210,210 0 1,1 420,0 a 210,210 0 1,1 -420,0"
+            fill="transparent"
+          />
+          <text
+            fill="white"
+            font-size="14"
+            font-weight="bold"
+            letter-spacing="4"
+            style="text-transform: uppercase; opacity: 0.8"
+          >
+            <textPath xlink:href="#curve" startOffset="0%">
+              &nbsp;&nbsp;&nbsp;Nuvem &nbsp;&bull;&nbsp; Inteligência Artificial
+              &nbsp;&bull;&nbsp; Nuvem &nbsp;&bull;&nbsp; Inteligência
+              Artificial &nbsp;&bull;&nbsp;
+            </textPath>
+          </text>
+        </svg>
+      </div>
 
-        <div id="icons-layer"></div>
+      <div id="icons-layer"></div>
     </div>
 
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-container">
-            <div class="close-btn" id="closeModal"><i class="fa-solid fa-times"></i></div>
-
-            <div class="modal-header">
-                <div class="modal-icon-lg" id="mIcon"><i class="fa-solid fa-robot"></i></div>
-                <h2 class="modal-title" id="mTitle">Título do Item</h2>
-            </div>
-
-            <div class="modal-body">
-                <div class="modal-text" id="modalTextContainer"></div>
-            </div>
+      <div class="modal-container">
+        <div class="close-btn" id="closeModal">
+          <i class="fa-solid fa-times"></i>
         </div>
+
+        <div class="modal-header">
+          <div class="modal-icon-lg" id="mIcon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <h2 class="modal-title" id="mTitle">Título do Item</h2>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-text" id="modalTextContainer"></div>
+        </div>
+      </div>
     </div>
 
     <script>
-        const items = [
-            // ═══════════════════════════════════════════════
-            //  ITEM 0 — "Quem é a NTW" (Historia + Premiações)
-            // ═══════════════════════════════════════════════
-            {
-                label: "Quem é NTW",
-                icon: null,
-                customSvg: `<img src="svg/01_principal_história.svg" class="custom-icon-img" alt="Quem é a NTW">`,
-                modalTitle: "Quem é a NTW",
-                modalDescription: `
+      const items = [
+        // ═══════════════════════════════════════════════
+        //  ITEM 0 — "Quem é a NTW" (Historia + Premiações)
+        // ═══════════════════════════════════════════════
+        {
+          label: "Quem é NTW",
+          icon: null,
+          customSvg: `<img src="svg/01_principal_história.svg" class="custom-icon-img" alt="Quem é a NTW">`,
+          modalTitle: "Quem é a NTW",
+          modalDescription: `
 
                     <!-- ╔══════════════════════════════════════════════════╗
                          ║  BANNER — adicione a URL da imagem no CSS        ║
@@ -1861,17 +2409,17 @@
                         </a>
 
                     </div>
-                `
-            },
-            // ═══════════════════════════════════════════════
-            //  ITENS ORIGINAIS — não alterados
-            // ═══════════════════════════════════════════════
-            {
-                label: "Academy",
-                icon: null,
-                customSvg: `<img src="svg/02_principal_academy.svg" class="custom-icon-img" alt="Academy">`,
-                modalTitle: "Academy NTW",
-                modalDescription: `
+                `,
+        },
+        // ═══════════════════════════════════════════════
+        //  ITENS ORIGINAIS — não alterados
+        // ═══════════════════════════════════════════════
+        {
+          label: "Academy",
+          icon: null,
+          customSvg: `<img src="svg/02_principal_academy.svg" class="custom-icon-img" alt="Academy">`,
+          modalTitle: "Academy NTW",
+          modalDescription: `
                 <div class="academy-modal-root">
 
                     <!-- ══════════════════ HERO ══════════════════ -->
@@ -1966,22 +2514,23 @@
                                 <div class="ac-carousel-track" id="acTrack1">
 
                                     <!-- Card 1 -->
+                                    
                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_THUMB1.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
+                                            <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_302.jpg">
                                             <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-evento">Evento</span>
+                                            <span class="ac-card-badge ac-badge-evento">Case NTW</span>
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2024/06/camila_pineli_boneli.webp"></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2024/06/suelem_avila.webp"></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://ricardo.ntwcontabilidade.com.br/wp-content/uploads/2023/11/Avatar-1.png"></div>
                                             </div>
-                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">30/04 · 11h</span></div>
+                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">27/06</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">IRPF Internacional e o Cenário Geopolítico</p>
-                                            <p class="ac-card-host">Fabiano Alves · Mariana Oliveira</p>
+                                            <p class="ac-card-title">70 Clientes em 1 ano - Case NTW Monte Belo</p>
+                                            <p class="ac-card-host">Camila, Suellen e Ricardo Aguiar</p>
                                             <div class="ac-card-stars">
                                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
                                                 <span>Lauanna NTW</span>
@@ -1992,21 +2541,20 @@
                                     <!-- Card 2 -->
                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_THUMB2.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
+                                            <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_300.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
                                             <span class="ac-card-badge ac-badge-exclusivo">Exclusivo</span>
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
+                                                <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/A.png"></div>
+                                                <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/J.png"></div>
                                             </div>
-                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">30/04 · 11h</span></div>
+                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">18/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">LIVE NTW Prime Club – Ambiente de alta performance</p>
-                                            <p class="ac-card-host">Maria Fernanda · Walter Teixeira · Fabiano Vieira</p>
+                                            <p class="ac-card-title">Treinamento Grupo Stúdio (Projeto 360 e Recuperação)</p>
+                                            <p class="ac-card-host">Julia Ávila, 
+                                                Jussana Sutelo - Maria Fernanda</p>
                                             <div class="ac-card-stars">
                                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                                 <span>Lauanna NTW</span>
@@ -2016,46 +2564,46 @@
                                     </div>
 
                                     <!-- Card 3 -->
-                                    <div class="ac-card av-card-premium">
+                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_THUMB3.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
+                                            <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_299.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-novo">Novo</span>
+                                            <span class="ac-card-badge ac-badge-exclusivo">Exclusivo</span>
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2023/10/regiane.png.webp"></div>
+                                     
                                             </div>
-                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">28/04 · 8h</span></div>
+                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">16/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">Mentoria com IA: Mais clientes, menos esforço</p>
-                                            <p class="ac-card-host">Ronan Delfin · Eron Gomes</p>
+                                            <p class="ac-card-title">Vendas e Café - Regiane Sposito</p>
+                                            <p class="ac-card-host">Regiane Sposito</p>
                                             <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                                 <span>Lauanna NTW</span>
                                             </div>
+                                          
                                         </div>
                                     </div>
 
                                     <!-- Card 4 -->
                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_THUMB4.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
+                                            <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_297.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
                                             <span class="ac-card-badge ac-badge-live">Live</span>
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
+                                                <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/F.png"></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2024/07/Mariana-Oliveira.webp"></div>
+
                                             </div>
-                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">29/04 · 8h</span></div>
+                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">07/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">Live Tutoreanos em Movimento – MPP</p>
-                                            <p class="ac-card-host">Daniella Mais · Caio Amurim</p>
+                                            <p class="ac-card-title">IRPF Internacional e o Cenário Geopolítico</p>
+                                            <p class="ac-card-host">Fabiano Alves e Mariana Oliveira</p>
                                             <div class="ac-card-stars">
                                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                                 <span>Lauanna NTW</span>
@@ -2064,44 +2612,50 @@
                                     </div>
 
                                     <!-- Card 5 -->
-                                    <div class="ac-card av-card-premium">
+                                   <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_THUMB5.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
+                                            <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_296.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-evento">Evento</span>
+                                            <span class="ac-card-badge ac-badge-live">Live</span>
+                    
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://walter.ntwcontabilidade.com.br/wp-content/webp-express/webp-images/uploads/2025/11/Group-7147.png.webp"></div>
+                                                <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/F.png"></div>
+                                                <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2024/07/Mariana-Oliveira.webp"></div>
+
                                             </div>
+                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">05/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">Semana do Franqueado – Transformando conhecimento em produtos de alto valor</p>
-                                            <p class="ac-card-host">Fabiano Alves · Regiane Sposito</p>
+                                            <p class="ac-card-title">LIVE NTW Prime Club - Conheça o ambiente de alta performance da rede NTW</p>
+                                            <p class="ac-card-host">Walter Teixeira, Fabiano Alves e Maria Fernanda</p>
                                             <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                                 <span>Lauanna NTW</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Card 6 (clone para loop contínuo) -->
-                                    <div class="ac-card av-card-premium">
+                                       <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_THUMB6.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
+                                            <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_294.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-exclusivo">Exclusivo</span>
+                                            <span class="ac-card-badge ac-badge-live">Live</span>
+                    
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
+                                                <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/Dani.png"></div>
+                                                <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/C1.png"></div>
+
                                             </div>
-                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">Em breve</span></div>
+                                            <div class="ac-card-meta-thumb"><span class="ac-card-date">29/04</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">NTW Prime Club – Nova temporada</p>
-                                            <p class="ac-card-host">Equipe NTW</p>
+                                            <p class="ac-card-title">Live Tutoreanos em Movimento
+</p>
+                                            <p class="ac-card-host">Daniela Maia e Caio Amorim</p>
                                             <div class="ac-card-stars">
                                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                                 <span>Lauanna NTW</span>
@@ -2323,47 +2877,47 @@
 
                 </div><!-- /academy-modal-root -->
 
-                `
-            },
-            {
-                label: "Digital",
-                icon: null,
-                customSvg: `<img src="svg/03_principal_digital.svg" class="custom-icon-img" alt="Digital">`,
-                modalTitle: "NTW Digital",
-                modalDescription: `
+                `,
+        },
+        {
+          label: "Digital",
+          icon: null,
+          customSvg: `<img src="svg/03_principal_digital.svg" class="custom-icon-img" alt="Digital">`,
+          modalTitle: "NTW Digital",
+          modalDescription: `
                     <p>A NTW Digital é uma solução especializada da NTW, voltada para atender clientes de baixo faturamento e menor complexidade.</p>
                     <p>Ao indicar um cliente para a NTW Digital, você recebe 30% de comissão recorrente enquanto ele permanecer ativo na plataforma. Caso o cliente seja desenquadrado da NTW Digital, ele retornará automaticamente para a sua carteira de atendimento, permitindo que o relacionamento com o cliente continue sob sua gestão.</p>
                     <p>Essa parceria oferece uma oportunidade de ganho recorrente, mantendo a flexibilidade e o controle sobre seus clientes.</p>
-                `
-            },
-            {
-                label: "Treinamento",
-                icon: null,
-                customSvg: `<img src="svg/05_principal_treinamento.svg" class="custom-icon-img" alt="Treinamento">`,
-                modalTitle: "Treinamento Inicial",
-                modalDescription: `
+                `,
+        },
+        {
+          label: "Treinamento",
+          icon: null,
+          customSvg: `<img src="svg/05_principal_treinamento.svg" class="custom-icon-img" alt="Treinamento">`,
+          modalTitle: "Treinamento Inicial",
+          modalDescription: `
                     <p>O treinamento inicial da NTW Franquia Contábil é realizado de forma online, proporcionando flexibilidade e permitindo que os franqueados possam acessá-lo de qualquer lugar.</p>
                     <p>Além disso, o franqueado recebe acompanhamento contínuo para garantir que esteja totalmente preparado para a operação da unidade.</p>
-                `
-            },
+                `,
+        },
+        {
+          label: "Sistemas",
+          icon: null,
+          customSvg: `<img src="svg/06_principal_sistemas.svg" class="custom-icon-img" alt="Sistemas">`,
+          modalTitle: "Sistemas Integrados NTW",
+          tabs: [
             {
-                label: "Sistemas",
-                icon: null,
-                customSvg: `<img src="svg/06_principal_sistemas.svg" class="custom-icon-img" alt="Sistemas">`,
-                modalTitle: "Sistemas Integrados NTW",
-                tabs: [
-                    {
-                        name: "NTW Planning",
-                        content: `
+              name: "NTW Planning",
+              content: `
                             <h3 style="color:white; margin-top:0;">Planejamento Estratégico</h3>
                             <p>O NTW Planning é um sistema desenvolvido para apoiar o franqueado na construção e acompanhamento do seu planejamento estratégico, ajudando a pensar e agir como um verdadeiro estrategista.</p>
                             <p>A plataforma facilita a modelagem do negócio de forma estruturada, permitindo que o franqueado defina metas, direcione ações e monitore resultados com clareza e foco.</p>
                             <p>Para a franqueadora, o NTW Planning é uma ferramenta essencial na realização da consultoria de campo, pois fornece uma visão completa do direcionamento estratégico de cada unidade.</p>
-                        `
-                    },
-                    {
-                        name: "NTW Easy",
-                        content: `
+                        `,
+            },
+            {
+              name: "NTW Easy",
+              content: `
                             <h3 style="color:white; margin-top:0;">NTW EASY (Sistema Financeiro)</h3>
                             <p>O NTW EASY é um sistema financeiro exclusivo para franqueados da NTW. FÁCIL de usar, totalmente intuitivo e foi criado para facilitar sua rotina de gestão financeira.</p>
                             <ul>
@@ -2372,19 +2926,19 @@
                                 <li><i class="fa-solid fa-check"></i> Movimentações bancárias</li>
                                 <li><i class="fa-solid fa-check"></i> Emissão de Nota Fiscal (+1.500 municípios)</li>
                             </ul>
-                        `
-                    },
-                    {
-                        name: "NTW Manager",
-                        content: `
+                        `,
+            },
+            {
+              name: "NTW Manager",
+              content: `
                             <h3 style="color:white; margin-top:0;">NTW MANAGER (Modelo de Gestão)</h3>
                             <p>Contabilidade é processo. E escritórios organizados têm maiores possibilidades de identificação de oportunidades e de obter sucesso.</p>
                             <p>Por isso, a NTW desenvolveu processos e controles de gestão para uma contabilidade estratégica e de resultado.</p>
-                        `
-                    },
-                    {
-                        name: "NTW Quality",
-                        content: `
+                        `,
+            },
+            {
+              name: "NTW Quality",
+              content: `
                             <h3 style="color:white; margin-top:0;">NTW QUALITY (Modelo da Qualidade)</h3>
                             <p>Desenvolvido para apoiar o processo de gestão do sistema da qualidade do franqueado. Estruturado seguindo a lógica da ISO 9001.</p>
                             <ul>
@@ -2392,38 +2946,38 @@
                                 <li><i class="fa-solid fa-clipboard-check"></i> Avaliação de fornecedor e Ocorrências</li>
                                 <li><i class="fa-solid fa-clipboard-check"></i> Registro de não conformidade</li>
                             </ul>
-                        `
-                    },
-                    {
-                        name: "App NTW",
-                        content: `
+                        `,
+            },
+            {
+              name: "App NTW",
+              content: `
                             <h3 style="color:white; margin-top:0;">Aplicativo NTW</h3>
                             <p>O App NTW foi desenvolvido para facilitar a comunicação com o Cliente, com diversas funcionalidades na palma da mão.</p>
                             <ul>
                                 <li><i class="fa-solid fa-mobile-screen"></i> Solicitações, Comunicados e Fale Conosco</li>
                                 <li><i class="fa-solid fa-mobile-screen"></i> Boletos NTW e Guias de impostos</li>
                             </ul>
-                        `
-                    }
-                ]
+                        `,
             },
-            {
-                label: "Central",
-                icon: null,
-                customSvg: `<img src="svg/07_principal_central.svg" class="custom-icon-img" alt="Central">`,
-                modalTitle: "Central de Processamento NTW",
-                modalDescription: `
+          ],
+        },
+        {
+          label: "Central",
+          icon: null,
+          customSvg: `<img src="svg/07_principal_central.svg" class="custom-icon-img" alt="Central">`,
+          modalTitle: "Central de Processamento NTW",
+          modalDescription: `
                     <p>Na central de processamento da NTW, você pode terceirizar seus processos contábeis de forma total ou sazonal, com a tranquilidade de saber que assumimos toda a responsabilidade pelos envios das obrigações acessórias.</p>
                     <p>Processamos empresas de todos os segmentos, portes e níveis de complexidade, garantindo agilidade, conformidade e qualidade nos serviços.</p>
                     <p>A central é exclusiva para franqueados NTW e oferece um custo de terceirização abaixo do praticado no mercado, permitindo que você ganhe mais tempo para focar no relacionamento com seus clientes.</p>
-                `
-            },
-            {
-                label: "Marketplace",
-                icon: null,
-                customSvg: `<img src="svg/08_principal_marketplace.svg" class="custom-icon-img" alt="Marketplace">`,
-                modalTitle: "Marketplace de Soluções",
-                modalDescription: `
+                `,
+        },
+        {
+          label: "Marketplace",
+          icon: null,
+          customSvg: `<img src="svg/08_principal_marketplace.svg" class="custom-icon-img" alt="Marketplace">`,
+          modalTitle: "Marketplace de Soluções",
+          modalDescription: `
                     <p>As parcerias da NTW são desenvolvidas estrategicamente para complementar e fortalecer o atendimento ao cliente final, oferecendo aos franqueados acesso a soluções exclusivas em diversas áreas.</p>
                     <ul>
                         <li><i class="fa-solid fa-check"></i> Recuperação tributária</li>
@@ -2432,17 +2986,17 @@
                         <li><i class="fa-solid fa-check"></i> Instituições financeiras e Consultoria empresarial</li>
                     </ul>
                     <p>Esses parceiros são cuidadosamente selecionados para garantir qualidade, inovação e condições diferenciadas, permitindo que o franqueado amplie seu portfólio de ofertas.</p>
-                `
-            },
+                `,
+        },
+        {
+          label: "Consultoria S.",
+          icon: null,
+          customSvg: `<img src="svg/09_principal_consultoria_s.svg" class="custom-icon-img" alt="Consultoria S.">`,
+          modalTitle: "Consultoria de Sucesso",
+          tabs: [
             {
-                label: "Consultoria S.",
-                icon: null,
-                customSvg: `<img src="svg/09_principal_consultoria_s.svg" class="custom-icon-img" alt="Consultoria S.">`,
-                modalTitle: "Consultoria de Sucesso",
-                tabs: [
-                    {
-                        name: "Marketing",
-                        content: `
+              name: "Marketing",
+              content: `
                             <h3 style="color:white; margin-top:0;">NTW na Mídia</h3>
                             <p>Uma das principais estratégias para o seu escritório crescer é o Marketing (on-line e off-line). Pensamos o marketing como um pilar da evolução do seu negócio.</p>
                             <ul>
@@ -2452,11 +3006,11 @@
                                 <li><i class="fa-solid fa-bullhorn"></i> Estratégias de engajamento e Funil de vendas</li>
                             </ul>
                             <p><strong>NTW Store:</strong> E-commerce com produtos e brindes da marca NTW.</p>
-                        `
-                    },
-                    {
-                        name: "Suporte NTW Group",
-                        content: `
+                        `,
+            },
+            {
+              name: "Suporte NTW Group",
+              content: `
                             <h3 style="color:white; margin-top:0;">Suporte NTW Group</h3>
                             <p>A estrutura central de apoio ao franqueado divide-se em três pilares fundamentais:</p>
                             
@@ -2476,28 +3030,28 @@
                                     <li>Manuais de uso da marca e fluxos de processos</li>
                                 </ul>
                             </div>
-                        `
-                    },
-                    {
-                        name: "Projetos e Inovação",
-                        content: `
+                        `,
+            },
+            {
+              name: "Projetos e Inovação",
+              content: `
                             <h3 style="color:white; margin-top:0;">Projetos e Inovação</h3>
                             <p>Desenvolvimento constante de novas soluções para manter a rede à frente do mercado, com pesquisa e implementação de novas tecnologias e processos.</p>
-                        `
-                    }
-                ]
+                        `,
             },
-            {
-                label: "Marketing",
-                icon: null,
-                customSvg: `<img src="svg/10_principal_marketing.svg" class="custom-icon-img" alt="Marketing">`
-            },
-            {
-                label: "Consultoria C.",
-                icon: null,
-                customSvg: `<img src="svg/11_principal_consultoria_c.svg" class="custom-icon-img" alt="Consultoria C.">`,
-                modalTitle: "Consultoria de Campo",
-                modalDescription: `
+          ],
+        },
+        {
+          label: "Marketing",
+          icon: null,
+          customSvg: `<img src="svg/10_principal_marketing.svg" class="custom-icon-img" alt="Marketing">`,
+        },
+        {
+          label: "Consultoria C.",
+          icon: null,
+          customSvg: `<img src="svg/11_principal_consultoria_c.svg" class="custom-icon-img" alt="Consultoria C.">`,
+          modalTitle: "Consultoria de Campo",
+          modalDescription: `
                     <div style="margin-bottom: 20px;">
                         <div style="display:flex; align-items:center; margin-bottom:10px;">
                             <i class="fa-solid fa-chalkboard-user" style="color:var(--neon-blue); margin-right:10px; font-size:1.2rem;"></i>
@@ -2543,25 +3097,25 @@
                             </div>
                         </li>
                     </ul>
-                `
-            },
+                `,
+        },
+        {
+          label: "NTW Store",
+          icon: null,
+          customSvg: `<img src="svg/12_principal_ntw_store.svg" class="custom-icon-img" alt="NTW Store">`,
+          modalTitle: "NTW Store",
+          tabs: [
             {
-                label: "NTW Store",
-                icon: null,
-                customSvg: `<img src="svg/12_principal_ntw_store.svg" class="custom-icon-img" alt="NTW Store">`,
-                modalTitle: "NTW Store",
-                tabs: [
-                    {
-                        name: "Lojinha NTW",
-                        content: `
+              name: "Lojinha NTW",
+              content: `
                             <h3 style="color:white; margin-top:0;">Lojinha NTW</h3>
                             <p style="text-align:justify;">A NTW conta com uma loja exclusiva onde os franqueados podem adquirir materiais personalizados, incluindo brindes como agendas, canetas, cadernetas Moleskine e malotes, além de uniformes e materiais de divulgação.</p>
                             <p style="text-align:justify;">Esses itens são desenvolvidos para fortalecer a identidade da marca, garantir padronização e oferecer uma experiência diferenciada aos clientes, apoiando o sucesso e a visibilidade das unidades.</p>
-                        `
-                    },
-                    {
-                        name: "Kit Inicial",
-                        content: `
+                        `,
+            },
+            {
+              name: "Kit Inicial",
+              content: `
                             <h3 style="color:white; margin-top:0;">Itens do Kit Inicial</h3>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <ul style="list-style:none; padding:0; margin:0;">
@@ -2581,11 +3135,11 @@
                                     <li><i class="fa-solid fa-box-open"></i> Pasta Ofício</li>
                                 </ul>
                             </div>
-                        `
-                    },
-                    {
-                        name: "Produtos e Brindes",
-                        content: `
+                        `,
+            },
+            {
+              name: "Produtos e Brindes",
+              content: `
                             <h3 style="color:white; margin-top:0;">Produtos e Materiais</h3>
                             <p>Além do kit inicial, a loja oferece reposição constante de materiais essenciais para o dia a dia e para ações de marketing:</p>
                             <ul>
@@ -2593,53 +3147,57 @@
                                 <li><i class="fa-solid fa-bullhorn"></i> <strong>Divulgação:</strong> Banners, folders e materiais impressos.</li>
                                 <li><i class="fa-solid fa-gift"></i> <strong>Brindes Corporativos:</strong> Itens premium para presentear clientes estratégicos.</li>
                             </ul>
-                        `
-                    }
-                ]
+                        `,
             },
+          ],
+        },
+        {
+          label: "Eventos",
+          icon: null,
+          customSvg: `<img src="svg/13_principal_eventos.svg" class="custom-icon-img" alt="Eventos">`,
+          modalTitle: "NTW Eventos e Experiências",
+          tabs: [
             {
-                label: "Eventos",
-                icon: null,
-                customSvg: `<img src="svg/13_principal_eventos.svg" class="custom-icon-img" alt="Eventos">`,
-                modalTitle: "NTW Eventos e Experiências",
-                tabs: [
-                    {
-                        name: "NTW Summit",
-                        content: `
+              name: "NTW Summit",
+              content: `
                             <h3 style="color:white; margin-top:0;">NTW Summit Brasil</h3>
                             <p>Participantes têm acesso a mais de 24 horas de conteúdo prático, com palestras de mais de 15 especialistas renomados, focadas em temas como contabilidade consultiva, gestão estratégica, internacionalização e inovação no setor contábil.</p>
                             <p>O evento é voltado para contadores, consultores e empreendedores que desejam expandir seus negócios, aumentar a lucratividade e se posicionar como referências em seus mercados.</p>
                             <p>Além das palestras, o NTW Summit Brasil oferece oportunidades de networking, troca de experiências e acesso a metodologias de gestão modernas.</p>
-                        `
-                    },
-                    {
-                        name: "Vivência NTW",
-                        content: `
+                        `,
+            },
+            {
+              name: "Vivência NTW",
+              content: `
                             <h3 style="color:white; margin-top:0;">Vivência NTW (Ipatinga)</h3>
                             <p>A vivência no escritório modelo da NTW em Ipatinga é uma experiência exclusiva e imersiva, que proporciona aos franqueados a oportunidade de conhecer de perto a rotina e as melhores práticas de uma unidade de excelência da rede.</p>
                             <p>Durante a visita, os franqueados têm acesso a processos padronizados, tecnologias exclusivas e uma cultura organizacional que reflete o compromisso da NTW com a qualidade e a inovação.</p>
                             <p>É uma chance única de aprender, trocar experiências e se inspirar para aplicar esses conhecimentos em suas próprias unidades.</p>
-                        `
-                    },
-                    {
-                        name: "Prime Experience",
-                        content: `
+                        `,
+            },
+            {
+              name: "Prime Experience",
+              content: `
                             <h3 style="color:white; margin-top:0;">NTW Prime Experience</h3>
                             <p>Experiências exclusivas de alto nível para franqueados, focadas em conexões estratégicas e acesso a conteúdos e vivências diferenciadas dentro do ecossistema NTW.</p>
-                        `
-                    }
-                ]
+                        `,
             },
-            { label: "Radar", icon: null, customSvg: `<img src="svg/14_principal_radar.svg" class="custom-icon-img" alt="Radar">` },
+          ],
+        },
+        {
+          label: "Radar",
+          icon: null,
+          customSvg: `<img src="svg/14_principal_radar.svg" class="custom-icon-img" alt="Radar">`,
+        },
+        {
+          label: "Modalidades",
+          icon: null,
+          customSvg: `<img src="svg/15_principal_modalidades.svg" class="custom-icon-img" alt="Modalidades">`,
+          modalTitle: "Modalidades de Franquias",
+          tabs: [
             {
-                label: "Modalidades",
-                icon: null,
-                customSvg: `<img src="svg/15_principal_modalidades.svg" class="custom-icon-img" alt="Modalidades">`,
-                modalTitle: "Modalidades de Franquias",
-                tabs: [
-                    {
-                        name: "Start",
-                        content: `
+              name: "Start",
+              content: `
                             <h3 style="color:white; margin-top:0;">Modalidade Start</h3>
                             <p style="text-align:justify;">Modalidade em que o franqueado irá implantar uma unidade home office ou em coworking, sendo toda a operação processada pela Franqueadora ou por fornecedor homologado por ela indicado.</p>
                             <p style="text-align:justify;">Uma modalidade perfeita para quem deseja ter o seu primeiro negócio contábil.</p>
@@ -2651,11 +3209,11 @@
                                 <li><i class="fa-solid fa-bullhorn"></i> Taxa de Marketing</li>
                                 <li><i class="fa-solid fa-hand-holding-dollar"></i> Condição de Pagamento</li>
                             </ul>
-                        `
-                    },
-                    {
-                        name: "Light Home",
-                        content: `
+                        `,
+            },
+            {
+              name: "Light Home",
+              content: `
                             <h3 style="color:white; margin-top:0;">Modalidade Light (Versão Home)</h3>
                             <p style="text-align:justify;">Modalidade compacta, para quem já é empreendedor ou deseja empreender com baixo custo de investimento em cidades com até 30 mil habitantes.</p>
                             <p style="text-align:justify;">O Franqueado irá implantar uma unidade física, para quem já possui um escritório e deseja converter a sua marca, com todas as vantagens de fazer parte da maior e mais premiada rede de escritórios de contabilidade do Brasil.</p>
@@ -2667,11 +3225,11 @@
                                 <li><i class="fa-solid fa-bullhorn"></i> Taxa de Marketing</li>
                                 <li><i class="fa-solid fa-hand-holding-dollar"></i> Condição de Pagamento</li>
                             </ul>
-                        `
-                    },
-                    {
-                        name: "Light Física",
-                        content: `
+                        `,
+            },
+            {
+              name: "Light Física",
+              content: `
                             <h3 style="color:white; margin-top:0;">Modalidade Light (Versão Física)</h3>
                             <p style="text-align:justify;">Para as novas unidades o empreendedor contará com todo o apoio para escolha do ponto comercial e suporte à implantação do projeto.</p>
                             <p style="text-align:justify;">Para a conversão de escritórios já estabelecidos, o franqueado contará com o suporte na implantação do projeto, para adequar-se às características do espaço e do mobiliário existente.</p>
@@ -2690,11 +3248,11 @@
                                     </ul>
                                 </div>
                             </div>
-                        `
-                    },
-                    {
-                        name: "Express",
-                        content: `
+                        `,
+            },
+            {
+              name: "Express",
+              content: `
                             <h3 style="color:white; margin-top:0;">Modalidade Express</h3>
                             <p style="text-align:justify;">Modalidade desenvolvida para quem deseja empreender com baixo custo de investimento, em cidades acima de 30 mil habitantes.</p>
                             <p style="text-align:justify;">Franqueado pode implantar uma unidade home office ou coworking sem os custos de uma unidade física e com todas as vantagens de fazer parte de uma rede e de um modelo de gestão consolidados.</p>
@@ -2706,11 +3264,11 @@
                                 <li><i class="fa-solid fa-bullhorn"></i> Taxa de Marketing</li>
                                 <li><i class="fa-solid fa-hand-holding-dollar"></i> Condição de Pagamento</li>
                             </ul>
-                        `
-                    },
-                    {
-                        name: "Select",
-                        content: `
+                        `,
+            },
+            {
+              name: "Select",
+              content: `
                             <h3 style="color:white; margin-top:0;">Modalidade Select</h3>
                             <p style="text-align:justify;">Modalidade perfeita para quem já é empreendedor ou deseja empreender em cidades acima de 30 mil habitantes.</p>
                             <p style="text-align:justify;">O Franqueado irá implantar uma unidade física, fazendo a conversão de sua marca, com todas as vantagens de fazer parte da maior e mais premiada rede de escritórios de contabilidade do Brasil.</p>
@@ -2729,16 +3287,16 @@
                                     </ul>
                                 </div>
                             </div>
-                        `
-                    }
-                ]
+                        `,
             },
-            {
-                label: "Próximos",
-                icon: null,
-                customSvg: `<img src="svg/16_principal_proximos.svg" class="custom-icon-img" alt="Próximos">`,
-                modalTitle: "Próximos Passos",
-                modalDescription: `
+          ],
+        },
+        {
+          label: "Próximos",
+          icon: null,
+          customSvg: `<img src="svg/16_principal_proximos.svg" class="custom-icon-img" alt="Próximos">`,
+          modalTitle: "Próximos Passos",
+          modalDescription: `
                     <h3 style="color:white; margin-top:0;">Jornada do Novo Franqueado</h3>
                     <div style="position:relative; padding-left:20px; border-left: 2px solid var(--neon-blue);">
                         <div style="margin-bottom:20px; padding-left:15px; position:relative;">
@@ -2770,239 +3328,284 @@
                             <strong style="color:white;">7. Onboarding</strong>
                         </div>
                     </div>
-                `
-            }
-        ];
+                `,
+        },
+      ];
 
-        let isModalOpen = false;
+      let isModalOpen = false;
 
-        const canvas = document.getElementById('physicsCanvas');
-        const ctx = canvas.getContext('2d');
-        const iconsLayer = document.getElementById('icons-layer');
-        const blurContainer = document.getElementById('blur-container');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const mTitle = document.getElementById('mTitle');
-        const mIcon = document.getElementById('mIcon');
-        const modalTextContainer = document.getElementById('modalTextContainer');
-        const closeModalBtn = document.getElementById('closeModal');
+      const canvas = document.getElementById("physicsCanvas");
+      const ctx = canvas.getContext("2d");
+      const iconsLayer = document.getElementById("icons-layer");
+      const blurContainer = document.getElementById("blur-container");
+      const modalOverlay = document.getElementById("modalOverlay");
+      const mTitle = document.getElementById("mTitle");
+      const mIcon = document.getElementById("mIcon");
+      const modalTextContainer = document.getElementById("modalTextContainer");
+      const closeModalBtn = document.getElementById("closeModal");
 
-        let w, h, centerX, centerY, radius;
-        let currentAngle = 0, velocity = 0, isDragging = false, lastDragAngle = 0;
-        let domIcons = [];
+      let w, h, centerX, centerY, radius;
+      let currentAngle = 0,
+        velocity = 0,
+        isDragging = false,
+        lastDragAngle = 0;
+      let domIcons = [];
 
-        function init() {
-            items.forEach((item, i) => {
-                const el = document.createElement('div');
-                el.className = 'orbit-element';
+      function init() {
+        items.forEach((item, i) => {
+          const el = document.createElement("div");
+          el.className = "orbit-element";
 
-                let iconContent;
-                if (item.customSvg) {
-                    iconContent = item.customSvg;
-                } else {
-                    iconContent = `<i class="fa-solid ${item.icon}"></i>`;
-                }
+          let iconContent;
+          if (item.customSvg) {
+            iconContent = item.customSvg;
+          } else {
+            iconContent = `<i class="fa-solid ${item.icon}"></i>`;
+          }
 
-                el.innerHTML = `
+          el.innerHTML = `
                     <div class="icon-bubble">${iconContent}</div>
                     <div class="icon-label">${item.label}</div>
                 `;
-                el.dataset.baseAngle = (Math.PI * 2 / items.length) * i;
+          el.dataset.baseAngle = ((Math.PI * 2) / items.length) * i;
 
-                el.addEventListener('click', (e) => {
-                    if (Math.abs(velocity) < 0.01) openModal(item);
-                });
+          el.addEventListener("click", (e) => {
+            if (Math.abs(velocity) < 0.01) openModal(item);
+          });
 
-                iconsLayer.appendChild(el);
-                domIcons.push(el);
-            });
+          iconsLayer.appendChild(el);
+          domIcons.push(el);
+        });
 
-            setupEvents();
-            resize();
-            window.addEventListener('resize', resize);
-            loop();
+        setupEvents();
+        resize();
+        window.addEventListener("resize", resize);
+        loop();
+      }
+
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        centerY = h / 2;
+
+        if (w > 1024) {
+          centerX = w * 0.67;
+          radius = Math.min(w * 0.3, h * 0.42);
+        } else {
+          centerX = w / 2;
+          radius = Math.min(w, h) * 0.425;
+        }
+      }
+
+      function loop() {
+        if (isModalOpen) {
+          currentAngle += 0.002;
+        } else {
+          if (!isDragging) {
+            velocity *= 0.95;
+            currentAngle += velocity;
+            if (Math.abs(velocity) < 0.0001) velocity = 0;
+          }
         }
 
-        function resize() {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-            centerY = h / 2;
+        ctx.clearRect(0, 0, w, h);
 
-            if (w > 1024) {
-                centerX = w * 0.67;
-                radius = Math.min(w * 0.30, h * 0.42);
-            } else {
-                centerX = w / 2;
-                radius = Math.min(w, h) * 0.425;
-            }
-        }
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(0, 150, 255, 0.18)";
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([]);
+        ctx.stroke();
 
-        function loop() {
-            if (isModalOpen) {
-                currentAngle += 0.002;
-            } else {
-                if (!isDragging) {
-                    velocity *= 0.95;
-                    currentAngle += velocity;
-                    if (Math.abs(velocity) < 0.0001) velocity = 0;
-                }
-            }
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius * 0.63, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(0, 170, 255, 0.08)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
 
-            ctx.clearRect(0, 0, w, h);
+        domIcons.forEach((el) => {
+          const finalAngle = currentAngle + parseFloat(el.dataset.baseAngle);
+          const x = centerX + Math.cos(finalAngle) * radius;
+          const y = centerY + Math.sin(finalAngle) * radius;
 
+          const innerGap = radius * 0.63;
+          if (radius > innerGap) {
+            const startX = centerX + Math.cos(finalAngle) * innerGap;
+            const startY = centerY + Math.sin(finalAngle) * innerGap;
             ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.strokeStyle = "rgba(0, 150, 255, 0.18)";
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([]);
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius * 0.63, 0, Math.PI * 2);
-            ctx.strokeStyle = "rgba(0, 170, 255, 0.08)";
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.18)";
             ctx.lineWidth = 1;
+            ctx.setLineDash([4, 6]);
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(x, y);
             ctx.stroke();
+          }
 
-            domIcons.forEach((el) => {
-                const finalAngle = currentAngle + parseFloat(el.dataset.baseAngle);
-                const x = centerX + Math.cos(finalAngle) * radius;
-                const y = centerY + Math.sin(finalAngle) * radius;
+          el.style.left = `${x}px`;
+          el.style.top = `${y}px`;
+        });
+        requestAnimationFrame(loop);
+      }
 
-                const innerGap = radius * 0.63;
-                if (radius > innerGap) {
-                    const startX = centerX + Math.cos(finalAngle) * innerGap;
-                    const startY = centerY + Math.sin(finalAngle) * innerGap;
-                    ctx.beginPath();
-                    ctx.strokeStyle = "rgba(255, 255, 255, 0.18)";
-                    ctx.lineWidth = 1;
-                    ctx.setLineDash([4, 6]);
-                    ctx.moveTo(startX, startY);
-                    ctx.lineTo(x, y);
-                    ctx.stroke();
-                }
+      function getAngle(x, y) {
+        return Math.atan2(y - centerY, x - centerX);
+      }
 
-                el.style.left = `${x}px`; el.style.top = `${y}px`;
-            });
-            requestAnimationFrame(loop);
+      function setupEvents() {
+        const start = (x, y) => {
+          if (isModalOpen) return;
+          isDragging = true;
+          velocity = 0;
+          lastDragAngle = getAngle(x, y);
+          document.body.style.cursor = "grabbing";
+        };
+        const move = (x, y) => {
+          if (!isDragging) return;
+          const angle = getAngle(x, y);
+          let delta = angle - lastDragAngle;
+          if (delta > Math.PI) delta -= Math.PI * 2;
+          if (delta < -Math.PI) delta += Math.PI * 2;
+          currentAngle += delta;
+          velocity = delta;
+          lastDragAngle = angle;
+        };
+        const end = () => {
+          isDragging = false;
+          document.body.style.cursor = "default";
+        };
+        document.addEventListener("mousedown", (e) =>
+          start(e.clientX, e.clientY),
+        );
+        document.addEventListener("mousemove", (e) =>
+          move(e.clientX, e.clientY),
+        );
+        document.addEventListener("mouseup", end);
+        document.addEventListener(
+          "touchstart",
+          (e) => start(e.touches[0].clientX, e.touches[0].clientY),
+          { passive: false },
+        );
+        document.addEventListener(
+          "touchmove",
+          (e) => {
+            e.preventDefault();
+            move(e.touches[0].clientX, e.touches[0].clientY);
+          },
+          { passive: false },
+        );
+        document.addEventListener("touchend", end);
+      }
+
+      window.openModal = function openModal(item) {
+        mTitle.textContent = item.modalTitle || item.label;
+
+        if (item.customSvg) {
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = item.customSvg;
+          const img = tempDiv.querySelector("img");
+          if (img) {
+            mIcon.innerHTML = `<img src="${img.src}" alt="${item.label}">`;
+          } else {
+            mIcon.innerHTML = item.customSvg;
+          }
+        } else {
+          mIcon.innerHTML = `<i class="fa-solid ${item.icon}"></i>`;
         }
 
-        function getAngle(x, y) { return Math.atan2(y - centerY, x - centerX); }
-
-        function setupEvents() {
-            const start = (x, y) => { isDragging = true; velocity = 0; lastDragAngle = getAngle(x, y); document.body.style.cursor = 'grabbing'; };
-            const move = (x, y) => { if (!isDragging) return; const angle = getAngle(x, y); let delta = angle - lastDragAngle; if (delta > Math.PI) delta -= Math.PI * 2; if (delta < -Math.PI) delta += Math.PI * 2; currentAngle += delta; velocity = delta; lastDragAngle = angle; };
-            const end = () => { isDragging = false; document.body.style.cursor = 'default'; };
-            document.addEventListener('mousedown', e => start(e.clientX, e.clientY));
-            document.addEventListener('mousemove', e => move(e.clientX, e.clientY));
-            document.addEventListener('mouseup', end);
-            document.addEventListener('touchstart', e => start(e.touches[0].clientX, e.touches[0].clientY), { passive: false });
-            document.addEventListener('touchmove', e => { e.preventDefault(); move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
-            document.addEventListener('touchend', end);
-        }
-
-        window.openModal = function openModal(item) {
-            mTitle.textContent = item.modalTitle || item.label;
-
-            if (item.customSvg) {
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = item.customSvg;
-                const img = tempDiv.querySelector('img');
-                if (img) {
-                    mIcon.innerHTML = `<img src="${img.src}" alt="${item.label}">`;
-                } else {
-                    mIcon.innerHTML = item.customSvg;
-                }
-            } else {
-                mIcon.innerHTML = `<i class="fa-solid ${item.icon}"></i>`;
-            }
-
-            const actionButtons = `
+        const actionButtons = `
                 <div class="modal-actions">
                     <button class="btn-neon">Solicite demonstração</button>
                     <button class="btn-outline">Saiba mais</button>
                 </div>
             `;
 
-            if (item.tabs) {
-                let tabsHTML = '<div class="tabs-container">';
-                item.tabs.forEach((tab, index) => {
-                    const activeClass = index === 0 ? 'active' : '';
-                    tabsHTML += `<button class="tab-btn ${activeClass}" onclick="switchTab(this, ${index})">${tab.name}</button>`;
-                });
-                tabsHTML += '</div>';
+        if (item.tabs) {
+          let tabsHTML = '<div class="tabs-container">';
+          item.tabs.forEach((tab, index) => {
+            const activeClass = index === 0 ? "active" : "";
+            tabsHTML += `<button class="tab-btn ${activeClass}" onclick="switchTab(this, ${index})">${tab.name}</button>`;
+          });
+          tabsHTML += "</div>";
 
-                let contentHTML = '';
-                item.tabs.forEach((tab, index) => {
-                    const activeClass = index === 0 ? 'active' : '';
-                    contentHTML += `<div class="tab-content-item ${activeClass}" id="tab-${index}">
+          let contentHTML = "";
+          item.tabs.forEach((tab, index) => {
+            const activeClass = index === 0 ? "active" : "";
+            contentHTML += `<div class="tab-content-item ${activeClass}" id="tab-${index}">
                         ${tab.content}
                     </div>`;
-                });
+          });
 
-                modalTextContainer.innerHTML = tabsHTML + contentHTML + actionButtons;
-
-            } else if (item.modalDescription) {
-                modalTextContainer.innerHTML = item.modalDescription + actionButtons;
-                if (item.label === 'Academy') { initAcademyCarousel(); }
-            } else {
-                modalTextContainer.innerHTML = `
+          modalTextContainer.innerHTML = tabsHTML + contentHTML + actionButtons;
+        } else if (item.modalDescription) {
+          modalTextContainer.innerHTML = item.modalDescription + actionButtons;
+          if (item.label === "Academy") {
+            initAcademyCarousel();
+          }
+        } else {
+          modalTextContainer.innerHTML = `
                     <p>Conteúdo em desenvolvimento para <strong>${item.label}</strong>.</p>
                     <p>Em breve você verá aqui todas as informações sobre esta solução.</p>
                     ${actionButtons}
                 `;
-            }
-
-            /* Reseta o slider de Premiações ao abrir o modal */
-            premCur = 0;
-
-            blurContainer.classList.add('blurred');
-            modalOverlay.classList.add('active');
-            isDragging = false; velocity = 0;
-
-            isModalOpen = true;
         }
 
-        /* ── Slider de Premiações ── */
-        var premCur = 0;
-        var premTotal = 3;
+        /* Reseta o slider de Premiações ao abrir o modal */
+        premCur = 0;
 
-        function premUpdate() {
-            var slides = document.getElementById('premSlides');
-            if (!slides) return;
-            slides.style.transform = 'translateX(-' + (premCur * 100) + '%)';
-            document.querySelectorAll('.prem-dot').forEach(function (d, i) {
-                d.classList.toggle('active', i === premCur);
-            });
-            var counter = document.getElementById('premCounter');
-            if (counter) counter.textContent = (premCur + 1) + ' / ' + premTotal;
-        }
+        blurContainer.classList.add("blurred");
+        modalOverlay.classList.add("active");
+        isDragging = false;
+        velocity = 0;
 
-        window.premSlide = function (dir) {
-            premCur = (premCur + dir + premTotal) % premTotal;
-            premUpdate();
-        };
+        isModalOpen = true;
+      };
 
-        window.premGoTo = function (idx) {
-            premCur = idx;
-            premUpdate();
-        };
+      /* ── Slider de Premiações ── */
+      var premCur = 0;
+      var premTotal = 3;
 
-        window.switchTab = function (btn, index) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.querySelectorAll('.tab-content-item').forEach(c => c.classList.remove('active'));
-            document.getElementById(`tab-${index}`).classList.add('active');
-        }
+      function premUpdate() {
+        var slides = document.getElementById("premSlides");
+        if (!slides) return;
+        slides.style.transform = "translateX(-" + premCur * 100 + "%)";
+        document.querySelectorAll(".prem-dot").forEach(function (d, i) {
+          d.classList.toggle("active", i === premCur);
+        });
+        var counter = document.getElementById("premCounter");
+        if (counter) counter.textContent = premCur + 1 + " / " + premTotal;
+      }
 
-        /* ══════════════════════════════════════════════════════
+      window.premSlide = function (dir) {
+        premCur = (premCur + dir + premTotal) % premTotal;
+        premUpdate();
+      };
+
+      window.premGoTo = function (idx) {
+        premCur = idx;
+        premUpdate();
+      };
+
+      window.switchTab = function (btn, index) {
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document
+          .querySelectorAll(".tab-content-item")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById(`tab-${index}`).classList.add("active");
+      };
+
+      /* ══════════════════════════════════════════════════════
            MODAIS DE PREMIAÇÃO — abertos pelos botões do "Quem é a NTW"
         ══════════════════════════════════════════════════════ */
-        const awardModals = {
-            'abf-nacional': {
-                title: 'ABF — Excelência em Franchising',
-                icon: `<img src="https://franquia.vrdseguros.com.br/lovable-uploads/87196c69-0ab8-490f-b2fe-64581b0f856f.png" alt="ABF">`,
-                content: `
+      const awardModals = {
+        "abf-nacional": {
+          title: "ABF — Excelência em Franchising",
+          icon: `<img src="https://franquia.vrdseguros.com.br/lovable-uploads/87196c69-0ab8-490f-b2fe-64581b0f856f.png" alt="ABF">`,
+          content: `
                     <div class="prem-slider-wrap">
                         <div class="prem-slides" style="transform:none; display:block;">
                             <div class="prem-slide" style="min-width:100%;">
@@ -3076,13 +3679,13 @@
                             </div>
                         </div>
                     </div>
-                `
-            },
+                `,
+        },
 
-            'abf-internacional': {
-                title: 'ABF Internacional — Chancelas Internacionais',
-                icon: `<i class="fa-solid fa-globe" style="color:var(--neon-blue);font-size:1.6rem;"></i>`,
-                content: `
+        "abf-internacional": {
+          title: "ABF Internacional — Chancelas Internacionais",
+          icon: `<i class="fa-solid fa-globe" style="color:var(--neon-blue);font-size:1.6rem;"></i>`,
+          content: `
                     <div class="prem-slider-wrap">
                         <div class="prem-slides" style="transform:none; display:block;">
                             <div class="prem-slide" style="min-width:100%;">
@@ -3176,13 +3779,13 @@
                             </div>
                         </div>
                     </div>
-                `
-            },
+                `,
+        },
 
-            'pgn': {
-                title: 'Melhores Franquias do Brasil — PGN',
-                icon: `<i class="fa-solid fa-star" style="color:#e8c040;font-size:1.6rem;"></i>`,
-                content: `
+        pgn: {
+          title: "Melhores Franquias do Brasil — PGN",
+          icon: `<i class="fa-solid fa-star" style="color:#e8c040;font-size:1.6rem;"></i>`,
+          content: `
                     <div class="prem-slider-wrap">
                         <div class="prem-slides" style="transform:none; display:block;">
                             <div class="prem-slide" style="min-width:100%;">
@@ -3255,18 +3858,18 @@
                             </div>
                         </div>
                     </div>
-                `
-            }
-        };
+                `,
+        },
+      };
 
-        window.openAwardModal = function(key) {
-            const award = awardModals[key];
-            if (!award) return;
+      window.openAwardModal = function (key) {
+        const award = awardModals[key];
+        if (!award) return;
 
-            mTitle.textContent = award.title;
-            mIcon.innerHTML = award.icon;
+        mTitle.textContent = award.title;
+        mIcon.innerHTML = award.icon;
 
-            const actionButtons = `
+        const actionButtons = `
                 <div class="modal-actions" style="flex-wrap:wrap; gap:10px;">
                     <button class="btn-outline" onclick="openModal(items[0])" style="display:flex;align-items:center;gap:7px;">
                         <i class="fa-solid fa-arrow-left" style="font-size:0.8rem;"></i> Voltar
@@ -3276,174 +3879,214 @@
                 </div>
             `;
 
-            modalTextContainer.innerHTML = award.content + actionButtons;
+        modalTextContainer.innerHTML = award.content + actionButtons;
 
-            blurContainer.classList.add('blurred');
-            modalOverlay.classList.add('active');
-            isDragging = false; velocity = 0;
-            isModalOpen = true;
+        blurContainer.classList.add("blurred");
+        modalOverlay.classList.add("active");
+        isDragging = false;
+        velocity = 0;
+        isModalOpen = true;
 
-            const mc = document.querySelector('.modal-container');
-            if (mc) mc.scrollTop = 0;
-        };
+        const mc = document.querySelector(".modal-container");
+        if (mc) mc.scrollTop = 0;
+      };
 
-        /* ═══════════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════════
            ACADEMY — CARROSSEL
         ═══════════════════════════════════════════════════════ */
-        var acTracks = {
-            acRow1: { el: null, pos: 0, navPrev: 'acNav1Prev', navNext: 'acNav1Next', counter: 'acCounter1' },
-            acRow2: { el: null, pos: 0, navPrev: null, navNext: null, counter: null },
-            acRow3: { el: null, pos: 0, navPrev: null, navNext: null, counter: null }
-        };
+      var acTracks = {
+        acRow1: {
+          el: null,
+          pos: 0,
+          navPrev: "acNav1Prev",
+          navNext: "acNav1Next",
+          counter: "acCounter1",
+        },
+        acRow2: {
+          el: null,
+          pos: 0,
+          navPrev: null,
+          navNext: null,
+          counter: null,
+        },
+        acRow3: {
+          el: null,
+          pos: 0,
+          navPrev: null,
+          navNext: null,
+          counter: null,
+        },
+      };
 
-        function acGetTrack(rowId) {
-            var t = acTracks[rowId];
-            if (!t) return null;
-            if (!t.el) {
-                var row = document.getElementById(rowId);
-                if (!row) return null;
-                t.el = row.querySelector('.ac-carousel-track');
-            }
-            return t.el ? t : null;
+      function acGetTrack(rowId) {
+        var t = acTracks[rowId];
+        if (!t) return null;
+        if (!t.el) {
+          var row = document.getElementById(rowId);
+          if (!row) return null;
+          t.el = row.querySelector(".ac-carousel-track");
         }
+        return t.el ? t : null;
+      }
 
-        function acGetStepWidth(trackEl) {
-            var card = trackEl.querySelector('.ac-card');
-            if (!card) return 230;
-            var gap = parseFloat(window.getComputedStyle(trackEl).gap) || 10;
-            return card.offsetWidth + gap;
+      function acGetStepWidth(trackEl) {
+        var card = trackEl.querySelector(".ac-card");
+        if (!card) return 230;
+        var gap = parseFloat(window.getComputedStyle(trackEl).gap) || 10;
+        return card.offsetWidth + gap;
+      }
+
+      function acMaxScroll(t) {
+        var wrapWidth = t.el.parentElement ? t.el.parentElement.clientWidth : 0;
+        return Math.max(0, t.el.scrollWidth - wrapWidth);
+      }
+
+      function acCurrentIndex(t) {
+        var max = acMaxScroll(t);
+        if (max > 0 && t.pos >= max) return acMaxIndex(t);
+        var step = acGetStepWidth(t.el);
+        return step > 0 ? Math.round(t.pos / step) : 0;
+      }
+
+      function acMaxIndex(t) {
+        return t.el.querySelectorAll(".ac-card").length - 1;
+      }
+
+      function acClamp(t) {
+        var max = acMaxScroll(t);
+        if (t.pos > max) t.pos = max;
+        if (t.pos < 0) t.pos = 0;
+      }
+
+      function acUpdateUI(t) {
+        var idx = acCurrentIndex(t);
+        var total = acMaxIndex(t) + 1;
+
+        if (t.counter) {
+          var el = document.getElementById(t.counter);
+          if (el) el.textContent = idx + 1 + " / " + total;
         }
-
-        function acMaxScroll(t) {
-            var wrapWidth = t.el.parentElement ? t.el.parentElement.clientWidth : 0;
-            return Math.max(0, t.el.scrollWidth - wrapWidth);
+        if (t.navPrev) {
+          var btn = document.getElementById(t.navPrev);
+          if (btn) btn.disabled = t.pos <= 0;
         }
-
-        function acCurrentIndex(t) {
-            var max = acMaxScroll(t);
-            if (max > 0 && t.pos >= max) return acMaxIndex(t);
-            var step = acGetStepWidth(t.el);
-            return step > 0 ? Math.round(t.pos / step) : 0;
+        if (t.navNext) {
+          var btn = document.getElementById(t.navNext);
+          if (btn) btn.disabled = t.pos >= acMaxScroll(t);
         }
+      }
 
-        function acMaxIndex(t) {
-            return t.el.querySelectorAll('.ac-card').length - 1;
-        }
+      window.acScroll = function (rowId, dir) {
+        var t = acGetTrack(rowId);
+        if (!t) return;
+        t.pos += dir * acGetStepWidth(t.el);
+        acClamp(t);
+        t.el.style.transition = "transform 0.4s cubic-bezier(0.4,0,0.2,1)";
+        t.el.style.transform = "translateX(-" + t.pos + "px)";
+        acUpdateUI(t);
+      };
 
-        function acClamp(t) {
-            var max = acMaxScroll(t);
-            if (t.pos > max) t.pos = max;
-            if (t.pos < 0)   t.pos = 0;
-        }
+      var acDragReady = false;
+      function initAcademyCarousel() {
+        /* Reseta posição e referência de elemento a cada abertura */
+        ["acRow1", "acRow2", "acRow3"].forEach(function (k) {
+          acTracks[k].el = null;
+          acTracks[k].pos = 0;
+        });
+        /* Pré-carrega e inicializa UI do track principal */
+        var t1 = acGetTrack("acRow1");
+        if (t1) acUpdateUI(t1);
 
-        function acUpdateUI(t) {
-            var idx   = acCurrentIndex(t);
-            var total = acMaxIndex(t) + 1;
+        if (acDragReady) return;
+        acDragReady = true;
 
-            if (t.counter) {
-                var el = document.getElementById(t.counter);
-                if (el) el.textContent = (idx + 1) + ' / ' + total;
-            }
-            if (t.navPrev) {
-                var btn = document.getElementById(t.navPrev);
-                if (btn) btn.disabled = t.pos <= 0;
-            }
-            if (t.navNext) {
-                var btn = document.getElementById(t.navNext);
-                if (btn) btn.disabled = t.pos >= acMaxScroll(t);
-            }
-        }
+        /* ── Drag mouse ── */
+        var dragState = null;
+        document.addEventListener("mousedown", function (e) {
+          var track =
+            e.target.closest && e.target.closest(".ac-carousel-track");
+          if (!track) return;
+          var rowEl = track.closest('[id^="acRow"]');
+          if (!rowEl) return;
+          var t = acGetTrack(rowEl.id);
+          if (!t) return;
+          dragState = { t: t, startX: e.clientX, startPos: t.pos };
+          track.classList.add("dragging");
+        });
+        document.addEventListener("mousemove", function (e) {
+          if (!dragState) return;
+          dragState.t.pos = dragState.startPos + (dragState.startX - e.clientX);
+          dragState.t.el.style.transition = "none";
+          dragState.t.el.style.transform =
+            "translateX(-" + dragState.t.pos + "px)";
+        });
+        document.addEventListener("mouseup", function () {
+          if (!dragState) return;
+          dragState.t.el.classList.remove("dragging");
+          acClamp(dragState.t);
+          dragState.t.el.style.transition =
+            "transform 0.35s cubic-bezier(0.4,0,0.2,1)";
+          dragState.t.el.style.transform =
+            "translateX(-" + dragState.t.pos + "px)";
+          acUpdateUI(dragState.t);
+          dragState = null;
+        });
 
-        window.acScroll = function(rowId, dir) {
-            var t = acGetTrack(rowId);
+        /* ── Drag touch ── */
+        var touchState = null;
+        document.addEventListener(
+          "touchstart",
+          function (e) {
+            var track =
+              e.target.closest && e.target.closest(".ac-carousel-track");
+            if (!track) return;
+            var rowEl = track.closest('[id^="acRow"]');
+            if (!rowEl) return;
+            var t = acGetTrack(rowEl.id);
             if (!t) return;
-            t.pos += dir * acGetStepWidth(t.el);
-            acClamp(t);
-            t.el.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1)';
-            t.el.style.transform  = 'translateX(-' + t.pos + 'px)';
-            acUpdateUI(t);
-        };
+            touchState = {
+              t: t,
+              startX: e.touches[0].clientX,
+              startPos: t.pos,
+            };
+          },
+          { passive: true },
+        );
+        document.addEventListener(
+          "touchmove",
+          function (e) {
+            if (!touchState) return;
+            touchState.t.pos =
+              touchState.startPos + (touchState.startX - e.touches[0].clientX);
+            touchState.t.el.style.transition = "none";
+            touchState.t.el.style.transform =
+              "translateX(-" + touchState.t.pos + "px)";
+          },
+          { passive: true },
+        );
+        document.addEventListener("touchend", function () {
+          if (!touchState) return;
+          acClamp(touchState.t);
+          touchState.t.el.style.transition = "transform 0.35s ease";
+          touchState.t.el.style.transform =
+            "translateX(-" + touchState.t.pos + "px)";
+          acUpdateUI(touchState.t);
+          touchState = null;
+        });
+      }
 
-        var acDragReady = false;
-        function initAcademyCarousel() {
-            /* Reseta posição e referência de elemento a cada abertura */
-            ['acRow1','acRow2','acRow3'].forEach(function(k) {
-                acTracks[k].el  = null;
-                acTracks[k].pos = 0;
-            });
-            /* Pré-carrega e inicializa UI do track principal */
-            var t1 = acGetTrack('acRow1');
-            if (t1) acUpdateUI(t1);
+      function closeModal() {
+        blurContainer.classList.remove("blurred");
+        modalOverlay.classList.remove("active");
+        isModalOpen = false;
+      }
 
-            if (acDragReady) return;
-            acDragReady = true;
+      closeModalBtn.addEventListener("click", closeModal);
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) closeModal();
+      });
 
-            /* ── Drag mouse ── */
-            var dragState = null;
-            document.addEventListener('mousedown', function(e) {
-                var track = e.target.closest && e.target.closest('.ac-carousel-track');
-                if (!track) return;
-                var rowEl = track.closest('[id^="acRow"]');
-                if (!rowEl) return;
-                var t = acGetTrack(rowEl.id);
-                if (!t) return;
-                dragState = { t: t, startX: e.clientX, startPos: t.pos };
-                track.classList.add('dragging');
-            });
-            document.addEventListener('mousemove', function(e) {
-                if (!dragState) return;
-                dragState.t.pos = dragState.startPos + (dragState.startX - e.clientX);
-                dragState.t.el.style.transition = 'none';
-                dragState.t.el.style.transform  = 'translateX(-' + dragState.t.pos + 'px)';
-            });
-            document.addEventListener('mouseup', function() {
-                if (!dragState) return;
-                dragState.t.el.classList.remove('dragging');
-                acClamp(dragState.t);
-                dragState.t.el.style.transition = 'transform 0.35s cubic-bezier(0.4,0,0.2,1)';
-                dragState.t.el.style.transform  = 'translateX(-' + dragState.t.pos + 'px)';
-                acUpdateUI(dragState.t);
-                dragState = null;
-            });
-
-            /* ── Drag touch ── */
-            var touchState = null;
-            document.addEventListener('touchstart', function(e) {
-                var track = e.target.closest && e.target.closest('.ac-carousel-track');
-                if (!track) return;
-                var rowEl = track.closest('[id^="acRow"]');
-                if (!rowEl) return;
-                var t = acGetTrack(rowEl.id);
-                if (!t) return;
-                touchState = { t: t, startX: e.touches[0].clientX, startPos: t.pos };
-            }, { passive: true });
-            document.addEventListener('touchmove', function(e) {
-                if (!touchState) return;
-                touchState.t.pos = touchState.startPos + (touchState.startX - e.touches[0].clientX);
-                touchState.t.el.style.transition = 'none';
-                touchState.t.el.style.transform  = 'translateX(-' + touchState.t.pos + 'px)';
-            }, { passive: true });
-            document.addEventListener('touchend', function() {
-                if (!touchState) return;
-                acClamp(touchState.t);
-                touchState.t.el.style.transition = 'transform 0.35s ease';
-                touchState.t.el.style.transform  = 'translateX(-' + touchState.t.pos + 'px)';
-                acUpdateUI(touchState.t);
-                touchState = null;
-            });
-        }
-
-        function closeModal() {
-            blurContainer.classList.remove('blurred');
-            modalOverlay.classList.remove('active');
-            isModalOpen = false;
-        }
-
-        closeModalBtn.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
-
-        init();
+      init();
     </script>
-</body>
-
+  </body>
 </html>
