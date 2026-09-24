@@ -446,12 +446,10 @@
       transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       max-height: 90vh;
       overflow-y: auto;
-      /* ── Scrollbar azul escuro ── */
       scrollbar-width: thin;
       scrollbar-color: #003399 #010417;
     }
 
-    /* Scrollbar webkit (Chrome, Edge, Safari) */
     .modal-container::-webkit-scrollbar {
       width: 6px;
     }
@@ -682,8 +680,6 @@
     /* =============================================
            ESTILOS EXCLUSIVOS DO MODAL "QUEM É A NTW"
            ============================================= */
-
-    /* Faixa de destaque azul no topo */
     .ntw-highlight-bar {
       background: linear-gradient(90deg,
           rgba(0, 170, 255, 0.15),
@@ -702,7 +698,6 @@
       line-height: 1.35 !important;
     }
 
-    /* Lista de stats */
     .ntw-stat-list {
       list-style: none !important;
       padding: 0 !important;
@@ -734,14 +729,12 @@
       text-align: center;
     }
 
-    /* Separador */
     .ntw-divider {
       border: none;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       margin: 18px 0;
     }
 
-    /* Subtítulo dos pilares */
     .ntw-pillars-label {
       color: #b0b8c4 !important;
       font-size: 0.85rem !important;
@@ -749,7 +742,6 @@
       line-height: 1.5 !important;
     }
 
-    /* Grid dos 5 pilares */
     .ntw-pillars-grid {
       display: flex;
       justify-content: space-between;
@@ -797,7 +789,6 @@
       display: block;
     }
 
-    /* ── Botões de premiação — estilo Magic Neon ── */
     .ntw-award-list {
       display: flex;
       flex-direction: row;
@@ -846,7 +837,6 @@
       object-fit: contain;
     }
 
-    /* Placeholder quando a imagem não carrega */
     .ntw-award-icone-ph {
       position: absolute;
       left: 10px;
@@ -874,7 +864,6 @@
       margin-right: 10px;
       flex: 1;
       padding-left: 76px;
-      /* espaço para o ícone */
     }
 
     .ntw-magic-name {
@@ -908,26 +897,19 @@
       }
     }
 
-    /* ─── Banner de imagem no topo do modal "Quem é NTW" ─── */
     .ntw-hero-banner {
       position: relative;
-      /* Compensa o padding do modal-container (40px) para ir borda a borda */
       width: calc(100% + 80px);
       margin: 30px -40px 24px -40px;
       height: 190px;
       border-radius: 20px 20px 0 0;
       overflow: hidden;
-      /* ╔══════════════════════════════════════════╗
-               ║  Substitua a URL abaixo pela sua imagem  ║
-               ╚══════════════════════════════════════════╝ */
       background-image: url("https://www.pymnts.com/wp-content/uploads/2023/12/latin-american-digital-payments-ecommerce.jpg");
       background-size: cover;
       background-position: center;
-      /* Cor de fundo enquanto a imagem não é definida */
       background-color: #050e20;
     }
 
-    /* Ícone + texto central de placeholder */
     .ntw-hero-banner-ph {
       position: absolute;
       inset: 0;
@@ -952,7 +934,6 @@
       text-transform: uppercase;
     }
 
-    /* Gradiente: escuro no topo → claro (transparente) embaixo */
     .ntw-hero-banner-overlay {
       position: absolute;
       inset: 0;
@@ -963,7 +944,6 @@
       pointer-events: none;
     }
 
-    /* ─── Placeholder de imagem nos pilares ─── */
     .ntw-pillar-img-slot {
       height: 44px;
       border-radius: 50%;
@@ -978,7 +958,6 @@
       object-fit: cover;
     }
 
-    /* Ícone fa-image de placeholder (some quando img carrega) */
     .ntw-pillar-img-slot .ph-icon {
       color: rgba(0, 170, 255, 0.3);
       font-size: 1rem;
@@ -1002,10 +981,8 @@
       box-sizing: border-box;
     }
 
-    /* Banner placeholder topo */
     .prem-banner {
       position: relative;
-      /*height: 250px;*/
       overflow: hidden;
       background: linear-gradient(135deg, #020921 0%, #001a3d 100%);
     }
@@ -1050,7 +1027,6 @@
       pointer-events: none;
     }
 
-    /* Badge no topo do banner */
     .prem-banner-badge {
       position: absolute;
       top: 16px;
@@ -1101,7 +1077,6 @@
       line-height: 1.15;
     }
 
-    /* Headline do slide */
     .prem-headline {
       font-size: 1.05rem;
       font-weight: 800;
@@ -1117,7 +1092,6 @@
       line-height: 1.55;
     }
 
-    /* Stat grid */
     .prem-stat-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1158,7 +1132,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* Timeline de anos */
     .prem-years {
       display: flex;
       flex-wrap: wrap;
@@ -1182,7 +1155,6 @@
       box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
     }
 
-    /* Lista de bullets */
     .prem-bullet-list {
       list-style: none;
       padding: 0;
@@ -1212,7 +1184,6 @@
       flex-shrink: 0;
     }
 
-    /* Placeholder de imagem das premiações */
     .prem-trophy-row {
       display: flex;
       gap: 10px;
@@ -1247,7 +1218,6 @@
       letter-spacing: 1px;
     }
 
-    /* Rodapé dourado */
     .prem-footer-gold {
       background: linear-gradient(90deg,
           rgba(200, 150, 10, 0.12),
@@ -1266,7 +1236,6 @@
       line-height: 1.4 !important;
     }
 
-    /* Presença internacional */
     .prem-presence-row {
       display: flex;
       gap: 12px;
@@ -1322,7 +1291,6 @@
       color: var(--text-gray);
     }
 
-    /* Navegação do slider */
     .prem-nav {
       display: flex;
       align-items: center;
@@ -1376,7 +1344,6 @@
       border-radius: 4px;
     }
 
-    /* Contador slide */
     .prem-counter {
       font-size: 0.68rem;
       color: rgba(255, 255, 255, 0.35);
@@ -1389,12 +1356,10 @@
            ACADEMY NTW — NETFLIX STYLE
         ═══════════════════════════════════════════════════════════ */
 
-    /* Zeramos o padding do modal quando estiver no modo Academy */
     .academy-modal-root {
       margin: -10px -40px;
     }
 
-    /* ── HERO ── */
     .ac-hero {
       position: relative;
       width: 100%;
@@ -1416,7 +1381,6 @@
       opacity: 0.45;
     }
 
-    /* placeholder quando não há imagem */
     .ac-hero-bg-ph {
       position: absolute;
       inset: 0;
@@ -1441,7 +1405,6 @@
       text-transform: uppercase;
     }
 
-    /* Gradiente sobre o hero */
     .ac-hero-overlay {
       position: absolute;
       inset: 0;
@@ -1452,7 +1415,6 @@
       pointer-events: none;
     }
 
-    /* Gradiente embaixo do hero para suavizar transição */
     .ac-hero-bottom-fade {
       position: absolute;
       bottom: 0;
@@ -1465,7 +1427,6 @@
       pointer-events: none;
     }
 
-    /* Conteúdo do hero */
     .ac-hero-content {
       position: absolute;
       inset: 0;
@@ -1499,7 +1460,6 @@
       text-transform: uppercase;
     }
 
-    /* 📌 Quando tiver logo real: */
     .ac-hero-logo-ph img {
       height: 16px;
       object-fit: contain;
@@ -1587,7 +1547,6 @@
       border-color: white;
     }
 
-    /* Stats flutuantes no hero (direita) */
     .ac-hero-stats {
       position: absolute;
       right: 28px;
@@ -1625,13 +1584,11 @@
       margin-top: 3px;
     }
 
-    /* ── CORPO: área abaixo do hero ── */
     .ac-body {
       padding: 8px 24px 24px 24px;
       background: var(--modal-bg);
     }
 
-    /* ── ROW (categoria tipo Netflix) ── */
     .ac-row {
       margin-bottom: 26px;
     }
@@ -1672,13 +1629,11 @@
       opacity: 1;
     }
 
-    /* Wrapper do carrossel */
     .ac-carousel-wrap {
       position: relative;
       overflow: hidden;
     }
 
-    /* Track que desliza */
     .ac-carousel-track {
       display: flex;
       padding: 12px;
@@ -1691,7 +1646,6 @@
       cursor: grabbing;
     }
 
-    /* ── CARD ── */
     .ac-card {
       flex: 0 0 180px;
       border-radius: 10px;
@@ -1715,7 +1669,6 @@
       z-index: 10;
     }
 
-    /* Thumbnail */
     .ac-card-thumb {
       width: 100%;
       aspect-ratio: 16/9;
@@ -1735,7 +1688,6 @@
       transform: scale(1.08);
     }
 
-    /* Placeholder thumb */
     .ac-card-thumb-ph {
       position: absolute;
       inset: 0;
@@ -1759,7 +1711,6 @@
       text-transform: uppercase;
     }
 
-    /* Gradiente sobre thumb */
     .ac-card-thumb-grad {
       position: absolute;
       bottom: 0;
@@ -1772,7 +1723,6 @@
       pointer-events: none;
     }
 
-    /* Badge do tipo */
     .ac-card-badge {
       position: absolute;
       top: 7px;
@@ -1815,7 +1765,6 @@
       color: white;
     }
 
-    /* Ícone play no hover */
     .ac-card-play {
       position: absolute;
       inset: 0;
@@ -1847,7 +1796,6 @@
       margin-left: 2px;
     }
 
-    /* Avatares dos apresentadores no thumb */
     .ac-card-speakers {
       position: absolute;
       bottom: 7px;
@@ -1884,7 +1832,6 @@
       object-fit: cover;
     }
 
-    /* Meta info (data/hora) no thumb */
     .ac-card-meta-thumb {
       position: absolute;
       bottom: 7px;
@@ -1904,7 +1851,6 @@
       border-radius: 3px;
     }
 
-    /* Corpo do card (abaixo do thumb) */
     .ac-card-body {
       padding: 9px 10px 10px;
     }
@@ -1931,7 +1877,6 @@
       text-overflow: ellipsis;
     }
 
-    /* Estrelas */
     .ac-card-stars {
       display: flex;
       gap: 2px;
@@ -1950,7 +1895,6 @@
       font-weight: 500;
     }
 
-    /* Barra de progresso */
     .ac-card-progress {
       height: 2px;
       background: rgba(255, 255, 255, 0.1);
@@ -1965,9 +1909,6 @@
       border-radius: 2px;
     }
 
-    /* ── Botões de nav do carrossel ── */
-
-    /* ── Divisor de categorias ── */
     .ac-divider {
       border: none;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -1977,8 +1918,6 @@
     /* ═══════════════════════════════════════════════════════
            AO VIVO & EVENTOS — PREMIUM STYLES
         ═══════════════════════════════════════════════════════ */
-
-    /* ── Cabeçalho da seção ── */
     .av-section-header {
       display: flex;
       align-items: center;
@@ -2064,7 +2003,6 @@
       font-size: 0.6rem;
     }
 
-    /* ── Cards premium ── */
     .av-card-premium {
       flex: 0 0 220px !important;
       border-radius: 12px !important;
@@ -2104,7 +2042,6 @@
       font-size: 0.72rem !important;
     }
 
-    /* ── Badge de evento ao vivo (piscante) ── */
     .ac-badge-live {
       background: rgba(229, 9, 20, 0.9) !important;
       color: white !important;
@@ -2123,7 +2060,6 @@
       animation: av-pulse 1.4s ease-out infinite;
     }
 
-    /* ── Controles do carrossel (contador + setas) ── */
     .ac-carousel-controls {
       display: flex;
       align-items: center;
@@ -2173,7 +2109,6 @@
     /* ═══════════════════════════════════════════════════════
            NTW DIGITAL — MODAL STYLES
         ═══════════════════════════════════════════════════════ */
-
     .dig-hero-banner {
       position: relative;
       width: calc(100% + 80px);
@@ -2221,7 +2156,6 @@
       pointer-events: none;
     }
 
-    /* Subtítulo/destaque acima da descrição */
     .dig-sub-tag {
       display: inline-flex;
       align-items: center;
@@ -2244,7 +2178,6 @@
       margin: 0 0 22px 0;
     }
 
-    /* Grid de benefícios */
     .dig-benefits-grid {
       display: flex;
       gap: 10px;
@@ -2282,7 +2215,6 @@
       flex-shrink: 0;
     }
 
-    /* 📌 Substitua o ícone fa por <img src="ICONE.svg"> dentro de .dig-benefit-icon */
     .dig-benefit-icon i {
       color: var(--neon-blue);
       font-size: 0.9rem;
@@ -2301,7 +2233,6 @@
       line-height: 1.3;
     }
 
-    /* Como funciona — steps */
     .dig-steps-title {
       font-size: 0.78rem;
       font-weight: 800;
@@ -2360,7 +2291,6 @@
       line-height: 1.35;
     }
 
-    /* Botões de ação */
     .dig-action-row {
       display: flex;
       gap: 10px;
@@ -2405,7 +2335,6 @@
       border-color: var(--neon-blue);
     }
 
-    /* Cards inferiores */
     .dig-cards-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -2444,7 +2373,6 @@
       justify-content: center;
     }
 
-    /* 📌 Coloque <img src="ICONE.svg"> dentro de .dig-card-icon */
     .dig-card-icon i {
       color: var(--neon-blue);
       font-size: 1.1rem;
@@ -2474,8 +2402,6 @@
     /* ═══════════════════════════════════════════════════════
            CONSULTORIA DE SUCESSO — MODAL STYLES
         ═══════════════════════════════════════════════════════ */
-
-    /* Banner de fotos do time — 2 slots lado a lado */
     .cs-hero-banner {
       position: relative;
       width: calc(100% + 80px);
@@ -2511,9 +2437,7 @@
       transform: scale(1.04);
     }
 
-    /* Oculta placeholder quando há imagem real (via onerror o display é 'none') */
     .cs-photo-slot-ph {
-
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2554,7 +2478,6 @@
       z-index: 2;
     }
 
-    /* Layout principal: lista de info + sidebar de botões */
     .cs-main-layout {
       display: flex;
       gap: 18px;
@@ -2562,7 +2485,6 @@
       margin-bottom: 20px;
     }
 
-    /* Lista de informações com ícones — esquerda */
     .cs-info-list {
       flex: 1;
       display: flex;
@@ -2596,7 +2518,7 @@
       justify-content: center;
       flex-shrink: 0;
       margin-top: 1px;
-      /* placeholder neutro — remova quando adicionar seu ícone */      border-radius: 8px;
+      border-radius: 8px;
     }
 
     .cs-info-label {
@@ -2608,7 +2530,6 @@
       padding-top: 7px;
     }
 
-    /* Sidebar — botões laterais (direita) — navegação para outros pop-ups */
     .cs-sidebar {
       display: flex;
       flex-direction: column;
@@ -2725,7 +2646,6 @@
       transform: translateY(-2px);
     }
 
-    /* Rodapé / Chamada */
     .cs-footer-callout {
       background: linear-gradient(90deg,
           rgba(0, 170, 255, 0.10) 0%,
@@ -2756,8 +2676,6 @@
     /* ═══════════════════════════════════════════════════════════
            CONSULTORIA DE CAMPO — MODAL STYLES
         ═══════════════════════════════════════════════════════════ */
-
-    /* ── Hero: título + texto de apoio + logo + fotos do time ── */
     .cc-hero {
       position: relative;
       width: 100%;
@@ -2881,7 +2799,6 @@
       font-size: 1.6rem;
     }
 
-    /* ── Linha de processo: 5 cards conectados por linha pontilhada ── */
     .cc-process {
       margin-bottom: 6px;
     }
@@ -2966,7 +2883,6 @@
       padding: 0 3px;
     }
 
-    /* ── Barra inferior ── */
     .cc-footer-callout {
       display: flex;
       align-items: center;
@@ -2988,8 +2904,6 @@
       flex-shrink: 0;
     }
 
-  
-
     .cc-footer-icon img {
       width: 44px;
       height: 44px;
@@ -3006,6 +2920,318 @@
 
     .cc-footer-callout p span {
       color: var(--neon-blue) !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MARKETING — MODAL STYLES (NOVO)
+    ═══════════════════════════════════════════════════════════ */
+    .mkt-hero {
+      display: flex;
+      gap: 20px;
+      margin: -20px -20px 20px -20px;
+      padding: 20px 30px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+      background: radial-gradient(ellipse at left, #04193a 0%, #010417 80%);
+    }
+
+    .mkt-left {
+      flex: 1.25;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mkt-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1.05;
+      margin: 0 0 15px 0;
+    }
+
+    .mkt-title span {
+      color: var(--neon-blue);
+      display: block;
+    }
+
+    .mkt-title small {
+      color: #e8b30e;
+      font-size: 1.4rem;
+      letter-spacing: -3px;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 5px;
+      margin-top: -10px;
+    }
+
+    .mkt-subtitle {
+      font-size: 0.95rem;
+      color: white;
+      font-weight: 400;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--neon-blue);
+      padding-left: 12px;
+      line-height: 1.4;
+    }
+
+    .mkt-subtitle strong {
+      font-weight: 800;
+    }
+
+    .mkt-desc {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .mkt-desc span {
+      color: var(--neon-blue);
+      font-weight: 700;
+    }
+
+    .mkt-services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .mkt-service-card {
+      background: rgba(0, 170, 255, 0.05);
+      border: 1px solid rgba(0, 170, 255, 0.2);
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s;
+    }
+
+    .mkt-service-card:hover {
+      background: rgba(0, 170, 255, 0.15);
+      border-color: var(--neon-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 170, 255, 0.2);
+    }
+
+    .mkt-service-icon {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e8b30e;
+      font-size: 1.1rem;
+    }
+
+    .mkt-service-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #d4e3f7;
+      line-height: 1.25;
+    }
+
+    .mkt-right {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .mkt-team-grid {
+      position: relative;
+      width: 100%;
+      height: 380px;
+    }
+
+    /* Animação de flutuação das fotos */
+    @keyframes float-photo {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-8px) scale(1);
+      }
+    }
+
+    .mkt-team-photo {
+      position: absolute;
+      width: 75px;
+      height: 95px;
+      border-radius: 12px;
+      background: #0a1428;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float-photo 4s ease-in-out infinite;
+    }
+
+    .mkt-team-photo:hover {
+      animation-play-state: paused;
+      animation: none;
+      transform: scale(1.15) translateY(-5px);
+      z-index: 10 !important;
+      border-color: var(--neon-blue);
+      box-shadow: 0 15px 35px rgba(0, 170, 255, 0.3);
+    }
+
+    .mkt-team-photo img {
+      width: 100%;
+      
+      object-fit: cover;
+    }
+
+    .mkt-team-photo.p1 { top: 0; left: 5%; width: 85px; height: 110px; animation-delay: 0.0s; }
+    .mkt-team-photo.p2 { top: 125px; left: 0%; animation-delay: 0.7s; }
+    .mkt-team-photo.p3 { top: 235px; left: 5%; animation-delay: 1.4s; }
+    
+    .mkt-team-photo.p4 { top: 30px; left: 35%; animation-delay: 0.3s; }
+    .mkt-team-photo.p5 { top: 145px; left: 38%; width: 90px; height: 115px; z-index: 2; animation-delay: 1.1s; }
+    .mkt-team-photo.p6 { top: 275px; left: 35%; animation-delay: 1.8s; }
+    
+    .mkt-team-photo.p7 { top: 10px; left: 68%; animation-delay: 0.5s; }
+    .mkt-team-photo.p8 { top: 120px; left: 72%; animation-delay: 1.2s; }
+    .mkt-team-photo.p9 { top: 230px; left: 65%; width: 80px; height: 105px; animation-delay: 1.9s; }
+
+    /* ── Pilares — Estratégia · Presença · Resultados (versão premium) ── */
+    .mkt-pillars-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      width: 100%;
+      margin-top: 26px;
+      padding-top: 20px;
+      position: relative;
+    }
+
+    .mkt-pillars-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232, 179, 14, 0.75), transparent);
+    }
+
+    .mkt-pillar-word {
+      position: relative;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      background: linear-gradient(110deg, #a8790a 10%, #fff2c9 30%, #f6cf5e 45%, #fffbe8 55%, #c8960a 70%, #f7d980 90%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 8px rgba(232, 179, 14, 0.3));
+      opacity: 0;
+      animation: mkt-word-rise 0.65s ease forwards, mkt-shine 5s linear infinite;
+    }
+
+    .mkt-pillar-sep {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e8b30e;
+      font-size: 0.55rem;
+      opacity: 0;
+      animation: mkt-word-rise 0.65s ease forwards, mkt-sep-glow 2.4s ease-in-out infinite;
+    }
+
+    .mkt-pillars-bar > *:nth-child(1) { animation-delay: 0.05s, 0.9s; }
+    .mkt-pillars-bar > *:nth-child(2) { animation-delay: 0.25s, 1.1s; }
+    .mkt-pillars-bar > *:nth-child(3) { animation-delay: 0.35s, 1.2s; }
+    .mkt-pillars-bar > *:nth-child(4) { animation-delay: 0.55s, 1.4s; }
+    .mkt-pillars-bar > *:nth-child(5) { animation-delay: 0.65s, 1.5s; }
+
+    @keyframes mkt-word-rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes mkt-shine {
+      0%   { background-position: 0% center; }
+      100% { background-position: -260% center; }
+    }
+
+    @keyframes mkt-sep-glow {
+      0%, 100% { text-shadow: 0 0 6px rgba(232, 179, 14, 0.45); opacity: 0.7; }
+      50%      { text-shadow: 0 0 14px rgba(232, 179, 14, 0.9); opacity: 1; }
+    }
+
+    .mkt-footer {
+      background: linear-gradient(90deg, rgba(200, 150, 10, 0.1) 0%, rgba(200, 150, 10, 0.02) 100%);
+      border: 1px solid rgba(200, 150, 10, 0.3);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .mkt-footer-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e8b30e;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .mkt-footer-text {
+      margin: 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #d4e3f7;
+      line-height: 1.4;
+    }
+
+    .mkt-footer-text span {
+      color: var(--neon-blue);
+      font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+      .mkt-hero {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .mkt-team-grid {
+        height: 280px;
+        margin-top: 10px;
+      }
+      .mkt-pillars-bar {
+        margin-top: 16px;
+        padding-top: 14px;
+        gap: 10px;
+      }
+      .mkt-pillar-word {
+        font-size: 0.82rem;
+        letter-spacing: 1.6px;
+      }
     }
 
     @media (max-width: 700px) {
@@ -3030,6 +3256,152 @@
         flex: 1 1 40%;
       }
     }
+
+    /* ═══════════════════════════════════════════════════════════
+           SYSTEM HUD — status "logado em um sistema" (canto superior esquerdo)
+        ═══════════════════════════════════════════════════════════ */
+    .sys-hud {
+      position: fixed;
+      top: 26px;
+      left: 26px;
+      z-index: 60;
+      background: rgba(2, 11, 28, 0.55);
+      border: 1px solid rgba(0, 170, 255, 0.22);
+      border-radius: 12px;
+      padding: 14px 18px;
+      min-width: 220px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: opacity 0.5s ease;
+    }
+
+    #blur-container.blurred .sys-hud {
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .sys-hud-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 800;
+      font-size: 0.68rem;
+      letter-spacing: 1.6px;
+      color: #3ddc84;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .sys-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2ecc71;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+      animation: sys-pulse 1.8s ease-out infinite;
+    }
+
+    @keyframes sys-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.65);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(46, 204, 113, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+      }
+    }
+
+    .sys-hud-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 0 0 9px 0;
+    }
+
+    .sys-hud-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.72rem;
+      color: #c8d8f0;
+      padding: 2.5px 0;
+      letter-spacing: 0.3px;
+    }
+
+    .sys-hud-row i {
+      color: var(--neon-blue);
+      font-size: 0.68rem;
+      width: 13px;
+      text-align: center;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    .sys-hud-row span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sys-hud-meta-block {
+      margin-top: 7px;
+      padding-top: 7px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+
+    .sys-hud-meta-block .sys-hud-row {
+      font-size: 0.64rem;
+      color: #7f93b4;
+    }
+
+    .sys-hud-footer {
+      margin-top: 9px;
+      padding-top: 9px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.6rem;
+      color: rgba(0, 170, 255, 0.65);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.4px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+    }
+
+    .sys-hud-footer i {
+      font-size: 0.62rem;
+    }
+
+    @media (max-width: 1024px) {
+      .sys-hud {
+        top: 16px;
+        left: 16px;
+        padding: 10px 14px;
+        min-width: 190px;
+      }
+
+      .sys-hud-row {
+        font-size: 0.64rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .sys-hud {
+        min-width: 0;
+        padding: 8px 12px;
+      }
+
+      .sys-hud-meta-block,
+      .sys-hud-footer {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -3047,6 +3419,40 @@
   </svg>
 
   <div id="blur-container">
+    <div class="sys-hud" id="sysHud">
+      <div class="sys-hud-status">
+        <span class="sys-status-dot"></span>
+        Sistema Online
+      </div>
+      <div class="sys-hud-divider"></div>
+      <div class="sys-hud-row">
+        <i class="fa-regular fa-clock"></i>
+        <span id="sysClock">--:--:--</span>
+      </div>
+      <div class="sys-hud-row">
+        <i class="fa-regular fa-calendar"></i>
+        <span id="sysDate">--/--/----</span>
+      </div>
+      <div class="sys-hud-row">
+        <i class="fa-solid fa-location-dot"></i>
+        <span id="sysLocation">Localizando...</span>
+      </div>
+      <div class="sys-hud-meta-block">
+        <div class="sys-hud-row">
+          <i class="fa-solid fa-network-wired"></i>
+          <span id="sysIP">IP: ---.---.---.---</span>
+        </div>
+        <div class="sys-hud-row">
+          <i class="fa-solid fa-hourglass-half"></i>
+          <span>Sessão: <span id="sysUptime">00:00:00</span></span>
+        </div>
+      </div>
+      <div class="sys-hud-footer">
+        <i class="fa-solid fa-shield-halved"></i>
+        Conexão segura · NTW OS v3.1
+      </div>
+    </div>
+
     <div class="hero-left">
       <h1>O maior <span>ecossistema</span> contábil do Brasil!</h1>
       <p class="hero-subtitle">
@@ -3129,61 +3535,40 @@
 
   <script>
     const items = [
-      // ═══════════════════════════════════════════════
-      //  ITEM 0 — "Quem é a NTW" (Historia + Premiações)
-      // ═══════════════════════════════════════════════
       {
         label: "Quem é NTW",
         icon: null,
         customSvg: `<img src="svg/01_principal_história.svg" class="custom-icon-img" alt="Quem é a NTW">`,
         modalTitle: "Quem é a NTW",
         modalDescription: `
-
-                    <!-- ╔══════════════════════════════════════════════════╗
-                         ║  BANNER — adicione a URL da imagem no CSS        ║
-                         ║  na classe .ntw-hero-banner (background-image)   ║
-                         ╚══════════════════════════════════════════════════╝ -->
                     <div class="ntw-hero-banner">
-                    
                         <div class="ntw-hero-banner-overlay"></div>
                     </div>
-
-                    <!-- Faixa de destaque -->
                     <div class="ntw-highlight-bar">
                         <p>A maior e mais premiada rede de escritórios contábeis da América Latina!</p>
                     </div>
-
-                    <!-- Stats de presença -->
                     <ul class="ntw-stat-list">
                         <li>
                             <i class="fa-solid fa-map-location-dot"></i>
                             + de 270 unidades em todo o território Nacional
                         </li>
                         <li>
-                           
-                            <!-- 📌 Substitua o src abaixo pela bandeira de Moçambique em PNG -->
                             <img src="https://png.pngtree.com/png-vector/20221116/ourmid/pngtree-mozambique-flag-png-image_6459392.png" alt="Bandeira de Moçambique"
                                  style="width:28px; height:20px; object-fit:cover; border-radius:3px; flex-shrink:0;"
                                  onerror="this.style.display='none';">
                             Presença em Moçambique – África
                         </li>
                         <li>
-                           
-                            <!-- 📌 Substitua o src abaixo pela bandeira de Portugal em PNG -->
                             <img src="https://cdn.pixabay.com/photo/2017/05/22/01/33/portugal-2332868_1280.png" alt="Bandeira de Portugal"
                                  style="width:28px; height:20px; object-fit:cover; border-radius:3px;flex-shrink:0;"
                                  onerror="this.style.display='none';">
                             Presença em Portugal – Cidade do Porto
                         </li>
                     </ul>
-
                     <hr class="ntw-divider">
-
-                    <!-- Pilares -->
                     <p class="ntw-pillars-label">
                         Mais do que uma franquia contábil: Conte com uma estrutura e suporte de uma marca sustentada em <strong style="color:white;">5 pilares:</strong>
                     </p>
-
                     <div class="ntw-pillars-grid">
                         <div class="ntw-pillar">
                             <div class="ntw-pillar-img-slot">
@@ -3216,78 +3601,38 @@
                             <span class="ntw-pillar-label">Empreende-<br>dorismo</span>
                         </div>
                     </div>
-
                     <hr class="ntw-divider">
-
-                    <!-- Cards de premiação -->
                     <div class="ntw-award-list">
-
-                        <!-- ABF Nacional -->
                         <a href="#" class="ntw-magic-btn" onclick="openAwardModal('abf-nacional'); return false;">
-                            <img
-                                class="ntw-award-icone-3d"
-                                src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c2.png"
-                                alt="ABF Nacional"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-                            <div class="ntw-award-icone-ph" style="display:none;">
-                                <i class="fa-regular fa-image"></i>
-                            </div>
+                            <img class="ntw-award-icone-3d" src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c2.png" alt="ABF Nacional" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="ntw-award-icone-ph" style="display:none;"><i class="fa-regular fa-image"></i></div>
                             <div class="ntw-magic-text">
                                 <span class="ntw-magic-name">ABF Nacional</span>
                                 <span class="ntw-magic-desc">10 chancelas consecutivas em excelência de franchising</span>
                             </div>
-                            <svg class="ntw-magic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
+                            <svg class="ntw-magic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </a>
-
-                        <!-- ABF Internacional -->
                         <a href="#" class="ntw-magic-btn" onclick="openAwardModal('abf-internacional'); return false;">
-                            <img
-                                class="ntw-award-icone-3d"
-                                src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c1.png"
-                                alt="ABF Internacional"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-                            <div class="ntw-award-icone-ph" style="display:none;">
-                                <i class="fa-regular fa-image"></i>
-                            </div>
+                            <img class="ntw-award-icone-3d" src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c1.png" alt="ABF Internacional" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="ntw-award-icone-ph" style="display:none;"><i class="fa-regular fa-image"></i></div>
                             <div class="ntw-magic-text">
                                 <span class="ntw-magic-name">ABF Internacional</span>
                                 <span class="ntw-magic-desc">Única Franquia Contábil com chancela internacional</span>
                             </div>
-                            <svg class="ntw-magic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
+                            <svg class="ntw-magic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </a>
-
-                        <!-- PGN 5 Estrelas -->
                         <a href="#" class="ntw-magic-btn" onclick="openAwardModal('pgn'); return false;">
-                            <img
-                                class="ntw-award-icone-3d"
-                                src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c3.png"
-                                alt="PGN 5 Estrelas"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                            >
-                            <div class="ntw-award-icone-ph" style="display:none;">
-                                <i class="fa-regular fa-image"></i>
-                            </div>
+                            <img class="ntw-award-icone-3d" src="https://page.ntwfranquiacontabil.com.br/wp-content/uploads/2026/05/c3.png" alt="PGN 5 Estrelas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="ntw-award-icone-ph" style="display:none;"><i class="fa-regular fa-image"></i></div>
                             <div class="ntw-magic-text">
                                 <span class="ntw-magic-name">PGN 5 Estrelas</span>
                                 <span class="ntw-magic-desc">Eleita pelas Pequenas Empresas Grandes Negócios</span>
                             </div>
-                            <svg class="ntw-magic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
+                            <svg class="ntw-magic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </a>
-
                     </div>
                 `,
       },
-      // ═══════════════════════════════════════════════
-      //  ITENS ORIGINAIS — não alterados
-      // ═══════════════════════════════════════════════
       {
         label: "Academy",
         icon: null,
@@ -3295,56 +3640,28 @@
         modalTitle: "Academy NTW",
         modalDescription: `
                 <div class="academy-modal-root">
-
-                    <!-- ══════════════════ HERO ══════════════════ -->
                     <div class="ac-hero">
-                        <!--
-                        📌 IMAGEM DE FUNDO DO HERO
-                        Substitua o src abaixo pela URL da imagem real da Academy.
-                        Ex: src="https://seusite.com/academy-hero.jpg"
-                        -->
                         <img class="ac-hero-bg"
                             src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/165b04fe-13e4-4144-8845-028040622982.png"
                             alt="Academy Hero"
                             onerror="this.style.display='none'">
                         <div class="ac-hero-overlay"></div>
                         <div class="ac-hero-bottom-fade"></div>
-
-                        <!-- Conteúdo esquerda -->
                         <div class="ac-hero-content">
                             <div class="ac-hero-eyebrow">
                                 <div class="ac-hero-logo-ph">
-                                    <!--
-                                    📌 LOGO NTW ACADEMY
-                                    Substitua por: <img src="svg/02_principal_academy.svg" alt="Academy">
-                                    -->
                                     <i class="fa-solid fa-graduation-cap"></i>
                                     NTW Academy
                                 </div>
                                 <span class="ac-hero-badge">Exclusivo Rede</span>
                             </div>
-
-                            <h2 class="ac-hero-title">
-                                Conhecimento que<br><span>acelera resultados</span>
-                            </h2>
-
-                            <p class="ac-hero-desc">
-                                Uma plataforma exclusiva de aprendizagem para a Rede NTW, reunindo cursos, lives, treinamentos, mentorias e eventos para apoiar a evolução do escritório e do franqueado.
-                            </p>
-
+                            <h2 class="ac-hero-title">Conhecimento que<br><span>acelera resultados</span></h2>
+                            <p class="ac-hero-desc">Uma plataforma exclusiva de aprendizagem para a Rede NTW, reunindo cursos, lives, treinamentos, mentorias e eventos para apoiar a evolução do escritório e do franqueado.</p>
                             <div class="ac-hero-btns">
-                                <button class="ac-btn-primary">
-                                    <i class="fa-solid fa-graduation-cap"></i>
-                                    NTW Academy
-                                </button>
-                                <button class="ac-btn-secondary">
-                                    <i class="fa-solid fa-route"></i>
-                                    Trilhas de conhecimento
-                                </button>
+                                <button class="ac-btn-primary"><i class="fa-solid fa-graduation-cap"></i> NTW Academy</button>
+                                <button class="ac-btn-secondary"><i class="fa-solid fa-route"></i> Trilhas de conhecimento</button>
                             </div>
                         </div>
-
-                        <!-- Stats flutuantes direita -->
                         <div class="ac-hero-stats">
                             <div class="ac-hero-stat">
                                 <span class="ac-hero-stat-val">80+</span>
@@ -3360,25 +3677,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- ══════════════════ CORPO ══════════════════ -->
                     <div class="ac-body">
-
-                        <!-- ══════════════ AO VIVO & EVENTOS — PREMIUM ══════════════ -->
                         <div class="ac-row" id="acRow1">
-
-                            <!-- Cabeçalho premium com live pulse -->
                             <div class="av-section-header">
                                 <div class="av-section-left">
-                                    <div class="av-live-pill">
-                                        <span class="av-live-dot"></span>
-                                        AO VIVO
-                                    </div>
+                                    <div class="av-live-pill"><span class="av-live-dot"></span>AO VIVO</div>
                                     <h3 class="av-section-title">Ao Vivo &amp; Eventos</h3>
                                 </div>
                                 <a class="av-see-all">Ver agenda completa <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
-
                             <div class="ac-carousel-controls">
                                 <button class="ac-nav-btn ac-nav-prev" id="acNav1Prev" onclick="acScroll('acRow1',-1)"><i class="fa-solid fa-chevron-left"></i></button>
                                 <span class="ac-counter" id="acCounter1">1 / 6</span>
@@ -3386,9 +3693,6 @@
                             </div>
                             <div class="ac-carousel-wrap">
                                 <div class="ac-carousel-track" id="acTrack1">
-
-                                    <!-- Card 1 -->
-                                    
                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
                                             <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_302.jpg">
@@ -3405,14 +3709,9 @@
                                         <div class="ac-card-body">
                                             <p class="ac-card-title">70 Clientes em 1 ano - Case NTW Monte Belo</p>
                                             <p class="ac-card-host">Camila, Suellen e Ricardo Aguiar</p>
-                                            <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                                                <span>Lauanna NTW</span>
-                                            </div>
+                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>Lauanna NTW</span></div>
                                         </div>
                                     </div>
-
-                                    <!-- Card 2 -->
                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
                                             <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_300.jpg" onerror="this.style.display='none'">
@@ -3427,18 +3726,12 @@
                                         </div>
                                         <div class="ac-card-body">
                                             <p class="ac-card-title">Treinamento Grupo Stúdio (Projeto 360 e Recuperação)</p>
-                                            <p class="ac-card-host">Julia Ávila, 
-                                                Jussana Sutelo - Maria Fernanda</p>
-                                            <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                                <span>Lauanna NTW</span>
-                                            </div>
+                                            <p class="ac-card-host">Julia Ávila, Jussana Sutelo - Maria Fernanda</p>
+                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
                                             <div class="ac-card-progress"><div class="ac-card-progress-fill" style="width:35%"></div></div>
                                         </div>
                                     </div>
-
-                                    <!-- Card 3 -->
-                                     <div class="ac-card av-card-premium">
+                                    <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
                                             <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_299.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
@@ -3446,22 +3739,15 @@
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
                                                 <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2023/10/regiane.png.webp"></div>
-                                     
                                             </div>
                                             <div class="ac-card-meta-thumb"><span class="ac-card-date">16/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
                                             <p class="ac-card-title">Vendas e Café - Regiane Sposito</p>
                                             <p class="ac-card-host">Regiane Sposito</p>
-                                            <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                                <span>Lauanna NTW</span>
-                                            </div>
-                                          
+                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
                                         </div>
                                     </div>
-
-                                    <!-- Card 4 -->
                                     <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
                                             <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_297.jpg" onerror="this.style.display='none'">
@@ -3471,286 +3757,57 @@
                                             <div class="ac-card-speakers">
                                                 <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/F.png"></div>
                                                 <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2024/07/Mariana-Oliveira.webp"></div>
-
                                             </div>
                                             <div class="ac-card-meta-thumb"><span class="ac-card-date">07/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
                                             <p class="ac-card-title">IRPF Internacional e o Cenário Geopolítico</p>
                                             <p class="ac-card-host">Fabiano Alves e Mariana Oliveira</p>
-                                            <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                                <span>Lauanna NTW</span>
-                                            </div>
+                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
                                         </div>
                                     </div>
-
-                                    <!-- Card 5 -->
-                                   <div class="ac-card av-card-premium">
+                                    <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
                                             <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_296.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
                                             <span class="ac-card-badge ac-badge-live">Live</span>
-                    
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
                                                 <div class="ac-card-avatar-ph"><img src="https://walter.ntwcontabilidade.com.br/wp-content/webp-express/webp-images/uploads/2025/11/Group-7147.png.webp"></div>
                                                 <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/F.png"></div>
                                                 <div class="ac-card-avatar-ph"><img src="https://ntwcontabilidade.com.br/wp-content/uploads/2024/07/Mariana-Oliveira.webp"></div>
-
                                             </div>
                                             <div class="ac-card-meta-thumb"><span class="ac-card-date">05/05</span></div>
                                         </div>
                                         <div class="ac-card-body">
                                             <p class="ac-card-title">LIVE NTW Prime Club - Conheça o ambiente de alta performance da rede NTW</p>
                                             <p class="ac-card-host">Walter Teixeira, Fabiano Alves e Maria Fernanda</p>
-                                            <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                                <span>Lauanna NTW</span>
-                                            </div>
+                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
                                         </div>
                                     </div>
-
-                                    <!-- Card 6 (clone para loop contínuo) -->
-                                       <div class="ac-card av-card-premium">
+                                    <div class="ac-card av-card-premium">
                                         <div class="ac-card-thumb">
                                             <img src="https://www.ntwacademy.com.br/franqueados/uploads/thumbnails/course_thumbnails/course_thumbnail_default_294.jpg" onerror="this.style.display='none'">
                                             <div class="ac-card-thumb-grad"></div>
                                             <span class="ac-card-badge ac-badge-live">Live</span>
-                    
                                             <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
                                             <div class="ac-card-speakers">
                                                 <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/Dani.png"></div>
                                                 <div class="ac-card-avatar-ph"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/C1.png"></div>
-
                                             </div>
                                             <div class="ac-card-meta-thumb"><span class="ac-card-date">29/04</span></div>
                                         </div>
                                         <div class="ac-card-body">
-                                            <p class="ac-card-title">Live Tutoreanos em Movimento
-</p>
+                                            <p class="ac-card-title">Live Tutoreanos em Movimento</p>
                                             <p class="ac-card-host">Daniela Maia e Caio Amorim</p>
-                                            <div class="ac-card-stars">
-                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                                <span>Lauanna NTW</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div><!-- /ac-row acRow1 -->
-
-                        <!-- ROW 2 e ROW 3 removidos — mantido somente Ao Vivo & Eventos -->
-                        <div class="ac-row" id="acRow2" style="display:none;">
-                            <div class="ac-carousel-wrap">
-                                <div class="ac-carousel-track" id="acTrack2">
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_CURSO1.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-curso">Curso</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Gestão Financeira para Escritórios Contábeis</p>
-                                            <p class="ac-card-host">Consultor NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                            <div class="ac-card-progress"><div class="ac-card-progress-fill" style="width:68%"></div></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_CURSO2.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-curso">Curso</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Captação de Clientes com Marketing Digital</p>
-                                            <p class="ac-card-host">Time Marketing NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_CURSO3.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-novo">Novo</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">IA Aplicada à Contabilidade – Do zero ao avançado</p>
-                                            <p class="ac-card-host">Especialista NTW</p>
                                             <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
                                         </div>
                                     </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_CURSO4.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-curso">Curso</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Precificação de Serviços Contábeis</p>
-                                            <p class="ac-card-host">Consultor NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>Lauanna NTW</span></div>
-                                            <div class="ac-card-progress"><div class="ac-card-progress-fill" style="width:22%"></div></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_CURSO5.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-curso">Curso</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Liderança e Cultura de Alta Performance</p>
-                                            <p class="ac-card-host">Coach NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_CURSO6.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-novo">Novo</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Planejamento Tributário Estratégico 2025</p>
-                                            <p class="ac-card-host">Especialista Fiscal NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-
-                        <!-- ROW 3 mantido oculto apenas para compatibilidade JS -->
-                        <div class="ac-row" id="acRow3" style="display:none;">
-                            <div class="ac-carousel-wrap">
-                                <div class="ac-carousel-track" id="acTrack3">
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_MENT1.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-mentoria">Mentoria</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                            <div class="ac-card-speakers">
-                                                <div class="ac-card-avatar-ph"><i class="fa-solid fa-user"></i></div>
-                                            </div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Mentoria de Vendas para Franqueados</p>
-                                            <p class="ac-card-host">Consultor de Sucesso NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_MENT2.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-mentoria">Mentoria</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Treinamento Inicial – Implantação da Unidade</p>
-                                            <p class="ac-card-host">Time de Treinamento NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                            <div class="ac-card-progress"><div class="ac-card-progress-fill" style="width:90%"></div></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_MENT3.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-mentoria">Treinamento</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Como Montar sua Equipe Ideal</p>
-                                            <p class="ac-card-host">RH NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_MENT4.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-novo">Novo</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Consultoria com IA – MPP na Prática</p>
-                                            <p class="ac-card-host">Especialista IA NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_MENT5.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-mentoria">Mentoria</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Retenção de Clientes e Fidelização</p>
-                                            <p class="ac-card-host">Consultor de Sucesso NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ac-card">
-                                        <div class="ac-card-thumb">
-                                            <img src="PLACEHOLDER_MENT6.jpg" onerror="this.style.display='none'">
-                                            <div class="ac-card-thumb-ph"><i class="fa-regular fa-image"></i><span>Thumb</span></div>
-                                            <div class="ac-card-thumb-grad"></div>
-                                            <span class="ac-card-badge ac-badge-exclusivo">Exclusivo</span>
-                                            <div class="ac-card-play"><div class="ac-card-play-btn"><i class="fa-solid fa-play"></i></div></div>
-                                        </div>
-                                        <div class="ac-card-body">
-                                            <p class="ac-card-title">Workshop de Expansão e Franqueadora</p>
-                                            <p class="ac-card-host">Diretoria NTW</p>
-                                            <div class="ac-card-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>Lauanna NTW</span></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <button class="ac-nav-btn ac-nav-next" onclick="acScroll('acRow3',1)"><i class="fa-solid fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-
-                    </div><!-- /ac-body -->
-
-                </div><!-- /academy-modal-root -->
-
+                    </div>
+                </div>
                 `,
       },
       {
@@ -3759,11 +3816,6 @@
         customSvg: `<img src="svg/03_principal_digital.svg" class="custom-icon-img" alt="Digital">`,
         modalTitle: "NTW Digital",
         modalDescription: `
-
-                    <!-- ╔══════════════════════════════════════════════════╗
-                         ║  BANNER — defina a URL da imagem abaixo          ║
-                         ║  background-image: url('SUA_IMAGEM.jpg')         ║
-                         ╚══════════════════════════════════════════════════╝ -->
                     <div class="dig-hero-banner">
                         <div class="dig-hero-banner-ph">
                             <i class="fa-regular fa-image"></i>
@@ -3771,13 +3823,9 @@
                         </div>
                         <div class="dig-hero-banner-overlay"></div>
                     </div>
-
-                    <!-- Faixa principal -->
                     <div class="ntw-highlight-bar">
                         <p>A solução do Grupo NTW para ampliar sua carteira e gerar receita recorrente.</p>
                     </div>
-
-                    <!-- Destaque + descrição -->
                     <span class="dig-sub-tag">
                         <i class="fa-solid fa-circle-check"></i>
                         Contabilidade prática, econômica e segura
@@ -3785,10 +3833,7 @@
                     <p class="dig-desc">
                         A NTW Digital atende clientes de menor complexidade com praticidade, segurança e escala — fortalecendo o portfólio do franqueado, preservando o relacionamento com a carteira e criando novas oportunidades de receita.
                     </p>
-
-                    <!-- Benefícios -->
                     <div class="dig-benefits-grid">
-
                         <div class="dig-benefit">
                             <div class="dig-benefit-icon">
                                 <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/i1.png" alt="Abra sua empresa grátis" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
@@ -3796,7 +3841,6 @@
                             </div>
                             <span class="dig-benefit-label">Abra sua empresa grátis</span>
                         </div>
-
                         <div class="dig-benefit">
                             <div class="dig-benefit-icon">
                                 <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/i2.png" alt="Troque de contador com facilidade" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
@@ -3804,7 +3848,6 @@
                             </div>
                             <span class="dig-benefit-label">Troque de contador com facilidade</span>
                         </div>
-
                         <div class="dig-benefit">
                             <div class="dig-benefit-icon">
                                 <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/i3.png" alt="Abra um MEI com suporte" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
@@ -3812,7 +3855,6 @@
                             </div>
                             <span class="dig-benefit-label">Abra um MEI com suporte</span>
                         </div>
-
                         <div class="dig-benefit">
                             <div class="dig-benefit-icon">
                                 <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/i17.png" alt="Atendimento especializado" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
@@ -3820,7 +3862,6 @@
                             </div>
                             <span class="dig-benefit-label">Atendimento especializado</span>
                         </div>
-
                         <div class="dig-benefit">
                             <div class="dig-benefit-icon">
                                 <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/06/i4.png" alt="Segurança e economia" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
@@ -3828,17 +3869,12 @@
                             </div>
                             <span class="dig-benefit-label">Segurança e economia</span>
                         </div>
-
                     </div>
-
                     <hr class="ntw-divider">
-
-                    <!-- Como funciona na prática -->
                     <p class="dig-steps-title">
                         <i class="fa-solid fa-list-check"></i>
                         Como funciona na prática
                     </p>
-
                     <div class="dig-steps-list">
                         <div class="dig-step">
                             <div class="dig-step-num">1</div>
@@ -3853,53 +3889,28 @@
                             <span class="dig-step-text">Acompanhar o relatório financeiro e fluxo de caixa</span>
                         </div>
                     </div>
-
-                    <!-- Botões de ação -->
                     <div class="dig-action-row">
-                        <button class="dig-btn dig-btn-primary">
-                            <i class="fa-solid fa-building-columns"></i>
-                            Abrir empresa grátis
-                        </button>
-                        <button class="dig-btn dig-btn-outline">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                            Troque de contador
-                        </button>
-                        <button class="dig-btn dig-btn-outline">
-                            <i class="fa-solid fa-id-badge"></i>
-                            Abrir um MEI
-                        </button>
+                        <button class="dig-btn dig-btn-primary"><i class="fa-solid fa-building-columns"></i> Abrir empresa grátis</button>
+                        <button class="dig-btn dig-btn-outline"><i class="fa-solid fa-arrows-rotate"></i> Troque de contador</button>
+                        <button class="dig-btn dig-btn-outline"><i class="fa-solid fa-id-badge"></i> Abrir um MEI</button>
                     </div>
-
                     <hr class="ntw-divider">
-
-                    <!-- Cards inferiores -->
                     <div class="dig-cards-row">
-
                         <div class="dig-card">
-                            <div class="dig-card-icon">
-                                <!-- 📌 Substitua pelo ícone/imagem desejada -->
-                                <i class="fa-solid fa-building-columns"></i>
-                            </div>
+                            <div class="dig-card-icon"><i class="fa-solid fa-building-columns"></i></div>
                             <p class="dig-card-title">Abertura grátis</p>
                             <p class="dig-card-sub">Sem burocracia e 100% regularizada.</p>
                         </div>
-
                         <div class="dig-card">
-                            <div class="dig-card-icon">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </div>
+                            <div class="dig-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
                             <p class="dig-card-title">Troca de contador</p>
                             <p class="dig-card-sub">Economize tempo com auxílio de especialistas.</p>
                         </div>
-
                         <div class="dig-card">
-                            <div class="dig-card-icon">
-                                <i class="fa-solid fa-id-badge"></i>
-                            </div>
+                            <div class="dig-card-icon"><i class="fa-solid fa-id-badge"></i></div>
                             <p class="dig-card-title">MEI</p>
                             <p class="dig-card-sub">Mais organização, controle e suporte para crescer.</p>
                         </div>
-
                     </div>
                 `,
       },
@@ -4007,75 +4018,45 @@
         customSvg: `<img src="svg/09_principal_consultoria_s.svg" class="custom-icon-img" alt="Consultoria S.">`,
         modalTitle: "Consultoria de Sucesso",
         modalDescription: `
-
-                    <!-- ╔══════════════════════════════════════════════════════╗
-                         ║  FOTOS DO TIME DE CONSULTORIA                       ║
-                         ║  Para adicionar fotos reais, substitua cada         ║
-                         ║  <div class="cs-photo-slot-ph"> pela tag:           ║
-                         ║  <img src="URL_DA_FOTO" class="cs-photo-img">       ║
-                         ║  (coloque ANTES do .cs-photo-slot-ph dentro do slot)║
-                         ╚══════════════════════════════════════════════════════╝ -->
                     <div class="cs-hero-banner">
-
-                        <!-- SLOT FOTO 1 -->
                         <div class="cs-photo-slot">
                             <div class="cs-photo-slot-ph">
                               <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/consultoriapic.png" class="cs-photo-img">  
                             </div>
                         </div>
-
-                        <!-- SLOT FOTO 2 — remova este bloco inteiro para usar apenas 1 foto -->
                         <div class="cs-photo-slot">
-
                             <div class="cs-photo-slot-ph">
                                 <img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/ChatGPT-Image-9_07_2026-13_22_02.png" class="cs-photo-img">  
                             </div>
-                           
                         </div>
-
                     </div>
-
-                    <!-- Faixa de destaque -->
                     <div class="ntw-highlight-bar">
                         <p>Suporte contínuo para fortalecer a implantação, a qualidade e o crescimento da unidade.</p>
                     </div>
-
-                    <!-- Layout principal: informações + botões laterais -->
                     <div class="cs-main-layout">
-
-                        <!-- Informações com ícones -->
                         <div class="cs-info-list">
-
                             <div class="cs-info-item">
-                                <div class="cs-info-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i6.png" style="width:24px;height:24px;"><!-- 📌 Coloque seu ícone aqui (ex: <img src="icone.png" style="width:24px;height:24px;">) --></div>
+                                <div class="cs-info-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i6.png" style="width:24px;height:24px;"></div>
                                 <div><span class="cs-info-label">Acompanhamento da implantação</span></div>
                             </div>
-
                             <div class="cs-info-item">
                                 <div class="cs-info-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i10.png" style="width:24px;height:24px;"></div>
                                 <div><span class="cs-info-label">Acompanhamento da certificação de qualidade</span></div>
                             </div>
-
                             <div class="cs-info-item">
                                 <div class="cs-info-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/up.png" style="width:24px;height:24px;"></div>
                                 <div><span class="cs-info-label">Acompanhamento do desenvolvimento da unidade</span></div>
                             </div>
-
                             <div class="cs-info-item">
                                 <div class="cs-info-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i7.png" style="width:24px;height:24px;"></div>
                                 <div><span class="cs-info-label">Planejamento estratégico por unidade</span></div>
                             </div>
-
                             <div class="cs-info-item">
                                 <div class="cs-info-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i8.png" style="width:24px;height:24px;"></div>
                                 <div><span class="cs-info-label">Manuais de uso da marca, marketing, administração e controle de fluxos dos processos</span></div>
                             </div>
-
                         </div>
-
-                        <!-- Botões laterais — navegam para os pop-ups correspondentes na mandala -->
                         <div class="cs-sidebar">
-
                             <button class="cs-side-btn cs-primary" onclick="openModalByLabel('Consultoria C.')">
                                 <div class="cs-side-btn-icon"><i class="fa-solid fa-bullseye"></i></div>
                                 <div class="cs-side-btn-text">
@@ -4086,7 +4067,6 @@
                                     <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
                             </button>
-
                             <button class="cs-side-btn" onclick="openModalByLabel('Marketing')">
                                 <div class="cs-side-btn-icon"><i class="fa-solid fa-bullhorn"></i></div>
                                 <div class="cs-side-btn-text">
@@ -4097,11 +4077,8 @@
                                     <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
                             </button>
-
                         </div>
                     </div>
-
-                    <!-- Rodapé / Chamada -->
                     <div class="cs-footer-callout">
                         <span class="cs-star-icon">⭐</span>
                         <p>Consultoria de Sucesso é presença, método e resultado.</p>
@@ -4112,6 +4089,74 @@
         label: "Marketing",
         icon: null,
         customSvg: `<img src="svg/10_principal_marketing.svg" class="custom-icon-img" alt="Marketing">`,
+        modalTitle: "Marketing NTW",
+        modalDescription: `
+            <div class="mkt-hero">
+                <div class="mkt-left">
+                    <h2 class="mkt-title">Marketing<br><span>Assertivo</span> <small>»»</small></h2>
+                    <p class="mkt-subtitle">Uma estrutura de marketing para <strong>posicionar, apoiar e gerar oportunidades</strong> para a sua unidade.</p>
+                    <p class="mkt-desc">
+                        Do institucional ao local, a NTW entrega ferramentas, orientação e presença digital para apoiar o crescimento do franqueado com consistência e <span>estratégia</span>.
+                    </p>
+                    
+                    <div class="mkt-services-grid">
+                        <div class="mkt-service-card">
+                            <div class="mkt-service-icon"><i class="fa-solid fa-building-columns"></i></div>
+                            <span class="mkt-service-name">Marketing<br>Institucional</span>
+                        </div>
+                        <div class="mkt-service-card">
+                            <div class="mkt-service-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <span class="mkt-service-name">Suporte no<br>Marketing Local</span>
+                        </div>
+                        <div class="mkt-service-card">
+                            <div class="mkt-service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <span class="mkt-service-name">Landing Page<br>da Unidade</span>
+                        </div>
+                        <div class="mkt-service-card">
+                            <div class="mkt-service-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                            <span class="mkt-service-name">Portal de<br>Marketing</span>
+                        </div>
+                        <div class="mkt-service-card">
+                            <div class="mkt-service-icon"><i class="fa-solid fa-comments"></i></div>
+                            <span class="mkt-service-name">Papo<br>Marketing</span>
+                        </div>
+                        <div class="mkt-service-card">
+                            <div class="mkt-service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <span class="mkt-service-name">Trilha de Conhecimento –<br>Marketing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mkt-footer">
+                        <div class="mkt-footer-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <p class="mkt-footer-text">Campanhas, comunicação, presença digital e apoio contínuo em <span>uma única jornada.</span></p>
+                    </div>
+                </div>
+                
+                <div class="mkt-right">
+                    <div class="mkt-team-grid">
+                        <div class="mkt-team-photo p1"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/pabloboher.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=1&background=0D8ABC&color=fff'"></div>
+                        <div class="mkt-team-photo p2"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/sarah.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=2&background=0D8ABC&color=fff'"></div>
+                        <div class="mkt-team-photo p3"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/mariagasbarro.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=3&background=0D8ABC&color=fff'"></div>
+                        
+                        <div class="mkt-team-photo p4"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/nathalia.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=4&background=0D8ABC&color=fff'"></div>
+                        <div class="mkt-team-photo p5"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/danimaia.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=5&background=0D8ABC&color=fff'"></div>
+                        <div class="mkt-team-photo p6"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/ednaldo.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=6&background=0D8ABC&color=fff'"></div>
+                        
+                        <div class="mkt-team-photo p7"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/Maira.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=7&background=0D8ABC&color=fff'"></div>
+                        <div class="mkt-team-photo p8"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/lucasbruno.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=8&background=0D8ABC&color=fff'"></div>
+                        <div class="mkt-team-photo p9"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/08/felipesoares.png" alt="Equipe" onerror="this.src='https://ui-avatars.com/api/?name=9&background=0D8ABC&color=fff'"></div>
+                    </div>
+                    
+                    <div class="mkt-pillars-bar">
+                        <span class="mkt-pillar-word">Estratégia</span>
+                        <span class="mkt-pillar-sep"><i class="fa-solid fa-gem"></i></span>
+                        <span class="mkt-pillar-word">Presença</span>
+                        <span class="mkt-pillar-sep"><i class="fa-solid fa-gem"></i></span>
+                        <span class="mkt-pillar-word">Resultados</span>
+                    </div>
+                </div>
+            </div>
+        `
       },
       {
         label: "Consultoria C.",
@@ -4119,88 +4164,57 @@
         customSvg: `<img src="svg/11_principal_consultoria_c.svg" class="custom-icon-img" alt="Consultoria C.">`,
         modalTitle: "Consultoria de Campo",
         modalDescription: `
-
-                    <!-- ╔══════════════════════════════════════════════════════╗
-                         ║  HERO — título + texto de apoio + logo + fotos      ║
-                         ║  📌 Substitua as fotos e o logo pelos arquivos reais║
-                         ╚══════════════════════════════════════════════════════╝ -->
                     <div class="cc-hero">
                         <div class="cc-hero-glow"></div>
-
                         <div class="cc-hero-top">
                             <div class="cc-hero-textblock">
                                 <h2 class="cc-hero-title">Consultoria de<br><span>Campo</span></h2>
                                 <p class="cc-hero-desc">Direcionamento, suporte e acompanhamento para uma unidade mais preparada, desde o <span>primeiro passo.</span></p>
                             </div>
-
-                            <!-- 📌 Substitua pelo logo real da NTW -->
                             <div class="cc-hero-logo-slot">
                                <img  src="https://ntwpocosdecaldas.com.br/wp-content/uploads/2025/03/ntw-contabilidade-pocos-de-caldas-logo-branca.webp">
                             </div>
                         </div>
-
-                        <!-- 📌 Substitua cada slot pela foto real (adicione <img class="cc-person-photo" src="..."> dentro do slot) -->
                         <div class="cc-hero-people">
                           <div class="cc-person-slot"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/image-1.png"></i></div>
                           <div class="cc-person-slot"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/brena.png"></i></div>
                           <div class="cc-person-slot"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/leo.png"></i></div>
-                          
                         </div>
                     </div>
-
-                    <!-- ╔══════════════════════════════════════════════════════╗
-                         ║  LINHA DE PROCESSO — 5 cards conectados            ║
-                         ╚══════════════════════════════════════════════════════╝ -->
                     <div class="cc-process">
                         <div class="cc-process-track">
-
                             <div class="cc-process-step">
-                                <!-- 📌 Substitua pelo ícone real -->
                                 <div class="cc-process-icon"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i5.png"></div>
                                 <h4 class="cc-process-title">Treinamento<br>inicial</h4>
                                 <p class="cc-process-desc">Capacitação completa para você e sua equipe iniciarem com segurança e confiança.</p>
                             </div>
-
                             <div class="cc-process-connector"><span class="cc-connector-arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
-
                             <div class="cc-process-step">
                                 <div class="cc-process-icon"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i7.png"></div>
                                 <h4 class="cc-process-title">Planejamento<br>estratégico<br>por unidade</h4>
                                 <p class="cc-process-desc">Definição de metas, processos e estrutura ideal para o sucesso da sua unidade.</p>
                             </div>
-
                             <div class="cc-process-connector"><span class="cc-connector-arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
-
                             <div class="cc-process-step">
                                 <div class="cc-process-icon"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i8.png"></div>
                                 <h4 class="cc-process-title">Projeto<br>arquitetônico</h4>
                                 <p class="cc-process-desc">Ambiente pensado para encantar clientes e otimizar o desempenho do seu time.</p>
                             </div>
-
                             <div class="cc-process-connector"><span class="cc-connector-arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
-
                             <div class="cc-process-step">
                                 <div class="cc-process-icon"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/07/i10.png"></div>
                                 <h4 class="cc-process-title">Vivência no<br>escritório modelo</h4>
                                 <p class="cc-process-desc">Experiência prática em uma unidade de referência para acelerar sua curva de aprendizado.</p>
                             </div>
-
                             <div class="cc-process-connector"><span class="cc-connector-arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
-
                             <div class="cc-process-step">
                                 <div class="cc-process-icon"><img class="cc-person-photo" src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/ld.png"></div>
                                 <h4 class="cc-process-title">Apoio contínuo<br>na rede</h4>
                                 <p class="cc-process-desc">Suporte constante da NTW para acompanhar sua evolução em cada etapa da jornada.</p>
                             </div>
-
                         </div>
                     </div>
-
-                    <!-- ╔══════════════════════════════════════════════════════╗
-                         ║  BARRA INFERIOR                                     ║
-                         ╚══════════════════════════════════════════════════════╝ -->
                     <div class="cc-footer-callout">
-                        <!-- 📌 Substitua pelo ícone real -->
                         <div class="cc-footer-icon"><img src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/rocket.png"></div>
                         <p>Você não está sozinho. Estamos com você, <span>do início ao crescimento.</span></p>
                     </div>
@@ -4439,7 +4453,6 @@
       },
     ];
 
-    /* Navegação dinâmica entre pop-ups (ex: botões dentro do modal "Consultoria de Sucesso") */
     window.openModalByLabel = function (label) {
       const item = items.find(function (i) { return i.label === label; });
       if (item) openModal(item);
@@ -4664,7 +4677,6 @@
                 `;
       }
 
-      /* Reseta o slider de Premiações ao abrir o modal */
       premCur = 0;
 
       blurContainer.classList.add("blurred");
@@ -4675,7 +4687,6 @@
       isModalOpen = true;
     };
 
-    /* ── Slider de Premiações ── */
     var premCur = 0;
     var premTotal = 3;
 
@@ -4711,9 +4722,6 @@
       document.getElementById(`tab-${index}`).classList.add("active");
     };
 
-    /* ══════════════════════════════════════════════════════
-         MODAIS DE PREMIAÇÃO — abertos pelos botões do "Quem é a NTW"
-      ══════════════════════════════════════════════════════ */
     const awardModals = {
       "abf-nacional": {
         title: "ABF — Excelência em Franchising",
@@ -4722,7 +4730,6 @@
                     <div class="prem-slider-wrap">
                         <div class="prem-slides" style="transform:none; display:block;">
                             <div class="prem-slide" style="min-width:100%;">
-
                                 <div class="prem-banner">
                                     <img class="prem-banner-img"
                                         src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/sdl1.png"
@@ -4740,10 +4747,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <p class="prem-headline">11 Reconhecimentos Consecutivos em Excelência no Franchising</p>
                                 <p class="prem-sub">Premiada pela ABF – Associação Brasileira de Franchising, a NTW acumula 11 reconhecimentos consecutivos no Selo de Excelência em Franchising, consolidando-se como referência absoluta no setor.</p>
-
                                 <div class="prem-stat-grid">
                                     <div class="prem-stat-card">
                                         <i class="fa-solid fa-medal"></i>
@@ -4761,7 +4766,6 @@
                                         <span class="prem-stat-label">Principal entidade de franchising do Brasil</span>
                                     </div>
                                 </div>
-
                                 <div class="prem-years">
                                     <span class="prem-year">2016</span><span class="prem-year">2017</span>
                                     <span class="prem-year">2018</span><span class="prem-year">2019</span>
@@ -4770,25 +4774,20 @@
                                     <span class="prem-year">2024</span><span class="prem-year">2025</span>
                                     <span class="prem-year prem-year-last">2026</span>
                                 </div>
-
                                 <div class="prem-trophy-row">
                                     <div class="prem-trophy-ph">
-                                        <!-- 📌 Substitua por <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
                                         <i class="fa-regular fa-image"></i>
                                         <span>Imagem dos selos ABF</span>
                                     </div>
                                 </div>
-
                                 <ul class="prem-bullet-list">
                                     <li><i class="fa-solid fa-circle-check"></i>A ABF é a principal entidade de referência do franchising no Brasil, associada às boas práticas, ao desenvolvimento e à excelência no setor.</li>
                                     <li><i class="fa-solid fa-circle-check"></i>A NTW está entre as <strong style="color:white;">4 franquias do Brasil</strong> que atingiram, por 11 anos consecutivos, o Selo de Excelência em Franchising.</li>
                                     <li><i class="fa-solid fa-circle-check"></i>Um reconhecimento que reforça a força, a gestão e a credibilidade da rede perante o mercado.</li>
                                 </ul>
-
                                 <div class="prem-footer-gold">
                                     <p>⭐ Um reconhecimento que reforça a força, a gestão e a credibilidade da rede.</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -4802,7 +4801,6 @@
                     <div class="prem-slider-wrap">
                         <div class="prem-slides" style="transform:none; display:block;">
                             <div class="prem-slide" style="min-width:100%;">
-
                                 <div class="prem-banner">
                                     <img class="prem-banner-img"
                                         src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/sld2.png"
@@ -4821,10 +4819,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <p class="prem-headline">Única Franquia Contábil do Brasil com Chancela Internacional</p>
                                 <p class="prem-sub">A chancela internacional da ABF valoriza redes brasileiras que crescem para além do território nacional com consistência, padrão operacional e visão de expansão.</p>
-
                                 <div class="prem-stat-grid">
                                     <div class="prem-stat-card">
                                         <i class="fa-solid fa-globe"></i>
@@ -4842,21 +4838,17 @@
                                         <span class="prem-stat-label">Países com presença ativa</span>
                                     </div>
                                 </div>
-
                                 <div class="prem-years">
                                     <span class="prem-year">2019</span><span class="prem-year">2020</span>
                                     <span class="prem-year">2021</span><span class="prem-year">2023</span>
                                     <span class="prem-year">2024</span><span class="prem-year prem-year-last">2025</span>
                                 </div>
-
                                 <div class="prem-trophy-row">
                                     <div class="prem-trophy-ph">
-                                        <!-- 📌 Substitua por <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
                                         <i class="fa-regular fa-image"></i>
                                         <span>Imagem dos troféus internacionais</span>
                                     </div>
                                 </div>
-
                                 <div class="prem-presence-row">
                                     <div class="prem-presence-card">
                                         <div class="prem-presence-flag">
@@ -4878,17 +4870,14 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <ul class="prem-bullet-list">
                                     <li><i class="fa-solid fa-circle-check"></i>Reconhecimento exclusivo para redes que demonstram excelência operacional além das fronteiras brasileiras.</li>
                                     <li><i class="fa-solid fa-circle-check"></i>Presença em Moçambique (África) e em Portugal – Cidade do Porto, comprovando a solidez do modelo de negócio.</li>
                                     <li><i class="fa-solid fa-circle-check"></i>Única franquia contábil brasileira a receber esse nível de validação internacional pela ABF.</li>
                                 </ul>
-
                                 <div class="prem-footer-gold">
                                     <p>🌐 Uma chancela que amplia a confiança no modelo de negócio da rede.</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -4902,7 +4891,6 @@
                     <div class="prem-slider-wrap">
                         <div class="prem-slides" style="transform:none; display:block;">
                             <div class="prem-slide" style="min-width:100%;">
-
                                 <div class="prem-banner">
                                     <img class="prem-banner-img"
                                         src="http://lp.ntwcontabilidade.com.br/wp-content/uploads/2026/05/ABF-Internaciona.png"
@@ -4920,10 +4908,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <p class="prem-headline">Cotação 5 Estrelas — Melhores Franquias do Brasil</p>
                                 <p class="prem-sub">Eleita pela revista PGN – Pequenas Empresas & Grandes Negócios, a NTW recebe a cotação máxima de 5 estrelas entre as melhores franquias do Brasil, ano após ano.</p>
-
                                 <div class="prem-stat-grid">
                                     <div class="prem-stat-card">
                                         <i class="fa-solid fa-star"></i>
@@ -4941,7 +4927,6 @@
                                         <span class="prem-stat-label">Consistência de mercado</span>
                                     </div>
                                 </div>
-
                                 <div class="prem-years">
                                     <span class="prem-year">2015</span><span class="prem-year">2016</span>
                                     <span class="prem-year">2017</span><span class="prem-year">2018</span>
@@ -4949,25 +4934,20 @@
                                     <span class="prem-year">2022</span><span class="prem-year">2023</span>
                                     <span class="prem-year">2024</span><span class="prem-year prem-year-last">2025</span>
                                 </div>
-
                                 <div class="prem-trophy-row">
                                     <div class="prem-trophy-ph">
-                                        <!-- 📌 Substitua por <img src="SEU_ARQUIVO.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"> -->
                                         <i class="fa-regular fa-image"></i>
                                         <span>Imagem dos selos PGN</span>
                                     </div>
                                 </div>
-
                                 <ul class="prem-bullet-list">
                                     <li><i class="fa-solid fa-circle-check"></i>Reconhecimento que reforça a credibilidade da marca no franchising brasileiro.</li>
                                     <li><i class="fa-solid fa-circle-check"></i>Prova de consistência, confiança e percepção de valor no mercado ao longo de mais de uma década.</li>
                                     <li><i class="fa-solid fa-circle-check"></i>Uma premiação que fortalece a autoridade comercial da rede perante franqueados e clientes.</li>
                                 </ul>
-
                                 <div class="prem-footer-gold">
                                     <p>⭐ Uma premiação que amplia a confiança do mercado na força da rede.</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -5004,9 +4984,6 @@
       if (mc) mc.scrollTop = 0;
     };
 
-    /* ═══════════════════════════════════════════════════════
-         ACADEMY — CARROSSEL
-      ═══════════════════════════════════════════════════════ */
     var acTracks = {
       acRow1: {
         el: null,
@@ -5101,19 +5078,16 @@
 
     var acDragReady = false;
     function initAcademyCarousel() {
-      /* Reseta posição e referência de elemento a cada abertura */
       ["acRow1", "acRow2", "acRow3"].forEach(function (k) {
         acTracks[k].el = null;
         acTracks[k].pos = 0;
       });
-      /* Pré-carrega e inicializa UI do track principal */
       var t1 = acGetTrack("acRow1");
       if (t1) acUpdateUI(t1);
 
       if (acDragReady) return;
       acDragReady = true;
 
-      /* ── Drag mouse ── */
       var dragState = null;
       document.addEventListener("mousedown", function (e) {
         var track =
@@ -5145,7 +5119,6 @@
         dragState = null;
       });
 
-      /* ── Drag touch ── */
       var touchState = null;
       document.addEventListener(
         "touchstart",
@@ -5199,6 +5172,70 @@
       if (e.target === modalOverlay) closeModal();
     });
 
+    /* ═══════════════════════════════════════════════════════
+         SYSTEM HUD — relógio, sessão e localização
+      ═══════════════════════════════════════════════════════ */
+    function sysUpdateClock() {
+      const now = new Date();
+      const dateEl = document.getElementById("sysDate");
+      const clockEl = document.getElementById("sysClock");
+      if (dateEl) dateEl.textContent = now.toLocaleDateString("pt-BR");
+      if (clockEl)
+        clockEl.textContent = now.toLocaleTimeString("pt-BR", {
+          hour12: false,
+        });
+    }
+
+    const sysStartTime = Date.now();
+    function sysUpdateUptime() {
+      const diff = Math.floor((Date.now() - sysStartTime) / 1000);
+      const hh = String(Math.floor(diff / 3600)).padStart(2, "0");
+      const mm = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
+      const ss = String(diff % 60).padStart(2, "0");
+      const el = document.getElementById("sysUptime");
+      if (el) el.textContent = `${hh}:${mm}:${ss}`;
+    }
+
+    function sysMaskIP(ip) {
+      if (!ip) return "---.---.---.---";
+      const parts = ip.split(".");
+      if (parts.length === 4) {
+        return `${parts[0]}.xxx.xxx.${parts[3]}`;
+      }
+      return ip.length > 10 ? ip.slice(0, 6) + "…" + ip.slice(-4) : ip;
+    }
+
+    function sysInitLocation() {
+      const locEl = document.getElementById("sysLocation");
+      const ipEl = document.getElementById("sysIP");
+      fetch("https://ipapi.co/json/")
+        .then((r) => r.json())
+        .then((data) => {
+          const city = data.city || "";
+          const region = data.region || data.region_code || "";
+          const country = data.country_name || "";
+          const locText =
+            [city, region].filter(Boolean).join(" - ") ||
+            country ||
+            "Localização indisponível";
+          if (locEl) locEl.textContent = locText;
+          if (ipEl && data.ip) ipEl.textContent = "IP: " + sysMaskIP(data.ip);
+        })
+        .catch(() => {
+          if (locEl) locEl.textContent = "Localização indisponível";
+          if (ipEl) ipEl.textContent = "IP: ---.---.---.---";
+        });
+    }
+
+    function initSystemHUD() {
+      sysUpdateClock();
+      sysUpdateUptime();
+      sysInitLocation();
+      setInterval(sysUpdateClock, 1000);
+      setInterval(sysUpdateUptime, 1000);
+    }
+
+    initSystemHUD();
     init();
   </script>
 </body>
